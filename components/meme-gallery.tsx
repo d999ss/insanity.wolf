@@ -27,7 +27,7 @@ export function MemeGallery() {
   const [voted, setVoted] = useState<Set<number>>(new Set())
   const [page, setPage] = useState(0)
   const [selectedMeme, setSelectedMeme] = useState<number | null>(null)
-  const memesPerPage = 16
+  const memesPerPage = 20
 
   useEffect(() => {
     // Shuffle and assign random votes
