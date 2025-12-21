@@ -692,8 +692,8 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">
               <div className="mb-6 flex items-center gap-3 cursor-pointer">
-                <div className="flex h-12 w-12 items-center justify-center bg-red-950/50 overflow-hidden border-2 border-red-900/50">
-                  <Image src="/insanity-wolf.png" alt="Insanity Wolf" width={48} height={48} className="object-cover" />
+                <div className="relative h-12 w-12 bg-red-950/50 overflow-hidden border-2 border-red-900/50">
+                  <Image src="/insanity-wolf.png" alt="Insanity Wolf" fill className="object-cover" />
                 </div>
                 <div className="text-2xl font-black tracking-tighter" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSANITY WOLF</div>
               </div>
