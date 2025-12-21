@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Zap, Menu, X } from "lucide-react"
+import { Zap, Menu } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -14,11 +14,11 @@ const navLinks = [
   { href: "/store", label: "STORE" },
 ]
 
-export function SiteNav() {
+export function HomeNav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-red-900/50 bg-black/90 backdrop-blur-xl">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl chaos-header">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
           <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-red-900/50">
@@ -45,8 +45,8 @@ export function SiteNav() {
         <div className="flex items-center gap-4">
           {/* Desktop Create Button */}
           <Button
-            size="sm"
-            className="hidden gap-2 font-bold bg-red-900 hover:bg-red-800 border border-red-500 md:inline-flex"
+            size="default"
+            className="hidden gap-2 font-bold bg-red-900 hover:bg-red-800 border border-red-500 px-4 py-2 md:inline-flex"
             asChild
           >
             <Link href="/create">

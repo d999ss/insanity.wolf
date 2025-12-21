@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import { ArrowRight, Users, Flame, Skull, Zap, TrendingUp, Sparkles, Trophy, Clock, Share2 } from "lucide-react"
 import Image from "next/image"
 import { MemeGenerator } from "@/components/meme-generator"
@@ -10,60 +9,13 @@ import { DailyChallenge } from "@/components/daily-challenge"
 import { LiveFeed } from "@/components/live-feed"
 import { AchievementBadge } from "@/components/achievement-badge"
 import { MemeBattle } from "@/components/meme-battle"
+import { HomeNav } from "@/components/home-nav"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl chaos-header">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <a href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-            <span className="font-sans text-xl font-black uppercase tracking-tighter text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-              Insanity Wolf
-            </span>
-          </a>
-
-          <div className="hidden items-center gap-8 md:flex">
-            <a
-              href="/gallery"
-              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
-            >
-              GALLERY
-            </a>
-            <a
-              href="/battle"
-              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
-            >
-              BATTLE
-            </a>
-            <a
-              href="/create"
-              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
-            >
-              CREATE
-            </a>
-            <a
-              href="/store"
-              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
-            >
-              STORE
-            </a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Button
-              size="default"
-              className="gap-2 font-bold bg-red-900 hover:bg-red-800 border border-red-500 px-4 py-2"
-              asChild
-            >
-              <a href="/create">
-                <Zap className="h-4 w-4" />
-                CREATE
-              </a>
-            </Button>
-          </div>
-        </nav>
-      </header>
+      <HomeNav />
 
       {/* Hero Section - Classic Meme Format - MAXIMUM CHAOS */}
       <section className="relative min-h-screen overflow-hidden">
