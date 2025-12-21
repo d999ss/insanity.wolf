@@ -89,7 +89,7 @@ export function MemeGenerator() {
   }
 
   return (
-    <div className="w-full max-w-5xl">
+    <div className="w-full">
       <div className="border border-red-900/30 bg-black">
         <div className="grid gap-0 lg:grid-cols-2">
           {/* Left side - Inputs */}
