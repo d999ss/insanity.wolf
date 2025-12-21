@@ -11,6 +11,7 @@ import { AchievementBadge } from "@/components/achievement-badge"
 import { MemeBattle } from "@/components/meme-battle"
 import { HomeNav } from "@/components/home-nav"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { PageViewCounter } from "@/components/page-view-counter"
 
 export default function Home() {
   return (
@@ -65,7 +66,8 @@ export default function Home() {
           </div>
           <div className="relative overflow-hidden border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,0,0,0.1)_0%,transparent_60%)]" />
-            <div className="relative grid gap-px bg-red-900/30 grid-cols-1 md:grid-cols-3">
+            <div className="relative grid gap-px bg-red-900/30 grid-cols-2 md:grid-cols-4">
+              <PageViewCounter />
               <div className="bg-black p-6 md:p-12 text-center">
                 <div className="mb-2 md:mb-4 font-sans text-5xl md:text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
                 <div className="mb-1 md:mb-2 text-sm font-bold uppercase tracking-widest text-red-400">Years of Terror</div>
