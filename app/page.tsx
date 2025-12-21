@@ -18,13 +18,8 @@ export default function Home() {
       {/* Header */}
       <HomeNav />
 
-      {/* Viral Stats Dashboard - Vercel Style */}
-      <div className="pt-16 md:pt-20">
-        <ViralStats />
-      </div>
-
       {/* Meme Creator */}
-      <section className="relative py-12 md:py-20 px-4 md:px-6 bg-black">
+      <section className="relative pt-20 md:pt-24 pb-12 md:pb-20 px-4 md:px-6 bg-black">
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 md:mb-8">
             <p className="font-mono text-xs md:text-sm uppercase text-red-400/80 mb-2">
@@ -40,6 +35,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Viral Stats Dashboard - Vercel Style */}
+      <ViralStats />
 
       {/* THE HALL OF INSANITY */}
       <section id="gallery" className="relative bg-black/50 px-4 py-12 md:px-6 md:py-24">
