@@ -1,0 +1,23 @@
+{
+  "name": "Insanity Wolf - Official Meme Generator",
+  "short_name": "Insanity Wolf",
+  "description": "The OFFICIAL Insanity Wolf meme generator. Create legendary advice animal memes since 2009.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-dark-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["entertainment", "social"],
+  "lang": "en-US"
+}
