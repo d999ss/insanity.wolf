@@ -98,6 +98,11 @@ function MerchBuilderContent() {
 
   // Upload image and generate mockup
   const generateMockup = async (base64Image: string, productType: string) => {
+    // Only generate mockups in production (blob storage required)
+    if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+      return // Skip mockup generation locally
+    }
+
     setMockupLoading(true)
     setMockupImage(null)
     try {
@@ -111,6 +116,7 @@ function MerchBuilderContent() {
 
       if (!uploadData.url) {
         console.error("Upload failed:", uploadData)
+        setMockupLoading(false)
         return
       }
 
