@@ -44,10 +44,32 @@ export default function CheckoutPage() {
 
   const handleCheckout = async () => {
     setLoading(true)
-    setTimeout(() => {
-      alert("Checkout coming soon!")
+    try {
+      const memeImage = localStorage.getItem("insanity-meme-image") || ""
+
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: cartItems,
+          email,
+          memeImage,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = data.url
+      } else {
+        throw new Error(data.error || "Failed to create checkout")
+      }
+    } catch (error) {
+      console.error("Checkout error:", error)
+      alert("Something went wrong. Please try again.")
       setLoading(false)
-    }, 1500)
+    }
   }
 
   if (cartItems.length === 0) {
