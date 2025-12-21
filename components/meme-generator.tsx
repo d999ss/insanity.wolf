@@ -95,7 +95,7 @@ export function MemeGenerator() {
           {/* Left side - Inputs */}
           <div className="space-y-4 md:space-y-6 border-b border-red-900/30 p-4 md:p-6 lg:border-b-0 lg:border-r">
             <div className="mb-4 md:mb-6">
-              <h3 className="font-mono text-xs md:text-sm font-medium uppercase text-red-400/80">
+              <h3 className="font-mono text-sm md:text-base font-medium uppercase text-white">
                 Customize Your Meme
               </h3>
             </div>
@@ -109,7 +109,7 @@ export function MemeGenerator() {
                 placeholder="EVERYDAY PROBLEM..."
                 value={topText}
                 onChange={(e) => setTopText(e.target.value)}
-                className="w-full h-12 px-4 font-mono text-sm bg-red-950/20 border border-red-900/30 text-white placeholder:text-red-400/30 focus:outline-none focus:border-red-500/50"
+                className="w-full h-12 px-4 font-mono text-base bg-red-950/20 border border-red-900/30 text-white placeholder:text-red-400/30 focus:outline-none focus:border-red-500/50"
               />
             </div>
 
@@ -122,7 +122,7 @@ export function MemeGenerator() {
                 placeholder="EXTREME SOLUTION..."
                 value={bottomText}
                 onChange={(e) => setBottomText(e.target.value)}
-                className="w-full h-12 px-4 font-mono text-sm bg-red-950/20 border border-red-900/30 text-white placeholder:text-red-400/30 focus:outline-none focus:border-red-500/50"
+                className="w-full h-12 px-4 font-mono text-base bg-red-950/20 border border-red-900/30 text-white placeholder:text-red-400/30 focus:outline-none focus:border-red-500/50"
               />
             </div>
 
@@ -135,14 +135,14 @@ export function MemeGenerator() {
                 <Download className="h-4 w-4" />
                 DOWNLOAD MEME
               </button>
-              <p className="text-center font-mono text-xs text-red-400/40">
+              <p className="text-center font-mono text-xs text-white/50">
                 {topText || bottomText ? "Looking good! Keep going..." : "Enter text above to create your meme"}
               </p>
             </div>
 
             <div className="bg-red-950/20 border border-red-900/30 p-4">
-              <p className="mb-3 font-mono text-xs uppercase text-red-400/60">Quick Tips</p>
-              <ul className="space-y-2 font-mono text-xs text-red-400/50">
+              <p className="mb-3 font-mono text-xs uppercase text-white/70">Quick Tips</p>
+              <ul className="space-y-2 font-mono text-xs text-white/50">
                 <li className="flex items-start gap-2">
                   <span className="text-red-500">•</span>
                   <span>Keep it short and punchy</span>
@@ -162,10 +162,10 @@ export function MemeGenerator() {
           {/* Right side - Preview */}
           <div className="bg-red-950/10 p-4 md:p-6">
             <div className="mb-3 md:mb-4 flex items-center justify-between">
-              <p className="font-mono text-xs uppercase text-red-400/60">Live Preview</p>
+              <p className="font-mono text-xs uppercase text-white/70">Live Preview</p>
               <div className="flex items-center gap-1.5">
-                <div className="h-2 w-2 animate-pulse bg-red-500"></div>
-                <span className="font-mono text-xs text-red-500">LIVE</span>
+                <div className="h-2 w-2 animate-pulse bg-green-500"></div>
+                <span className="font-mono text-xs text-green-500">LIVE</span>
               </div>
             </div>
             <div className="sticky top-24 overflow-hidden border border-red-900/30">
