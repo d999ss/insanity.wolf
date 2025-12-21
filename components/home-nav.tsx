@@ -4,7 +4,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Zap, Menu } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 
 const navLinks = [
@@ -20,10 +19,7 @@ export function HomeNav() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl chaos-header">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
-          <div className="relative w-8 h-8 overflow-hidden border-2 border-red-900/50">
-            <Image src="/insanity-wolf.png" alt="Wolf" fill className="object-cover" />
-          </div>
+        <Link href="/" className="cursor-pointer hover:opacity-80 transition-opacity">
           <span className="font-sans text-xl font-black uppercase tracking-tighter text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
             Insanity Wolf
           </span>
@@ -70,14 +66,9 @@ export function HomeNav() {
               <div className="flex flex-col h-full">
                 {/* Mobile Header */}
                 <div className="flex items-center justify-between border-b border-red-900/50 p-6">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-8 h-8 overflow-hidden border-2 border-red-900/50">
-                      <Image src="/insanity-wolf.png" alt="Wolf" fill className="object-cover" />
-                    </div>
-                    <span className="font-sans text-lg font-black uppercase tracking-tighter text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                      Menu
-                    </span>
-                  </div>
+                  <span className="font-sans text-lg font-black uppercase tracking-tighter text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+                    Menu
+                  </span>
                 </div>
 
                 {/* Mobile Links */}
