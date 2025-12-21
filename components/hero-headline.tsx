@@ -3,18 +3,9 @@
 import { useState, useEffect, ReactNode } from "react"
 
 const headlines = [
-  { top: "YOU WANT ADVICE?!", bottom: "I'LL GIVE YOU ADVICE!" },
-  { top: "PROBLEM?", bottom: "ELIMINATE THE PROBLEM!" },
-  { top: "CAN'T SLEEP?", bottom: "STAY AWAKE FOREVER!" },
-  { top: "FEELING SAD?", bottom: "DESTROY EVERYTHING!" },
-  { top: "LIFE GOT YOU DOWN?", bottom: "BURN IT ALL DOWN!" },
-  { top: "BOSS MAKING YOU MAD?", bottom: "BECOME THE BOSS!" },
-  { top: "TRAFFIC MAKING YOU LATE?", bottom: "DRIVE THROUGH IT!" },
-  { top: "WANT A SOLUTION?", bottom: "HERE'S YOUR SOLUTION!" },
-  { top: "GOT A HEADACHE?", bottom: "DECAPITATION!" },
-  { top: "NEIGHBORS TOO LOUD?", bottom: "NO MORE NEIGHBORS!" },
-  { top: "MONDAY MORNING?", bottom: "BURN THE CALENDAR!" },
-  { top: "PHONE WON'T STOP?", bottom: "INTO THE VOLCANO!" },
+  { top: "DONATE BLOOD", bottom: "ALL OF IT!" },
+  { top: "WHAT'S THE FASTEST WAY TO A WOMAN'S HEART?", bottom: "THROUGH HER RIBCAGE!" },
+  { top: "FEED THE HOMELESS", bottom: "TO THE HOMELESS" },
 ]
 
 interface HeroHeadlineProps {
