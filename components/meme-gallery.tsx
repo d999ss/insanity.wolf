@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { ThumbsUp, Share2, RefreshCw } from "lucide-react"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { ThumbsUp, Share2, RefreshCw, X, ChevronLeft, ChevronRight, Download, Maximize2 } from "lucide-react"
 import Image from "next/image"
 import galleryImages from "@/lib/gallery-images.json"
 
@@ -25,6 +26,7 @@ export function MemeGallery() {
   const [memes, setMemes] = useState<MemeItem[]>([])
   const [voted, setVoted] = useState<Set<number>>(new Set())
   const [page, setPage] = useState(0)
+  const [selectedMeme, setSelectedMeme] = useState<number | null>(null)
   const memesPerPage = 16
 
   useEffect(() => {
@@ -36,7 +38,23 @@ export function MemeGallery() {
     setMemes(shuffled)
   }, [])
 
-  const handleVote = (index: number) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedMeme === null) return
+      if (e.key === "ArrowLeft") {
+        setSelectedMeme(prev => (prev !== null && prev > 0 ? prev - 1 : prev))
+      } else if (e.key === "ArrowRight") {
+        setSelectedMeme(prev => (prev !== null && prev < memes.length - 1 ? prev + 1 : prev))
+      } else if (e.key === "Escape") {
+        setSelectedMeme(null)
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [selectedMeme, memes.length])
+
+  const handleVote = (index: number, e?: React.MouseEvent) => {
+    e?.stopPropagation()
     if (voted.has(index)) return
 
     setMemes((prev) =>
@@ -55,12 +73,19 @@ export function MemeGallery() {
     setVoted(new Set())
   }
 
+  const downloadMeme = (src: string) => {
+    const link = document.createElement("a")
+    link.href = `/gallery/${src}`
+    link.download = src
+    link.click()
+  }
+
   const visibleMemes = memes.slice(0, (page + 1) * memesPerPage)
 
   if (memes.length === 0) {
     return (
       <div className="flex justify-center py-12">
-        <div className="animate-pulse text-xl font-bold">LOADING THE INSANITY...</div>
+        <div className="animate-pulse text-xl font-bold text-red-400">LOADING THE INSANITY...</div>
       </div>
     )
   }
@@ -68,7 +93,7 @@ export function MemeGallery() {
   return (
     <div className="space-y-8">
       <div className="flex justify-center">
-        <Button onClick={shuffle} variant="outline" className="gap-2 glitch-hover" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+        <Button onClick={shuffle} variant="outline" className="gap-2 glitch-hover border-red-900/50 text-red-400 hover:bg-red-950/30 hover:text-red-300" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
           <RefreshCw className="h-4 w-4" />
           SHUFFLE THE MADNESS
         </Button>
@@ -78,7 +103,8 @@ export function MemeGallery() {
         {visibleMemes.map((meme, idx) => (
           <div
             key={`${meme.src}-${idx}`}
-            className="group relative overflow-hidden rounded-xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30 metal-card-hover noise-hover explode-hover cursor-pointer"
+            className="group relative overflow-hidden rounded-xl border-2 border-red-900/30 bg-gradient-to-br from-black via-red-950/10 to-black cursor-pointer transition-all hover:border-red-500/50 hover:shadow-lg hover:shadow-red-500/10"
+            onClick={() => setSelectedMeme(idx)}
           >
             <div className="relative aspect-square">
               <Image
@@ -89,42 +115,135 @@ export function MemeGallery() {
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize2 className="h-5 w-5 text-white drop-shadow-lg" />
+              </div>
             </div>
 
-            <div className="border-t border-border bg-muted/50 p-3">
+            <div className="border-t border-red-900/30 bg-red-950/30 p-3">
               <div className="flex items-center justify-between gap-2">
                 <Button
-                  onClick={() => handleVote(idx)}
+                  onClick={(e) => handleVote(idx, e)}
                   variant={voted.has(idx) ? "default" : "outline"}
                   size="sm"
-                  className="gap-1.5 text-xs violent-shake"
+                  className={`gap-1.5 text-xs ${voted.has(idx) ? 'bg-red-900 hover:bg-red-800' : 'border-red-900/50 text-red-400 hover:bg-red-950/50'}`}
                   disabled={voted.has(idx)}
                 >
                   <ThumbsUp className="h-3 w-3" />
                   {meme.votes.toLocaleString()}
                 </Button>
-                <Button variant="ghost" size="sm" className="glitch-hover p-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="p-2 text-red-400 hover:text-red-300 hover:bg-red-950/50"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    // Share functionality placeholder
+                  }}
+                >
                   <Share2 className="h-3 w-3" />
                 </Button>
               </div>
             </div>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none" />
           </div>
         ))}
       </div>
 
       {visibleMemes.length < memes.length && (
         <div className="flex justify-center pt-8">
-          <Button onClick={loadMore} size="lg" className="gap-2 rage-mode" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+          <Button
+            onClick={loadMore}
+            size="lg"
+            className="gap-2 bg-red-900 hover:bg-red-800 border border-red-500"
+            style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
+          >
             SHOW ME MORE INSANITY ({memes.length - visibleMemes.length} remaining)
           </Button>
         </div>
       )}
 
-      <p className="text-center text-sm text-muted-foreground">
+      <p className="text-center text-sm text-red-400/50">
         Showing {visibleMemes.length} of {memes.length} legendary memes
       </p>
+
+      {/* Lightbox Modal */}
+      <Dialog open={selectedMeme !== null} onOpenChange={(open) => !open && setSelectedMeme(null)}>
+        <DialogContent className="max-w-4xl bg-black/95 border-red-900/50 p-0">
+          {selectedMeme !== null && memes[selectedMeme] && (
+            <div className="relative">
+              {/* Close button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute top-4 right-4 z-10 text-white hover:bg-red-950/50"
+                onClick={() => setSelectedMeme(null)}
+              >
+                <X className="h-6 w-6" />
+              </Button>
+
+              {/* Navigation arrows */}
+              {selectedMeme > 0 && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 text-white hover:bg-red-950/50 h-12 w-12"
+                  onClick={() => setSelectedMeme(selectedMeme - 1)}
+                >
+                  <ChevronLeft className="h-8 w-8" />
+                </Button>
+              )}
+              {selectedMeme < memes.length - 1 && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 text-white hover:bg-red-950/50 h-12 w-12"
+                  onClick={() => setSelectedMeme(selectedMeme + 1)}
+                >
+                  <ChevronRight className="h-8 w-8" />
+                </Button>
+              )}
+
+              {/* Image */}
+              <div className="relative aspect-square max-h-[70vh]">
+                <Image
+                  src={`/gallery/${memes[selectedMeme].src}`}
+                  alt="Insanity Wolf Meme"
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1024px) 100vw, 80vw"
+                  priority
+                />
+              </div>
+
+              {/* Actions bar */}
+              <div className="border-t border-red-900/50 bg-red-950/30 p-4 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <Button
+                    onClick={() => handleVote(selectedMeme)}
+                    variant={voted.has(selectedMeme) ? "default" : "outline"}
+                    className={`gap-2 ${voted.has(selectedMeme) ? 'bg-red-900 hover:bg-red-800' : 'border-red-900/50 text-red-400 hover:bg-red-950/50'}`}
+                    disabled={voted.has(selectedMeme)}
+                  >
+                    <ThumbsUp className="h-4 w-4" />
+                    {memes[selectedMeme].votes.toLocaleString()} VOTES
+                  </Button>
+                  <span className="text-sm text-red-400/50">
+                    {selectedMeme + 1} of {memes.length}
+                  </span>
+                </div>
+                <Button
+                  variant="outline"
+                  className="gap-2 border-red-900/50 text-red-400 hover:bg-red-950/50"
+                  onClick={() => downloadMeme(memes[selectedMeme].src)}
+                >
+                  <Download className="h-4 w-4" />
+                  DOWNLOAD
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
