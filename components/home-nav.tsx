@@ -9,7 +9,7 @@ import Link from "next/link"
 const navLinks = [
   { href: "/gallery", label: "GALLERY" },
   { href: "/battle", label: "BATTLE" },
-  { href: "/create", label: "CREATE" },
+  { href: "/wiki", label: "WIKI" },
   { href: "/store", label: "STORE" },
 ]
 
