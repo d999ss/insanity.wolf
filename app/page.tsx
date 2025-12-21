@@ -19,20 +19,46 @@ export default function Home() {
       <HomeNav />
 
       {/* Meme Creator */}
-      <section className="relative pt-20 md:pt-24 pb-12 md:pb-20 px-4 md:px-6 bg-black">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-6 md:mb-8">
-            <p className="font-mono text-xs md:text-sm uppercase text-red-400/80 mb-2">
-              Meme Generator
-              <span className="block text-red-400/50 font-mono">
-                [CREATE YOUR OWN]
-              </span>
+      <main className="pt-20 md:pt-24 pb-10 md:pb-16 px-4 md:px-6 bg-black">
+        <div className="mx-auto max-w-5xl">
+          {/* Header */}
+          <div className="mb-8 md:mb-12 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+              <Zap className="h-4 w-4 text-red-500" />
+              <span className="text-red-400">MEME FORGE</span>
+            </div>
+            <h1
+              className="text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-5xl lg:text-6xl text-white"
+              style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
+            >
+              CREATE YOUR
+              <span className="block text-red-500">INSANITY WOLF</span>
+            </h1>
+            <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-pretty text-base md:text-lg text-red-300/70">
+              Enter problem. Add EXTREME solution. Download.
             </p>
           </div>
 
+          {/* Meme Generator */}
           <MemeGenerator />
+
+          {/* Tips */}
+          <div className="mt-8 md:mt-12 grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
+            <div className="border border-red-900/30 bg-red-950/10 p-4 md:p-6 text-center">
+              <h3 className="mb-2 font-bold text-red-400 uppercase text-sm md:text-base" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>Step 1</h3>
+              <p className="text-xs md:text-sm text-red-300/60">Enter a mundane problem in TOP TEXT</p>
+            </div>
+            <div className="border border-red-900/30 bg-red-950/10 p-4 md:p-6 text-center">
+              <h3 className="mb-2 font-bold text-red-400 uppercase text-sm md:text-base" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>Step 2</h3>
+              <p className="text-xs md:text-sm text-red-300/60">Add EXTREME solution in BOTTOM TEXT</p>
+            </div>
+            <div className="border border-red-900/30 bg-red-950/10 p-4 md:p-6 text-center">
+              <h3 className="mb-2 font-bold text-red-400 uppercase text-sm md:text-base" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>Step 3</h3>
+              <p className="text-xs md:text-sm text-red-300/60">Download and share with the world</p>
+            </div>
+          </div>
         </div>
-      </section>
+      </main>
 
       {/* Viral Stats Dashboard - Vercel Style */}
       <ViralStats />
@@ -40,7 +66,7 @@ export default function Home() {
       {/* THE HALL OF INSANITY */}
       <section id="gallery" className="relative bg-black/50 px-4 py-12 md:px-6 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-red-950/20" />
-        <div className="mx-auto max-w-7xl relative z-10">
+        <div className="mx-auto max-w-5xl relative z-10">
           <div className="mb-8 md:mb-16 text-center">
             <h2 className="text-balance text-3xl font-black uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               THE HALL OF INSANITY
@@ -77,7 +103,7 @@ export default function Home() {
       {/* History Section - ORIGIN STORY */}
       <section id="history" className="relative border-y border-red-900/30 bg-black px-4 py-12 md:px-6 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
-        <div className="mx-auto max-w-4xl relative z-10">
+        <div className="mx-auto max-w-5xl relative z-10">
           <div className="mb-8 md:mb-12 text-center">
             <h2 className="text-balance font-sans text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-4xl lg:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               WHERE DID THIS COME FROM?!
@@ -105,7 +131,7 @@ export default function Home() {
       </section>
 
       <section className="relative border-y border-red-900/30 bg-red-950/20 px-4 py-12 md:px-6 md:py-24">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <div className="mb-8 md:mb-12 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/50 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="h-4 w-4 text-red-500" />
@@ -125,7 +151,7 @@ export default function Home() {
 
       <section className="relative bg-black px-4 py-12 md:px-6 md:py-24 heavy-scanlines">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
-        <div className="mx-auto max-w-7xl relative z-10">
+        <div className="mx-auto max-w-5xl relative z-10">
           <div className="mb-8 md:mb-16 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Zap className="h-4 w-4 text-red-500" />
@@ -167,7 +193,7 @@ export default function Home() {
 
       <section className="relative border-y border-red-900/30 bg-black px-4 py-12 md:px-6 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
-        <div className="mx-auto max-w-7xl relative z-10">
+        <div className="mx-auto max-w-5xl relative z-10">
           <div className="mb-8 md:mb-16 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Trophy className="h-4 w-4 text-red-500" />
@@ -232,7 +258,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-red-900/30 bg-black px-4 py-10 md:px-6 md:py-16">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-5xl">
           <div className="grid gap-8 md:gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">
               <div className="mb-4">

@@ -131,7 +131,7 @@ export function ViralStats() {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-black to-red-950/5" />
 
-      <div className="relative z-10 mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-5xl">
         {/* Header */}
         <div className="mb-8 md:mb-12">
           <p className="font-mono text-xs md:text-sm uppercase text-red-400/80 mb-2">

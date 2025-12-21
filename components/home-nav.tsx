@@ -20,7 +20,7 @@ export function HomeNav() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="cursor-pointer hover:opacity-70 transition-opacity">
           <span className="font-mono text-sm font-medium uppercase tracking-tight text-white">
-            Insanity Wolf
+            INSANITYWOLF.COM
           </span>
         </Link>
 
