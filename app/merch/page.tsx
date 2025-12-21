@@ -87,12 +87,50 @@ const products = [
 function MerchBuilderContent() {
   const searchParams = useSearchParams()
   const [memeImage, setMemeImage] = useState<string | null>(null)
+  const [mockupImage, setMockupImage] = useState<string | null>(null)
+  const [mockupLoading, setMockupLoading] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(products[0])
   const [selectedSize, setSelectedSize] = useState(products[0].sizes[1])
   const [selectedColor, setSelectedColor] = useState(products[0].colors[0])
   const [quantity, setQuantity] = useState(1)
   const [addedToCart, setAddedToCart] = useState(false)
   const [cartItems, setCartItems] = useState<any[]>([])
+
+  // Upload image and generate mockup
+  const generateMockup = async (base64Image: string, productType: string) => {
+    setMockupLoading(true)
+    setMockupImage(null)
+    try {
+      // Upload image to get public URL
+      const uploadRes = await fetch("/api/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: base64Image }),
+      })
+      const uploadData = await uploadRes.json()
+
+      if (!uploadData.url) {
+        console.error("Upload failed:", uploadData)
+        return
+      }
+
+      // Generate mockup with Printful
+      const mockupRes = await fetch("/api/mockup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ imageUrl: uploadData.url, productType }),
+      })
+      const mockupData = await mockupRes.json()
+
+      if (mockupData.mockups && mockupData.mockups.length > 0) {
+        setMockupImage(mockupData.mockups[0].url)
+      }
+    } catch (error) {
+      console.error("Mockup generation error:", error)
+    } finally {
+      setMockupLoading(false)
+    }
+  }
 
   useEffect(() => {
     const imageParam = searchParams.get("image")
@@ -108,6 +146,13 @@ function MerchBuilderContent() {
       setCartItems(JSON.parse(cart))
     }
   }, [searchParams])
+
+  // Generate mockup when meme or product changes
+  useEffect(() => {
+    if (memeImage && selectedProduct) {
+      generateMockup(memeImage, selectedProduct.id)
+    }
+  }, [memeImage, selectedProduct.id])
 
   const handleProductChange = (product: typeof products[0]) => {
     setSelectedProduct(product)
@@ -157,24 +202,31 @@ function MerchBuilderContent() {
             <div className="order-1">
               <div className="sticky top-24">
                 <div className="border-2 border-red-900/30 bg-gradient-to-br from-red-950/20 to-black p-4 md:p-8">
-                  <div className="aspect-square relative flex items-center justify-center" style={{ backgroundColor: selectedColor.hex === "#FFFFFF" ? "#f5f5f5" : "#1a1a1a" }}>
-                    <div className="relative w-full h-full flex items-center justify-center">
-                      <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                        <span className="text-[180px] font-black text-white">{selectedProduct.icon}</span>
+                  <div className="aspect-square relative flex items-center justify-center overflow-hidden" style={{ backgroundColor: "#1a1a1a" }}>
+                    {mockupLoading ? (
+                      <div className="flex flex-col items-center justify-center gap-4">
+                        <div className="w-12 h-12 border-4 border-red-500/30 border-t-red-500 rounded-full animate-spin" />
+                        <p className="text-red-400 font-mono text-sm uppercase">Generating mockup...</p>
                       </div>
-                      {memeImage ? (
+                    ) : mockupImage ? (
+                      <img src={mockupImage} alt="Product mockup" className="w-full h-full object-contain" />
+                    ) : memeImage ? (
+                      <div className="relative w-full h-full flex items-center justify-center">
+                        <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                          <span className="text-[180px] font-black text-white">{selectedProduct.icon}</span>
+                        </div>
                         <div className="relative z-10 w-2/3 h-2/3 flex items-center justify-center">
                           <img src={memeImage} alt="Your meme" className="max-w-full max-h-full object-contain shadow-2xl" />
                         </div>
-                      ) : (
-                        <div className="relative z-10 w-2/3 h-2/3 border-2 border-dashed border-red-500/50 flex items-center justify-center">
-                          <div className="text-center p-4">
-                            <p className="text-red-400 font-bold uppercase text-sm">No Meme Selected</p>
-                            <p className="text-red-400/60 text-xs mt-1">Go back and create one first</p>
-                          </div>
+                      </div>
+                    ) : (
+                      <div className="w-2/3 h-2/3 border-2 border-dashed border-red-500/50 flex items-center justify-center">
+                        <div className="text-center p-4">
+                          <p className="text-red-400 font-bold uppercase text-sm">No Meme Selected</p>
+                          <p className="text-red-400/60 text-xs mt-1">Go back and create one first</p>
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                   <div className="mt-4 flex items-center justify-between">
                     <div>
