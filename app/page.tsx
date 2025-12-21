@@ -263,7 +263,7 @@ export default function Home() {
             <div className="lg:col-span-2">
               <div className="mb-4">
                 <span className="font-mono text-sm font-medium uppercase text-white">
-                  Insanity Wolf
+                  INSANITYWOLF.COM
                 </span>
               </div>
               <p className="mb-6 max-w-md font-mono text-xs text-red-400/50 leading-relaxed">

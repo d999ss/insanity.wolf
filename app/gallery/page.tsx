@@ -20,7 +20,7 @@ export default function GalleryPage() {
 
       {/* Main Content */}
       <main className="pt-20 md:pt-24 pb-10 md:pb-16 px-4 md:px-6">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-5xl">
           {/* Hero Section */}
           <div className="mb-8 md:mb-16 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
@@ -42,11 +42,9 @@ export default function GalleryPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-red-900/50 bg-black px-4 md:px-6 py-6 md:py-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <p className="text-xs md:text-sm text-red-400/50">
-            INSANITY WOLF. Born from chaos. Fed by rage.
-          </p>
+      <footer className="border-t border-red-900/30 bg-black px-4 md:px-6 py-6 md:py-8">
+        <div className="mx-auto max-w-5xl text-center font-mono text-xs text-red-400/40">
+          <p>© 2009-2025 INSANITYWOLF.COM. This is satire. Don't actually follow this advice.</p>
         </div>
       </footer>
 

@@ -39,7 +39,7 @@ export default function WikiPage() {
 
       {/* Main Content */}
       <main className="px-4 md:px-6 pb-16 md:pb-24">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-5xl">
           <div className="grid gap-12 lg:grid-cols-3">
             {/* Main Content */}
             <div className="space-y-12 lg:col-span-2">
@@ -439,11 +439,9 @@ export default function WikiPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-red-900/50 bg-black px-4 md:px-6 py-6 md:py-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <p className="text-xs md:text-sm text-red-400/50">
-            INSANITY WOLF. Born from chaos since 2009. DON'T follow this advice.
-          </p>
+      <footer className="border-t border-red-900/30 bg-black px-4 md:px-6 py-6 md:py-8">
+        <div className="mx-auto max-w-5xl text-center font-mono text-xs text-red-400/40">
+          <p>© 2009-2025 INSANITYWOLF.COM. This is satire. Don't actually follow this advice.</p>
         </div>
       </footer>
 

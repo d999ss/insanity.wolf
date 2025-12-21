@@ -62,8 +62,8 @@ export default function CreatePage() {
 
       {/* Footer */}
       <footer className="border-t border-red-900/30 bg-black px-4 md:px-6 py-6 md:py-8">
-        <div className="mx-auto max-w-7xl text-center text-xs md:text-sm text-red-400/50">
-          <p>Insanity Wolf - Born from chaos since 2009. DON'T follow this advice.</p>
+        <div className="mx-auto max-w-5xl text-center font-mono text-xs text-red-400/40">
+          <p>© 2009-2025 INSANITYWOLF.COM. This is satire. Don't actually follow this advice.</p>
         </div>
       </footer>
 

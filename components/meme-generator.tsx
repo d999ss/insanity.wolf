@@ -2,15 +2,21 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Download, Share2, Shirt, Shuffle } from "lucide-react"
+import { Download, Share2, Shirt, Shuffle, Flame } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 export function MemeGenerator() {
   const [topText, setTopText] = useState("")
   const [bottomText, setBottomText] = useState("")
+  const [extremeMode, setExtremeMode] = useState(false)
   const router = useRouter()
 
   const memeReady = topText && bottomText
+
+  // Templates
+  const standardTemplate = "/insanity-wolf-template.webp"
+  const extremeCanvas = "/extreme-canvas.png"
+  const extremeWolf = "/extreme-wolf.png"
 
   const handleMakeMerch = () => {
     const params = new URLSearchParams({
@@ -21,49 +27,148 @@ export function MemeGenerator() {
   }
 
   const problems = [
+    // Work problems
     "ALARM DIDN'T GO OFF",
     "BOSS WANTS TO SEE ME",
     "SOMEONE ATE MY LUNCH",
+    "DEADLINE TOMORROW",
+    "COMPUTER CRASHED",
+    "MEETING COULD'VE BEEN AN EMAIL",
+    "COWORKER WON'T STOP TALKING",
+    "PRINTER JAMMED AGAIN",
+    "GOT CC'D ON DRAMA EMAIL",
+    "MICROMANAGER STRIKES AGAIN",
+    // Tech problems
     "WIFI IS DOWN",
     "PHONE BATTERY AT 1%",
+    "FORGOT PASSWORD",
+    "UPDATE REQUIRES RESTART",
+    "AUTOCORRECT RUINED MY TEXT",
+    "SENT TO WRONG PERSON",
+    "LOST UNSAVED WORK",
+    "CAPS LOCK WAS ON",
+    "BLUETOOTH WON'T CONNECT",
+    "TOO MANY TABS OPEN",
+    // Daily life
     "TRAFFIC JAM",
     "MONDAY MORNING",
-    "DEADLINE TOMORROW",
     "OUT OF COFFEE",
-    "NEIGHBOR'S DOG WON'T STOP BARKING",
-    "FORGOT PASSWORD",
-    "COMPUTER CRASHED",
     "RUNNING LATE",
     "CAN'T FIND PARKING",
     "ROOMMATE LEFT DISHES",
+    "NEIGHBOR'S DOG WON'T STOP",
+    "STEPPED IN SOMETHING WET",
+    "FORGOT HEADPHONES",
+    "SOMEONE TOOK MY SPOT",
+    // Social problems
     "EX TEXTS YOU",
+    "SOMEONE SPOILS THE MOVIE",
+    "GROUP PROJECT",
+    "FRIEND CANCELS LAST MINUTE",
+    "READ BUT NO REPLY",
+    "SOMEONE CHEWS LOUDLY",
+    "SLOW WALKER IN FRONT",
+    "PEOPLE WON'T LEAVE THE PARTY",
+    "TAGGED IN BAD PHOTO",
+    "VOICEMAIL NOTIFICATION",
+    // Food problems
+    "FOOD IS TOO HOT",
+    "FOOD IS TOO COLD",
+    "THEY GOT MY ORDER WRONG",
+    "NO MORE PIZZA",
+    "MILK IS EXPIRED",
+    "FORGOT LUNCH AT HOME",
+    "SNACK STUCK IN VENDING MACHINE",
+    "RESTAURANT IS CLOSED",
+    // Random annoyances
+    "CAN'T SLEEP",
+    "TOO EARLY",
     "DENTIST APPOINTMENT",
     "CAR WON'T START",
-    "PHONE DIES DURING UBER",
-    "SOMEONE SPOILS THE MOVIE",
+    "PACKAGE IS DELAYED",
+    "REMOTE IS MISSING",
+    "SHOE CAME UNTIED",
+    "HEADPHONE CORD TANGLED",
+    "BIRD POOPED ON CAR",
+    "STUB TOE ON FURNITURE",
+    "ITCH YOU CAN'T REACH",
+    "HICCUPS WON'T STOP",
   ]
 
   const solutions = [
+    // Violence themed
     "BURN THE BUILDING DOWN",
     "FIGHT EVERYONE",
-    "SCREAM INTO THE VOID",
     "FLIP THE TABLE",
+    "SET IT ON FIRE",
+    "THROW IT OUT THE WINDOW",
+    "BREAK EVERYTHING",
+    "PUNCH A HOLE IN THE WALL",
+    "DECLARE WAR",
+    "CHOOSE VIOLENCE",
+    "THROW HANDS IMMEDIATELY",
+    // Chaos themed
+    "SCREAM INTO THE VOID",
     "BECOME THE PROBLEM",
     "ASSERT DOMINANCE",
     "CHAOS IS THE ANSWER",
-    "VIOLENCE IS ALWAYS AN OPTION",
-    "SET IT ON FIRE",
-    "RUN NAKED THROUGH THE STREETS",
+    "EMBRACE THE DARKNESS",
+    "BECOME UNGOVERNABLE",
+    "LET IT ALL BURN",
+    "WATCH THE WORLD BURN",
+    "CAUSE A SCENE",
+    "GO ABSOLUTELY FERAL",
+    // Escape themed
     "FAKE YOUR OWN DEATH",
     "DESTROY ALL EVIDENCE",
-    "EMBRACE THE DARKNESS",
     "ESTABLISH A NEW IDENTITY",
     "BURN ALL BRIDGES",
+    "RUN NAKED THROUGH THE STREETS",
+    "FLEE THE COUNTRY",
+    "DISAPPEAR FOREVER",
+    "WITNESS PROTECTION PROGRAM",
+    "START A NEW LIFE IN ANTARCTICA",
+    "BECOME A HERMIT",
+    // Power moves
+    "MAKE THEM FEAR YOU",
+    "ACCEPT NO SURVIVORS",
+    "T-POSE TO ASSERT DOMINANCE",
+    "STARE INTO THEIR SOUL",
+    "BECOME THEIR NEW BOSS",
+    "OUTLIVE YOUR ENEMIES",
+    "SUCCESS IS THE BEST REVENGE",
+    "NEVER FORGIVE NEVER FORGET",
+    "HOLD THIS GRUDGE FOREVER",
+    "HAUNT THEM FROM BEYOND",
+    // Absurd solutions
     "RELEASE THE WOLVES",
     "SUMMON ANCIENT DEMONS",
-    "ACCEPT NO SURVIVORS",
-    "MAKE THEM FEAR YOU",
-    "BECOME UNGOVERNABLE",
+    "CONSULT THE ELDER GODS",
+    "CALL IN THE WOLVES",
+    "UNLEASH THE BEES",
+    "DEPLOY THE ATTACK GEESE",
+    "ACTIVATE GOBLIN MODE",
+    "CHANNEL PURE RAGE",
+    "ASCEND TO A HIGHER PLANE",
+    "ACHIEVE FINAL FORM",
+    // Petty revenge
+    "SIGN THEM UP FOR SPAM",
+    "UNPLUG THEIR CHARGER 1%",
+    "MOVE THEIR BOOKMARK",
+    "SET THEIR ALARM FOR 3AM",
+    "HIDE ONE OF THEIR SOCKS",
+    "CHANGE THEIR AUTOCORRECT",
+    "PUT GLITTER IN THEIR MAIL",
+    "SUBSCRIBE TO CAT FACTS",
+    // Unhinged responses
+    "EAT THE EVIDENCE",
+    "BLAME IT ON GHOSTS",
+    "GASLIGHT EVERYONE",
+    "SIMPLY ✨UNALIVE✨ IT",
+    "SPEEDRUN SELF-DESTRUCTION",
+    "DOUBLE DOWN HARDER",
+    "MAKE IT EVERYONE'S PROBLEM",
+    "GO OFF THE GRID",
   ]
 
   const generateProblem = () => {
@@ -119,16 +224,7 @@ export function MemeGenerator() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    const img = new window.Image()
-    img.crossOrigin = "anonymous"
-    img.src = "/insanity-wolf-template.webp"
-
-    img.onload = () => {
-      canvas.width = img.width
-      canvas.height = img.height
-
-      ctx.drawImage(img, 0, 0)
-
+    const drawText = () => {
       ctx.fillStyle = "white"
       ctx.strokeStyle = "black"
       ctx.lineWidth = 4
@@ -150,9 +246,47 @@ export function MemeGenerator() {
       }
 
       const link = document.createElement("a")
-      link.download = "insanity-wolf-meme.png"
+      link.download = extremeMode ? "insanity-wolf-extreme-meme.png" : "insanity-wolf-meme.png"
       link.href = canvas.toDataURL()
       link.click()
+    }
+
+    if (extremeMode) {
+      const canvasImg = new window.Image()
+      canvasImg.crossOrigin = "anonymous"
+      canvasImg.src = extremeCanvas
+
+      canvasImg.onload = () => {
+        canvas.width = canvasImg.width
+        canvas.height = canvasImg.height
+        ctx.drawImage(canvasImg, 0, 0)
+
+        const wolfImg = new window.Image()
+        wolfImg.crossOrigin = "anonymous"
+        wolfImg.src = extremeWolf
+
+        wolfImg.onload = () => {
+          // Draw wolf centered and contained, shrunk by 33%
+          const scale = Math.min(canvas.width / wolfImg.width, canvas.height / wolfImg.height) * 0.67
+          const w = wolfImg.width * scale
+          const h = wolfImg.height * scale
+          const x = (canvas.width - w) / 2
+          const y = (canvas.height - h) / 2
+          ctx.drawImage(wolfImg, x, y, w, h)
+          drawText()
+        }
+      }
+    } else {
+      const img = new window.Image()
+      img.crossOrigin = "anonymous"
+      img.src = standardTemplate
+
+      img.onload = () => {
+        canvas.width = img.width
+        canvas.height = img.height
+        ctx.drawImage(img, 0, 0)
+        drawText()
+      }
     }
   }
 
@@ -161,16 +295,7 @@ export function MemeGenerator() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    const img = new window.Image()
-    img.crossOrigin = "anonymous"
-    img.src = "/insanity-wolf-template.webp"
-
-    img.onload = async () => {
-      canvas.width = img.width
-      canvas.height = img.height
-
-      ctx.drawImage(img, 0, 0)
-
+    const shareImage = async () => {
       ctx.fillStyle = "white"
       ctx.strokeStyle = "black"
       ctx.lineWidth = 4
@@ -197,7 +322,7 @@ export function MemeGenerator() {
         })
 
         if (navigator.share && navigator.canShare) {
-          const file = new File([blob], "insanity-wolf-meme.png", { type: "image/png" })
+          const file = new File([blob], extremeMode ? "insanity-wolf-extreme-meme.png" : "insanity-wolf-meme.png", { type: "image/png" })
           const shareData = {
             title: "Insanity Wolf Meme",
             text: "Check out this Insanity Wolf meme I made!",
@@ -217,6 +342,44 @@ export function MemeGenerator() {
         alert("Meme copied to clipboard!")
       } catch (err) {
         console.error("Share failed:", err)
+      }
+    }
+
+    if (extremeMode) {
+      const canvasImg = new window.Image()
+      canvasImg.crossOrigin = "anonymous"
+      canvasImg.src = extremeCanvas
+
+      canvasImg.onload = () => {
+        canvas.width = canvasImg.width
+        canvas.height = canvasImg.height
+        ctx.drawImage(canvasImg, 0, 0)
+
+        const wolfImg = new window.Image()
+        wolfImg.crossOrigin = "anonymous"
+        wolfImg.src = extremeWolf
+
+        wolfImg.onload = () => {
+          // Shrunk by 33%
+          const scale = Math.min(canvas.width / wolfImg.width, canvas.height / wolfImg.height) * 0.67
+          const w = wolfImg.width * scale
+          const h = wolfImg.height * scale
+          const x = (canvas.width - w) / 2
+          const y = (canvas.height - h) / 2
+          ctx.drawImage(wolfImg, x, y, w, h)
+          shareImage()
+        }
+      }
+    } else {
+      const img = new window.Image()
+      img.crossOrigin = "anonymous"
+      img.src = standardTemplate
+
+      img.onload = () => {
+        canvas.width = img.width
+        canvas.height = img.height
+        ctx.drawImage(img, 0, 0)
+        shareImage()
       }
     }
   }
@@ -343,20 +506,56 @@ export function MemeGenerator() {
           <div className="bg-red-950/10 p-4 md:p-6">
             <div className="mb-3 md:mb-4 flex items-center justify-between">
               <p className="font-mono text-xs uppercase text-white/70">Live Preview</p>
-              <div className="flex items-center gap-1.5">
-                <div className="h-2 w-2 animate-pulse bg-green-500"></div>
-                <span className="font-mono text-xs text-green-500">LIVE</span>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setExtremeMode(!extremeMode)}
+                  className={`flex items-center gap-2 px-3 py-1.5 font-mono text-xs uppercase transition-all duration-300 border ${
+                    extremeMode
+                      ? "bg-red-600 border-red-500 text-white animate-pulse"
+                      : "bg-red-950/50 border-red-900/30 text-red-400 hover:bg-red-950 hover:text-white"
+                  }`}
+                >
+                  <Flame className={`h-3.5 w-3.5 ${extremeMode ? "animate-bounce" : ""}`} />
+                  {extremeMode ? "MAXIMUM INSANITY" : "GO MORE INSANE"}
+                </button>
+                <div className="flex items-center gap-1.5">
+                  <div className={`h-2 w-2 ${extremeMode ? "animate-ping bg-red-500" : "animate-pulse bg-green-500"}`}></div>
+                  <span className={`font-mono text-xs ${extremeMode ? "text-red-500" : "text-green-500"}`}>
+                    {extremeMode ? "EXTREME" : "LIVE"}
+                  </span>
+                </div>
               </div>
             </div>
             <div className="sticky top-24 overflow-hidden border border-red-900/30">
               <div className="relative">
-                <Image
-                  src="/insanity-wolf-template.webp"
-                  alt="Insanity Wolf Meme Preview"
-                  width={600}
-                  height={600}
-                  className="w-full"
-                />
+{extremeMode ? (
+                  <div className="relative">
+                    <Image
+                      src={extremeCanvas}
+                      alt="Extreme Canvas"
+                      width={600}
+                      height={600}
+                      className="w-full"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Image
+                        src={extremeWolf}
+                        alt="Extreme Wolf"
+                        width={400}
+                        height={400}
+                        className="w-[67%] h-[67%] object-contain"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <Image
+                    src={standardTemplate}
+                    alt="Insanity Wolf Meme Preview"
+                    width={600}
+                    height={600}
+                    className="w-full"
+                  />
+                )}
                 {topText && (
                   <div className="absolute left-0 right-0 top-4 md:top-8 px-4 md:px-8 text-center">
                     <p
@@ -384,13 +583,6 @@ export function MemeGenerator() {
                       }}
                     >
                       {bottomText}
-                    </p>
-                  </div>
-                )}
-                {!topText && !bottomText && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                    <p className="px-4 md:px-8 text-center font-mono text-sm uppercase text-white/80">
-                      Start typing to see your meme
                     </p>
                   </div>
                 )}
