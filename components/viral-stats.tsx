@@ -432,30 +432,30 @@ export function ViralStats() {
 
           {/* Engagement Metrics */}
           <StatCard
-            title="Real World Impact"
-            infoContent="The tangible effects of Insanity Wolf on society. Use responsibly (or don't)."
+            title="Collateral Damage"
+            infoContent="The carnage left in Insanity Wolf's wake. No survivors. No regrets."
           >
             <ul className="space-y-1.5 list-none pl-0 mt-3">
               <MetricRow
-                label="Laughs Triggered"
+                label="Souls Corrupted"
                 baseValue={memeStats.engagement.laughsTriggered}
                 incrementRate={156}
                 showRate
               />
               <MetricRow
-                label="Coffee Spilled"
+                label="Careers Destroyed"
                 baseValue={memeStats.engagement.coffeeSpilled}
                 incrementRate={3}
                 showRate
               />
               <MetricRow
-                label="Bosses Angered"
+                label="HR Complaints Filed"
                 baseValue={memeStats.engagement.bossesAngered}
                 incrementRate={1.2}
                 showRate
               />
               <MetricRow
-                label="Therapists Booked"
+                label="Restraining Orders"
                 baseValue={memeStats.engagement.therapistsBooked}
                 incrementRate={0.4}
                 showRate

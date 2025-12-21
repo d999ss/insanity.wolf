@@ -2,16 +2,28 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Download, Share2, Shirt, Shuffle, Flame } from "lucide-react"
+import { Download, Share2, Shirt, Shuffle, Flame, Palette, Check, Loader2, AlertCircle } from "lucide-react"
 import { useRouter } from "next/navigation"
+
+const backgroundOptions = [
+  { id: "black", name: "Black", color: "#000000" },
+  { id: "red", name: "Blood Red", color: "#7f1d1d" },
+  { id: "darkred", name: "Dark Red", color: "#450a0a" },
+  { id: "gray", name: "Charcoal", color: "#1c1917" },
+  { id: "blue", name: "Midnight", color: "#172554" },
+  { id: "purple", name: "Dark Purple", color: "#3b0764" },
+]
 
 export function MemeGenerator() {
   const [topText, setTopText] = useState("")
   const [bottomText, setBottomText] = useState("")
   const [extremeMode, setExtremeMode] = useState(false)
+  const [selectedBackground, setSelectedBackground] = useState("black")
+  const [shareStatus, setShareStatus] = useState<"idle" | "sharing" | "copied" | "error">("idle")
   const router = useRouter()
 
   const memeReady = topText && bottomText
+  const currentBg = backgroundOptions.find(bg => bg.id === selectedBackground) || backgroundOptions[0]
 
   // Templates
   const standardTemplate = "/insanity-wolf-template.webp"
@@ -252,29 +264,27 @@ export function MemeGenerator() {
     }
 
     if (extremeMode) {
-      const canvasImg = new window.Image()
-      canvasImg.crossOrigin = "anonymous"
-      canvasImg.src = extremeCanvas
+      const wolfImg = new window.Image()
+      wolfImg.crossOrigin = "anonymous"
+      wolfImg.src = extremeWolf
 
-      canvasImg.onload = () => {
-        canvas.width = canvasImg.width
-        canvas.height = canvasImg.height
-        ctx.drawImage(canvasImg, 0, 0)
+      wolfImg.onload = () => {
+        // Set canvas size
+        canvas.width = 600
+        canvas.height = 600
 
-        const wolfImg = new window.Image()
-        wolfImg.crossOrigin = "anonymous"
-        wolfImg.src = extremeWolf
+        // Draw background color
+        ctx.fillStyle = currentBg.color
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-        wolfImg.onload = () => {
-          // Draw wolf centered and contained, shrunk by 33%
-          const scale = Math.min(canvas.width / wolfImg.width, canvas.height / wolfImg.height) * 0.67
-          const w = wolfImg.width * scale
-          const h = wolfImg.height * scale
-          const x = (canvas.width - w) / 2
-          const y = (canvas.height - h) / 2
-          ctx.drawImage(wolfImg, x, y, w, h)
-          drawText()
-        }
+        // Draw wolf centered and contained, shrunk by 33%
+        const scale = Math.min(canvas.width / wolfImg.width, canvas.height / wolfImg.height) * 0.67
+        const w = wolfImg.width * scale
+        const h = wolfImg.height * scale
+        const x = (canvas.width - w) / 2
+        const y = (canvas.height - h) / 2
+        ctx.drawImage(wolfImg, x, y, w, h)
+        drawText()
       }
     } else {
       const img = new window.Image()
@@ -291,9 +301,13 @@ export function MemeGenerator() {
   }
 
   const handleShare = async () => {
+    setShareStatus("sharing")
     const canvas = document.createElement("canvas")
     const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    if (!ctx) {
+      setShareStatus("error")
+      return
+    }
 
     const shareImage = async () => {
       ctx.fillStyle = "white"
@@ -317,58 +331,99 @@ export function MemeGenerator() {
       }
 
       try {
-        const blob = await new Promise<Blob>((resolve) => {
-          canvas.toBlob((b) => resolve(b!), "image/png")
+        const blob = await new Promise<Blob>((resolve, reject) => {
+          canvas.toBlob((b) => {
+            if (b) resolve(b)
+            else reject(new Error("Failed to create blob"))
+          }, "image/png")
         })
 
-        if (navigator.share && navigator.canShare) {
-          const file = new File([blob], extremeMode ? "insanity-wolf-extreme-meme.png" : "insanity-wolf-meme.png", { type: "image/png" })
-          const shareData = {
-            title: "Insanity Wolf Meme",
-            text: "Check out this Insanity Wolf meme I made!",
-            files: [file],
-          }
+        const fileName = extremeMode ? "insanity-wolf-extreme-meme.png" : "insanity-wolf-meme.png"
+        const file = new File([blob], fileName, { type: "image/png" })
 
-          if (navigator.canShare(shareData)) {
-            await navigator.share(shareData)
+        // Try native share first (mobile)
+        if (typeof navigator !== "undefined" && navigator.share) {
+          try {
+            const shareData = {
+              title: "Insanity Wolf Meme",
+              text: "Check out this Insanity Wolf meme I made! #InsanityWolf",
+              files: [file],
+            }
+
+            if (navigator.canShare && navigator.canShare(shareData)) {
+              await navigator.share(shareData)
+              setShareStatus("idle")
+              return
+            }
+
+            // Try without files (for browsers that don't support file sharing)
+            await navigator.share({
+              title: "Insanity Wolf Meme",
+              text: "Check out this Insanity Wolf meme I made! #InsanityWolf",
+              url: "https://insanitywolf.com",
+            })
+            setShareStatus("idle")
             return
+          } catch (shareErr) {
+            // User cancelled or share not supported, fall through to clipboard
+            if ((shareErr as Error).name === "AbortError") {
+              setShareStatus("idle")
+              return
+            }
           }
         }
 
         // Fallback: copy to clipboard
-        await navigator.clipboard.write([
-          new ClipboardItem({ "image/png": blob })
-        ])
-        alert("Meme copied to clipboard!")
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({ "image/png": blob })
+          ])
+          setShareStatus("copied")
+          setTimeout(() => setShareStatus("idle"), 2000)
+        } catch {
+          // Clipboard API not available, try downloading
+          const url = URL.createObjectURL(blob)
+          const link = document.createElement("a")
+          link.download = fileName
+          link.href = url
+          link.click()
+          URL.revokeObjectURL(url)
+          setShareStatus("idle")
+        }
       } catch (err) {
         console.error("Share failed:", err)
+        setShareStatus("error")
+        setTimeout(() => setShareStatus("idle"), 2000)
       }
     }
 
     if (extremeMode) {
-      const canvasImg = new window.Image()
-      canvasImg.crossOrigin = "anonymous"
-      canvasImg.src = extremeCanvas
+      const wolfImg = new window.Image()
+      wolfImg.crossOrigin = "anonymous"
+      wolfImg.src = extremeWolf
 
-      canvasImg.onload = () => {
-        canvas.width = canvasImg.width
-        canvas.height = canvasImg.height
-        ctx.drawImage(canvasImg, 0, 0)
+      wolfImg.onload = () => {
+        // Set canvas size
+        canvas.width = 600
+        canvas.height = 600
 
-        const wolfImg = new window.Image()
-        wolfImg.crossOrigin = "anonymous"
-        wolfImg.src = extremeWolf
+        // Draw background color
+        ctx.fillStyle = currentBg.color
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-        wolfImg.onload = () => {
-          // Shrunk by 33%
-          const scale = Math.min(canvas.width / wolfImg.width, canvas.height / wolfImg.height) * 0.67
-          const w = wolfImg.width * scale
-          const h = wolfImg.height * scale
-          const x = (canvas.width - w) / 2
-          const y = (canvas.height - h) / 2
-          ctx.drawImage(wolfImg, x, y, w, h)
-          shareImage()
-        }
+        // Shrunk by 33%
+        const scale = Math.min(canvas.width / wolfImg.width, canvas.height / wolfImg.height) * 0.67
+        const w = wolfImg.width * scale
+        const h = wolfImg.height * scale
+        const x = (canvas.width - w) / 2
+        const y = (canvas.height - h) / 2
+        ctx.drawImage(wolfImg, x, y, w, h)
+        shareImage()
+      }
+
+      wolfImg.onerror = () => {
+        setShareStatus("error")
+        setTimeout(() => setShareStatus("idle"), 2000)
       }
     } else {
       const img = new window.Image()
@@ -380,6 +435,11 @@ export function MemeGenerator() {
         canvas.height = img.height
         ctx.drawImage(img, 0, 0)
         shareImage()
+      }
+
+      img.onerror = () => {
+        setShareStatus("error")
+        setTimeout(() => setShareStatus("idle"), 2000)
       }
     }
   }
@@ -460,10 +520,38 @@ export function MemeGenerator() {
                     </button>
                     <button
                       onClick={handleShare}
-                      className="flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-red-950/50 border border-red-900/30 hover:bg-red-950 px-4 py-2.5 transition-colors"
+                      disabled={shareStatus === "sharing"}
+                      className={`flex items-center justify-center gap-2 font-mono text-xs font-medium text-white px-4 py-2.5 transition-all ${
+                        shareStatus === "copied"
+                          ? "bg-green-600 border border-green-500"
+                          : shareStatus === "error"
+                            ? "bg-red-700 border border-red-500"
+                            : shareStatus === "sharing"
+                              ? "bg-red-950/50 border border-red-900/30 opacity-70 cursor-wait"
+                              : "bg-red-950/50 border border-red-900/30 hover:bg-red-950"
+                      }`}
                     >
-                      <Share2 className="h-3.5 w-3.5" />
-                      SHARE
+                      {shareStatus === "sharing" ? (
+                        <>
+                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                          SHARING...
+                        </>
+                      ) : shareStatus === "copied" ? (
+                        <>
+                          <Check className="h-3.5 w-3.5" />
+                          COPIED!
+                        </>
+                      ) : shareStatus === "error" ? (
+                        <>
+                          <AlertCircle className="h-3.5 w-3.5" />
+                          ERROR
+                        </>
+                      ) : (
+                        <>
+                          <Share2 className="h-3.5 w-3.5" />
+                          SHARE
+                        </>
+                      )}
                     </button>
                   </div>
                 </>
@@ -504,39 +592,54 @@ export function MemeGenerator() {
 
           {/* Right side - Preview */}
           <div className="bg-red-950/10 p-4 md:p-6">
-            <div className="mb-3 md:mb-4 flex items-center justify-between">
-              <p className="font-mono text-xs uppercase text-white/70">Live Preview</p>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => setExtremeMode(!extremeMode)}
-                  className={`flex items-center gap-2 px-3 py-1.5 font-mono text-xs uppercase transition-all duration-300 border ${
-                    extremeMode
-                      ? "bg-red-600 border-red-500 text-white animate-pulse"
-                      : "bg-red-950/50 border-red-900/30 text-red-400 hover:bg-red-950 hover:text-white"
-                  }`}
-                >
-                  <Flame className={`h-3.5 w-3.5 ${extremeMode ? "animate-bounce" : ""}`} />
-                  {extremeMode ? "MAXIMUM INSANITY" : "GO MORE INSANE"}
-                </button>
-                <div className="flex items-center gap-1.5">
-                  <div className={`h-2 w-2 ${extremeMode ? "animate-ping bg-red-500" : "animate-pulse bg-green-500"}`}></div>
-                  <span className={`font-mono text-xs ${extremeMode ? "text-red-500" : "text-green-500"}`}>
-                    {extremeMode ? "EXTREME" : "LIVE"}
-                  </span>
+            <div className="mb-3 md:mb-4 flex flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <p className="font-mono text-xs uppercase text-white/70">Live Preview</p>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setExtremeMode(!extremeMode)}
+                    className={`flex items-center gap-2 px-3 py-1.5 font-mono text-xs uppercase transition-all duration-300 border ${
+                      extremeMode
+                        ? "bg-red-600 border-red-500 text-white animate-pulse"
+                        : "bg-red-950/50 border-red-900/30 text-red-400 hover:bg-red-950 hover:text-white"
+                    }`}
+                  >
+                    <Flame className={`h-3.5 w-3.5 ${extremeMode ? "animate-bounce" : ""}`} />
+                    {extremeMode ? "MAXIMUM INSANITY" : "GO MORE INSANE"}
+                  </button>
+                  <div className="flex items-center gap-1.5">
+                    <div className={`h-2 w-2 ${extremeMode ? "animate-ping bg-red-500" : "animate-pulse bg-green-500"}`}></div>
+                    <span className={`font-mono text-xs ${extremeMode ? "text-red-500" : "text-green-500"}`}>
+                      {extremeMode ? "EXTREME" : "LIVE"}
+                    </span>
+                  </div>
                 </div>
               </div>
+              {extremeMode && (
+                <div className="flex items-center gap-2">
+                  <Palette className="h-3.5 w-3.5 text-white/50" />
+                  <div className="flex gap-1.5">
+                    {backgroundOptions.map((bg) => (
+                      <button
+                        key={bg.id}
+                        onClick={() => setSelectedBackground(bg.id)}
+                        className={`w-6 h-6 rounded-sm border-2 transition-all ${
+                          selectedBackground === bg.id
+                            ? "border-white scale-110"
+                            : "border-white/20 hover:border-white/50"
+                        }`}
+                        style={{ backgroundColor: bg.color }}
+                        title={bg.name}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
             <div className="sticky top-24 overflow-hidden border border-red-900/30">
               <div className="relative">
 {extremeMode ? (
-                  <div className="relative">
-                    <Image
-                      src={extremeCanvas}
-                      alt="Extreme Canvas"
-                      width={600}
-                      height={600}
-                      className="w-full"
-                    />
+                  <div className="relative aspect-square" style={{ backgroundColor: currentBg.color }}>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Image
                         src={extremeWolf}

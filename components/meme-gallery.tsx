@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { ThumbsUp, Share2, RefreshCw, X, ChevronLeft, ChevronRight, Download, Maximize2 } from "lucide-react"
 import Image from "next/image"
 import galleryImages from "@/lib/gallery-images.json"
@@ -169,6 +169,7 @@ export function MemeGallery() {
       {/* Lightbox Modal */}
       <Dialog open={selectedMeme !== null} onOpenChange={(open) => !open && setSelectedMeme(null)}>
         <DialogContent className="max-w-4xl bg-black/95 border-red-900/50 p-0">
+          <DialogTitle className="sr-only">Meme Viewer</DialogTitle>
           {selectedMeme !== null && memes[selectedMeme] && (
             <div className="relative">
               {/* Close button */}

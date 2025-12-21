@@ -98,7 +98,7 @@ export function MemeBattle() {
         >
           <div className="relative aspect-square bg-black">
             <Image
-              src="/insanity-wolf.png"
+              src="/insanity-wolf-template.webp"
               alt="Insanity Wolf"
               fill
               className="object-cover"
@@ -165,7 +165,7 @@ export function MemeBattle() {
         >
           <div className="relative aspect-square bg-black">
             <Image
-              src="/insanity-wolf.png"
+              src="/insanity-wolf-template.webp"
               alt="Insanity Wolf"
               fill
               className="object-cover"
