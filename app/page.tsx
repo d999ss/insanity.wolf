@@ -1,7 +1,6 @@
-import { ArrowRight, Users, Flame, Skull, Zap, TrendingUp, Sparkles, Trophy, Clock, Share2 } from "lucide-react"
+import { ArrowRight, Users, Flame, Skull, Zap, Sparkles, Trophy, Clock, Share2 } from "lucide-react"
 import Image from "next/image"
 import { MemeGenerator } from "@/components/meme-generator"
-import { HeroHeadline } from "@/components/hero-headline"
 import { ShareButton } from "@/components/share-button"
 import { RandomMeme } from "@/components/random-meme"
 import { MemeGallery } from "@/components/meme-gallery"
@@ -64,32 +63,6 @@ export default function Home() {
               <h3 className="font-bold text-red-400 uppercase text-sm md:text-base" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GET MERCH</h3>
               <p className="text-xs text-red-300/60">Wear the chaos</p>
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Mini Hero - Wolf Image */}
-      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/insanity-wolf.png"
-            alt="Insanity Wolf - The Legendary Meme"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/70" />
-        </div>
-
-        <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-          <HeroHeadline />
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-          <div className="flex flex-col items-center gap-2 text-red-400/70">
-            <span className="text-xs font-bold uppercase tracking-widest">MORE CHAOS</span>
-            <ArrowRight className="h-5 w-5 rotate-90" />
           </div>
         </div>
       </section>
