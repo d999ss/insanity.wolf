@@ -53,7 +53,7 @@ export function HeroHeadline({ children }: HeroHeadlineProps) {
           className={`text-4xl font-black uppercase leading-none tracking-tight text-white md:text-6xl lg:text-8xl xl:text-9xl transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
           style={{
             fontFamily: 'Impact, "Arial Black", sans-serif',
-            textShadow: '-4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000, 0 0 30px rgba(255,0,0,0.5), 0 0 60px rgba(255,0,0,0.3)'
+            textShadow: '-4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000'
           }}
         >
           {currentHeadline.top}
@@ -69,7 +69,7 @@ export function HeroHeadline({ children }: HeroHeadlineProps) {
           className={`text-4xl font-black uppercase leading-none tracking-tight text-white md:text-6xl lg:text-8xl xl:text-9xl transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
           style={{
             fontFamily: 'Impact, "Arial Black", sans-serif',
-            textShadow: '-4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000, 0 0 30px rgba(255,0,0,0.5), 0 0 60px rgba(255,0,0,0.3)'
+            textShadow: '-4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000'
           }}
         >
           {currentHeadline.bottom}

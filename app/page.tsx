@@ -52,8 +52,8 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             <Button
-              size="sm"
-              className="hidden gap-2 font-bold md:flex bg-red-900 hover:bg-red-800 border border-red-500"
+              size="default"
+              className="gap-2 font-bold bg-red-900 hover:bg-red-800 border border-red-500 px-4 py-2"
               asChild
             >
               <a href="/create">
@@ -91,6 +91,44 @@ export default function Home() {
           <div className="flex flex-col items-center gap-2 text-red-400/70">
             <span className="text-xs font-bold uppercase tracking-widest">SCROLL DOWN</span>
             <ArrowRight className="h-5 w-5 rotate-90" />
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section - BODY COUNT */}
+      <section id="stats" className="relative px-6 py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
+              <TrendingUp className="h-4 w-4 text-red-500" />
+              <span className="text-red-400">BODY COUNT</span>
+            </div>
+            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-7xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+              HALL OF CARNAGE
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
+              The numbers don't lie. The DESTRUCTION is real.
+            </p>
+          </div>
+          <div className="relative overflow-hidden rounded-3xl border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,0,0,0.1)_0%,transparent_60%)]" />
+            <div className="relative grid gap-px rounded-3xl bg-red-900/30 md:grid-cols-3">
+              <div className="bg-black p-12 text-center">
+                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
+                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">Years of Terror</div>
+                <p className="text-sm text-red-300/50">Born in the abyss, 2009</p>
+              </div>
+              <div className="bg-black p-12 text-center">
+                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GOD</div>
+                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">TIER STATUS</div>
+                <p className="text-sm text-red-300/50">Untouchable. Unstoppable.</p>
+              </div>
+              <div className="bg-black p-12 text-center">
+                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>100%</div>
+                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">PURE CHAOS</div>
+                <p className="text-sm text-red-300/50">No mercy. No regrets.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -188,7 +226,7 @@ export default function Home() {
               <Skull className="h-4 w-4 text-red-500" />
               <span className="text-red-400">COMPLETE ENCYCLOPEDIA</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
+            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               The Ultimate
               <span className="mt-2 block text-primary">Insanity Wolf Archive</span>
             </h2>
@@ -574,44 +612,6 @@ export default function Home() {
                     <p className="text-xs text-muted-foreground">Social anxiety meme (2009)</p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section - BODY COUNT */}
-      <section id="stats" className="relative px-6 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
-              <TrendingUp className="h-4 w-4 text-red-500" />
-              <span className="text-red-400">BODY COUNT</span>
-            </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-7xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-              HALL OF CARNAGE
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
-              The numbers don't lie. The DESTRUCTION is real.
-            </p>
-          </div>
-          <div className="relative overflow-hidden rounded-3xl border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,0,0,0.1)_0%,transparent_60%)]" />
-            <div className="relative grid gap-px rounded-3xl bg-red-900/30 md:grid-cols-3">
-              <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
-                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">Years of Terror</div>
-                <p className="text-sm text-red-300/50">Born in the abyss, 2009</p>
-              </div>
-              <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GOD</div>
-                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">TIER STATUS</div>
-                <p className="text-sm text-red-300/50">Untouchable. Unstoppable.</p>
-              </div>
-              <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>100%</div>
-                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">PURE CHAOS</div>
-                <p className="text-sm text-red-300/50">No mercy. No regrets.</p>
               </div>
             </div>
           </div>
