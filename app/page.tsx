@@ -133,25 +133,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote Section - MAXIMUM RAGE */}
-      <section className="relative border-y border-red-900/50 bg-card px-6 py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,0,0,0.1)_0%,transparent_70%)]" />
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
-        <div className="relative mx-auto max-w-5xl text-center">
-          <blockquote className="space-y-6">
-            <div className="text-6xl opacity-40 text-red-500">"</div>
-            <p className="text-2xl font-black uppercase leading-tight tracking-tight text-foreground md:text-4xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-              Oh, you got PROBLEMS? You want a SOLUTION?! HERE'S YOUR SOLUTION —
-              <span className="text-red-500"> SET IT ON FIRE AND WALK AWAY!</span>
-            </p>
-            <footer className="pt-4 text-sm font-bold uppercase tracking-widest text-red-400/70">
-              — THE ONLY PHILOSOPHY THAT MATTERS
-            </footer>
-          </blockquote>
-        </div>
-      </section>
-
       {/* THE HALL OF INSANITY */}
       <section id="gallery" className="relative bg-black/50 px-6 py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-red-950/20" />
@@ -730,6 +711,25 @@ export default function Home() {
               <p className="text-sm text-red-300/60">Download and unleash on social media.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Quote Section - MAXIMUM RAGE */}
+      <section className="relative border-y border-red-900/50 bg-card px-6 py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,0,0,0.1)_0%,transparent_70%)]" />
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+        <div className="relative mx-auto max-w-5xl text-center">
+          <blockquote className="space-y-6">
+            <div className="text-6xl opacity-40 text-red-500">"</div>
+            <p className="text-2xl font-black uppercase leading-tight tracking-tight text-foreground md:text-4xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+              Oh, you got PROBLEMS? You want a SOLUTION?! HERE'S YOUR SOLUTION —
+              <span className="text-red-500"> SET IT ON FIRE AND WALK AWAY!</span>
+            </p>
+            <footer className="pt-4 text-sm font-bold uppercase tracking-widest text-red-400/70">
+              — THE ONLY PHILOSOPHY THAT MATTERS
+            </footer>
+          </blockquote>
         </div>
       </section>
 
