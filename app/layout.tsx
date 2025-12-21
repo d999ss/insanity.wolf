@@ -10,7 +10,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Insanity Wolf - The Most Extreme Advice Animal Meme | Create Your Own",
   description:
-    "The legendary Insanity Wolf meme archive and generator. Born on 4chan in 2009, create and share extreme advice memes. 10M+ memes created. Make yours now!",
+    "The legendary Insanity Wolf meme archive and generator. Born on 4chan in 2009, create and share extreme advice memes. GOD TIER since day one. Make yours now!",
   keywords: [
     "Insanity Wolf",
     "meme generator",
@@ -21,35 +21,53 @@ export const metadata: Metadata = {
     "insanity wolf generator",
     "create meme",
     "wolf meme",
+    "extreme meme",
+    "chaos meme",
+    "advice dog",
   ],
+  metadataBase: new URL("https://insanitywolf.com"),
   openGraph: {
-    title: "Insanity Wolf - The Most Extreme Advice Animal Ever",
-    description: "Create your own Insanity Wolf meme! The legendary advice animal from 4chan. 10M+ memes created.",
+    title: "Insanity Wolf - GOD TIER Meme Generator",
+    description: "YOU WANT ADVICE?! Create your own Insanity Wolf meme! The legendary advice animal from 4chan. Born in 2009. NO SURVIVORS.",
     type: "website",
     siteName: "Insanity Wolf",
+    url: "https://insanitywolf.com",
+    images: [
+      {
+        url: "/insanity-wolf.png",
+        width: 600,
+        height: 600,
+        alt: "Insanity Wolf - The Most Extreme Advice Animal",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Insanity Wolf Meme Generator",
-    description: "Create extreme advice memes with the legendary Insanity Wolf. 10M+ memes created since 2009!",
+    title: "Insanity Wolf - GOD TIER Meme Generator",
+    description: "YOU WANT ADVICE?! Create extreme memes with the legendary Insanity Wolf. Born on 4chan 2009. NO SURVIVORS.",
+    images: ["/insanity-wolf.png"],
+    creator: "@insanitywolf",
   },
-  generator: "v0.app",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        url: "/insanity-wolf.png",
+        sizes: "32x32",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/insanity-wolf.png",
+        sizes: "192x192",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/insanity-wolf.png",
   },
 }
 

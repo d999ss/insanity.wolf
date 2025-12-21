@@ -34,22 +34,27 @@ export function RandomMeme() {
 
   return (
     <div className="space-y-6">
-      <div className="group relative overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30 transition-all hover:border-primary hover:shadow-2xl hover:shadow-primary/10 metal-card-hover wolf-glow">
+      <div className="relative overflow-hidden rounded-2xl border-2 border-red-900/50 bg-black">
         <div className="relative aspect-square">
           <Image
             src={`/gallery/${currentImage}`}
             alt="Random Insanity Wolf Meme"
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       </div>
 
-      <Button onClick={getRandomMeme} className="w-full gap-2 font-bold rage-mode" size="lg" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-        <Shuffle className="h-5 w-5" />
-        SPIN THE WHEEL OF CHAOS
-      </Button>
+      <div className="text-center space-y-4">
+        <Button onClick={getRandomMeme} className="w-full gap-2 font-bold bg-red-900 hover:bg-red-800 border-2 border-red-500" size="lg" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+          <Shuffle className="h-5 w-5" />
+          SPIN THE WHEEL OF CHAOS
+        </Button>
+        <p className="text-sm text-red-400/70">
+          You want to leave it up to FATE?! Fine! Let the UNIVERSE decide how UNHINGED you're gonna get today!
+        </p>
+      </div>
     </div>
   )
 }

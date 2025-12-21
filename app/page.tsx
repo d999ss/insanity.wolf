@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Users, Flame, Skull, Zap, TrendingUp, Sparkles, Trophy, Clock, Share2 } from "lucide-react"
 import Image from "next/image"
 import { MemeGenerator } from "@/components/meme-generator"
+import { HeroHeadline } from "@/components/hero-headline"
 import { ShareButton } from "@/components/share-button"
 import { RandomMeme } from "@/components/random-meme"
 import { MemeGallery } from "@/components/meme-gallery"
@@ -12,7 +13,7 @@ import { MemeBattle } from "@/components/meme-battle"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground rage-vignette">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl chaos-header">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -24,34 +25,28 @@ export default function Home() {
 
           <div className="hidden items-center gap-8 md:flex">
             <a
-              href="#memes"
-              className="text-sm font-semibold blood-underline glitch-hover"
-            >
-              MEMES
-            </a>
-            <a
-              href="#gallery"
-              className="text-sm font-semibold blood-underline glitch-hover"
+              href="/gallery"
+              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
             >
               GALLERY
             </a>
             <a
-              href="#history"
-              className="text-sm font-semibold blood-underline glitch-hover"
+              href="/battle"
+              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
             >
-              HISTORY
+              BATTLE
             </a>
             <a
-              href="#wiki"
-              className="text-sm font-semibold blood-underline glitch-hover"
+              href="/create"
+              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
             >
-              WIKI
+              CREATE
             </a>
             <a
-              href="#generator"
-              className="text-sm font-semibold blood-underline glitch-hover"
+              href="/store"
+              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
             >
-              GENERATOR
+              STORE
             </a>
           </div>
 
@@ -71,9 +66,9 @@ export default function Home() {
       </header>
 
       {/* Hero Section - Classic Meme Format - MAXIMUM CHAOS */}
-      <section className="relative min-h-screen overflow-hidden heavy-scanlines blood-pulse">
+      <section className="relative min-h-screen overflow-hidden">
         {/* Full screen wolf background */}
-        <div className="absolute inset-0 wolf-eyes-intense">
+        <div className="absolute inset-0">
           <Image
             src="/insanity-wolf.png"
             alt="Insanity Wolf - The Legendary Meme"
@@ -86,147 +81,48 @@ export default function Home() {
           <div className="absolute inset-x-0 top-0 h-32 blood-drip" />
         </div>
 
-        {/* Meme text overlay - classic format */}
+        {/* Meme text overlay - classic format: TOP TEXT / BUTTONS / BOTTOM TEXT */}
         <div className="relative z-10 flex min-h-screen flex-col items-center justify-between px-6 py-24 pt-32">
-          {/* TOP TEXT - SCREAMING */}
-          <div className="text-center tremor">
-            <h1
-              className="text-4xl font-black uppercase leading-none tracking-tight text-white md:text-6xl lg:text-8xl xl:text-9xl glitch-constant scream-text"
-              style={{
-                fontFamily: 'Impact, "Arial Black", sans-serif',
-                textShadow: '-4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000, 0 0 30px rgba(255,0,0,0.5), 0 0 60px rgba(255,0,0,0.3)'
-              }}
-            >
-              YOU WANT ADVICE?!
-            </h1>
-          </div>
-
-          {/* Middle - CTA buttons */}
-          <div className="flex flex-col items-center gap-6">
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Button
-                size="lg"
-                className="group gap-2 font-bold shadow-lg shadow-red-500/30 text-lg px-8 py-6 bg-red-900 hover:bg-red-800 border-2 border-red-500"
-                asChild
-              >
-                <a href="/create" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                  <Zap className="h-6 w-6" />
-                  CREATE
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="font-bold bg-black/70 border-red-500/50 text-white berserk glitch-hover pulse-glow text-lg px-8 py-6 hover:border-red-500 hover:bg-red-900/30" asChild>
-                <a href="#gallery" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>ENTER THE MADNESS</a>
-              </Button>
-            </div>
-            <p className="text-sm font-bold uppercase tracking-widest text-red-300/80 glitch-constant">
-              SINCE 2009 • GOD TIER • 4CHAN LEGEND • NO SURVIVORS
-            </p>
-          </div>
-
-          {/* BOTTOM TEXT - PURE RAGE */}
-          <div className="text-center horror-shake">
-            <h2
-              className="text-4xl font-black uppercase leading-none tracking-tight text-white md:text-6xl lg:text-8xl xl:text-9xl fire-text"
-              style={{
-                fontFamily: 'Impact, "Arial Black", sans-serif',
-              }}
-            >
-              I'LL GIVE YOU ADVICE!
-            </h2>
-          </div>
+          <HeroHeadline />
         </div>
 
-        {/* Scroll indicator - twitching */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce tremor">
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
           <div className="flex flex-col items-center gap-2 text-red-400/70">
-            <span className="text-xs font-bold uppercase tracking-widest glitch-hover">DESCEND INTO MADNESS</span>
+            <span className="text-xs font-bold uppercase tracking-widest">SCROLL DOWN</span>
             <ArrowRight className="h-5 w-5 rotate-90" />
           </div>
         </div>
       </section>
 
       {/* Quote Section - MAXIMUM RAGE */}
-      <section className="relative border-y border-red-900/50 bg-card px-6 py-20 blood-pulse">
+      <section className="relative border-y border-red-900/50 bg-card px-6 py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,0,0,0.1)_0%,transparent_70%)]" />
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
         <div className="relative mx-auto max-w-5xl text-center">
           <blockquote className="space-y-6">
-            <div className="text-6xl opacity-40 text-red-500 glitch-constant">"</div>
-            <p className="text-2xl font-black uppercase leading-tight tracking-tight text-foreground md:text-4xl horror-shake" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <div className="text-6xl opacity-40 text-red-500">"</div>
+            <p className="text-2xl font-black uppercase leading-tight tracking-tight text-foreground md:text-4xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               Oh, you got PROBLEMS? You want a SOLUTION?! HERE'S YOUR SOLUTION —
-              <span className="text-red-500 fire-text"> SET IT ON FIRE AND WALK AWAY!</span>
+              <span className="text-red-500"> SET IT ON FIRE AND WALK AWAY!</span>
             </p>
-            <footer className="pt-4 text-sm font-bold uppercase tracking-widest text-red-400/70 tremor">
+            <footer className="pt-4 text-sm font-bold uppercase tracking-widest text-red-400/70">
               — THE ONLY PHILOSOPHY THAT MATTERS
             </footer>
           </blockquote>
         </div>
       </section>
 
-      {/* Meme Examples Section - PURE INSANITY */}
-      <section id="memes" className="relative px-6 py-24 blood-pulse">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider anger-border">
-              <TrendingUp className="h-4 w-4 text-red-500 tremor" />
-              <span className="text-red-400">THE CLASSICS! THE LEGENDS!</span>
-            </div>
-            <h2 className="text-balance text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl glitch-constant" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-              YOU WANT EXAMPLES?!
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/80 horror-shake">
-              I'll GIVE you examples! These are the ones that got FORWARDED to HR! The ones your therapist STILL brings up! LOOK AT THEM!
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              { top: "CAN'T SLEEP", bottom: "STAY AWAKE FOREVER" },
-              { top: "'BABY ON BOARD' SIGN", bottom: "TARGET ACQUIRED" },
-              { top: "LATE FOR WORK", bottom: "BURN DOWN THE OFFICE" },
-              { top: "THE SNACK THAT SMILES BACK", bottom: "CHILDREN" },
-              { top: "NEED A HAIRCUT", bottom: "SET HAIR ON FIRE" },
-              { top: "HAVE A HEADACHE", bottom: "DECAPITATION" },
-            ].map((meme, idx) => (
-              <div
-                key={idx}
-                className="group relative overflow-hidden rounded-2xl border-2 border-red-900/30 bg-gradient-to-br from-card via-card to-red-950/20 metal-card-hover distorted-hover noise-hover scan-lines explode-hover cursor-pointer berserk red-flash"
-              >
-                <div className="aspect-square p-8">
-                  <div className="flex h-full flex-col items-center justify-between text-center">
-                    <p className="font-sans text-xl font-black uppercase leading-tight text-foreground md:text-2xl transition-all duration-300 group-hover:scale-110 group-hover:text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                      {meme.top}
-                    </p>
-                    <div className="my-6 flex h-32 w-32 items-center justify-center rounded-full border-4 border-red-900/50 bg-black overflow-hidden transition-all duration-500 group-hover:scale-125 group-hover:rotate-12 group-hover:border-red-500 group-hover:shadow-[0_0_40px_rgba(255,0,0,0.6)]">
-                      <Image src="/insanity-wolf.png" alt="Insanity Wolf" width={128} height={128} className="object-cover wolf-eyes-intense" />
-                    </div>
-                    <p className="font-sans text-xl font-black uppercase leading-tight text-red-500 md:text-2xl transition-all duration-300 group-hover:scale-110 fire-text" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                      {meme.bottom}
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-red-900/20 to-transparent opacity-0 transition-all duration-500 group-hover:opacity-100" />
-                <div className="absolute inset-0 border-2 border-red-500 opacity-0 transition-opacity duration-300 group-hover:opacity-50 blur-xl" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="gallery" className="relative bg-black/50 px-6 py-24 heavy-scanlines">
+      {/* THE HALL OF INSANITY */}
+      <section id="gallery" className="relative bg-black/50 px-6 py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-red-950/20" />
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider anger-border">
-              <Trophy className="h-4 w-4 text-red-500 tremor" />
-              <span className="text-red-400">VOTE OR DIE!</span>
-            </div>
-            <h2 className="text-balance text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl fire-text" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               THE HALL OF INSANITY
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/80 tremor">
+            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/80">
               You think YOUR meme is crazy?! Let me tell you something — these people are COMMITTED! They went ALL THE WAY! No HALF MEASURES! VOTE!
             </p>
           </div>
@@ -240,7 +136,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-4xl relative z-10">
           <div className="mb-12 text-center">
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight lg:text-5xl glitch-constant" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight lg:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               WHERE DID THIS COME FROM?!
             </h2>
           </div>
@@ -258,7 +154,7 @@ export default function Home() {
               They called it "GOD TIER" on Memegenerator! GOD! TIER! You know why?! Because this wolf doesn't give you advice your THERAPIST gives you! No! He gives you the advice that gets you on a WATCHLIST! And people LOVED IT! MILLIONS of them!
             </p>
 
-            <p className="font-bold text-red-400 fire-text">
+            <p className="font-bold text-red-400">
               Then came "Baby Insanity Wolf" — for people who want to be EDGY but still want to go to HEAVEN! Can't commit to the FULL insanity! HALF MEASURES! THAT'S WHAT THAT IS!
             </p>
           </div>
@@ -268,11 +164,11 @@ export default function Home() {
       <section className="relative border-y border-red-900/30 bg-red-950/20 px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/50 px-4 py-2 text-xs font-bold uppercase tracking-wider anger-border">
-              <Sparkles className="h-4 w-4 text-red-500 tremor" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/50 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="h-4 w-4 text-red-500" />
               <span className="text-red-400">FEELING DANGEROUS?!</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight lg:text-5xl fire-text" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight lg:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               SPIN THE WHEEL OF CHAOS
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-red-300/70">
@@ -288,8 +184,9 @@ export default function Home() {
       <section id="wiki" className="relative px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-bold uppercase tracking-wider">
-              📚 Complete Encyclopedia
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+              <Skull className="h-4 w-4 text-red-500" />
+              <span className="text-red-400">COMPLETE ENCYCLOPEDIA</span>
             </div>
             <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl">
               The Ultimate
@@ -679,520 +576,40 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Quick Facts */}
-              <div className="sticky top-8 overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Quick Facts</h3>
-                </div>
-                <div className="space-y-4 p-6 text-sm">
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">First Seen</p>
-                    <p className="font-bold text-foreground">2009 (4chan /b/)</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Know Your Meme Entry
-                    </p>
-                    <p className="font-bold text-foreground">November 2009</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Peak Years</p>
-                    <p className="font-bold text-foreground">2009-2012</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Image Source
-                    </p>
-                    <p className="font-bold text-foreground">Stock photo (pre-2006)</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Library of Congress
-                    </p>
-                    <p className="font-bold text-foreground">610 instances archived</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Platform Rank
-                    </p>
-                    <p className="font-bold text-foreground">#3 Most-Used Template</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Character Type
-                    </p>
-                    <p className="font-bold text-foreground">Chaotic Evil</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Humor Style</p>
-                    <p className="font-bold text-foreground">Shock / Dark Comedy</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Timeline */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Timeline</h3>
-                </div>
-                <div className="space-y-4 p-6 text-sm">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2006</div>
-                    <div className="text-muted-foreground">Wolf photo circulates online</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2009</div>
-                    <div className="text-muted-foreground">Meme born on 4chan /b/</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2009</div>
-                    <div className="text-muted-foreground">Reaches God Tier status</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2010</div>
-                    <div className="text-muted-foreground">Peak viral spread</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2013</div>
-                    <div className="text-muted-foreground">Baby Insanity Wolf emerges</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2018</div>
-                    <div className="text-muted-foreground">Library of Congress archives</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2020</div>
-                    <div className="text-muted-foreground">Nostalgic resurgence</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Related Memes */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Related Memes</h3>
-                </div>
-                <div className="space-y-3 p-6 text-sm">
-                  <div>
-                    <p className="font-bold text-foreground">Advice Dog</p>
-                    <p className="text-xs text-muted-foreground">Original advice animal (2006)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Baby Insanity Wolf</p>
-                    <p className="text-xs text-muted-foreground">Petty rebellion variant (2013)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Scene Wolf</p>
-                    <p className="text-xs text-muted-foreground">Emo/punk teen parody (2009)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Foul Bachelor Frog</p>
-                    <p className="text-xs text-muted-foreground">Gross habit advice (2009)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Socially Awkward Penguin</p>
-                    <p className="text-xs text-muted-foreground">Social anxiety meme (2009)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Quick Facts */}
-              <div className="sticky top-8 overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Quick Facts</h3>
-                </div>
-                <div className="space-y-4 p-6 text-sm">
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">First Seen</p>
-                    <p className="font-bold text-foreground">2009 (4chan /b/)</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Know Your Meme Entry
-                    </p>
-                    <p className="font-bold text-foreground">November 2009</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Peak Years</p>
-                    <p className="font-bold text-foreground">2009-2012</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Image Source
-                    </p>
-                    <p className="font-bold text-foreground">Stock photo (pre-2006)</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Library of Congress
-                    </p>
-                    <p className="font-bold text-foreground">610 instances archived</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Platform Rank
-                    </p>
-                    <p className="font-bold text-foreground">#3 Most-Used Template</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Character Type
-                    </p>
-                    <p className="font-bold text-foreground">Chaotic Evil</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Humor Style</p>
-                    <p className="font-bold text-foreground">Shock / Dark Comedy</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Timeline */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Timeline</h3>
-                </div>
-                <div className="space-y-4 p-6 text-sm">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2006</div>
-                    <div className="text-muted-foreground">Wolf photo circulates online</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2009</div>
-                    <div className="text-muted-foreground">Meme born on 4chan /b/</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2009</div>
-                    <div className="text-muted-foreground">Reaches God Tier status</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2010</div>
-                    <div className="text-muted-foreground">Peak viral spread</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2013</div>
-                    <div className="text-muted-foreground">Baby Insanity Wolf emerges</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2018</div>
-                    <div className="text-muted-foreground">Library of Congress archives</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2020</div>
-                    <div className="text-muted-foreground">Nostalgic resurgence</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Related Memes */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Related Memes</h3>
-                </div>
-                <div className="space-y-3 p-6 text-sm">
-                  <div>
-                    <p className="font-bold text-foreground">Advice Dog</p>
-                    <p className="text-xs text-muted-foreground">Original advice animal (2006)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Baby Insanity Wolf</p>
-                    <p className="text-xs text-muted-foreground">Petty rebellion variant (2013)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Scene Wolf</p>
-                    <p className="text-xs text-muted-foreground">Emo/punk teen parody (2009)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Foul Bachelor Frog</p>
-                    <p className="text-xs text-muted-foreground">Gross habit advice (2009)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Socially Awkward Penguin</p>
-                    <p className="text-xs text-muted-foreground">Social anxiety meme (2009)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Quick Facts */}
-              <div className="sticky top-8 overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Quick Facts</h3>
-                </div>
-                <div className="space-y-4 p-6 text-sm">
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">First Seen</p>
-                    <p className="font-bold text-foreground">2009 (4chan /b/)</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Know Your Meme Entry
-                    </p>
-                    <p className="font-bold text-foreground">November 2009</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Peak Years</p>
-                    <p className="font-bold text-foreground">2009-2012</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Image Source
-                    </p>
-                    <p className="font-bold text-foreground">Stock photo (pre-2006)</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Library of Congress
-                    </p>
-                    <p className="font-bold text-foreground">610 instances archived</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Platform Rank
-                    </p>
-                    <p className="font-bold text-foreground">#3 Most-Used Template</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Character Type
-                    </p>
-                    <p className="font-bold text-foreground">Chaotic Evil</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Humor Style</p>
-                    <p className="font-bold text-foreground">Shock / Dark Comedy</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Timeline */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Timeline</h3>
-                </div>
-                <div className="space-y-4 p-6 text-sm">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2006</div>
-                    <div className="text-muted-foreground">Wolf photo circulates online</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2009</div>
-                    <div className="text-muted-foreground">Meme born on 4chan /b/</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2009</div>
-                    <div className="text-muted-foreground">Reaches God Tier status</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2010</div>
-                    <div className="text-muted-foreground">Peak viral spread</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2013</div>
-                    <div className="text-muted-foreground">Baby Insanity Wolf emerges</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2018</div>
-                    <div className="text-muted-foreground">Library of Congress archives</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2020</div>
-                    <div className="text-muted-foreground">Nostalgic resurgence</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Related Memes */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Related Memes</h3>
-                </div>
-                <div className="space-y-3 p-6 text-sm">
-                  <div>
-                    <p className="font-bold text-foreground">Advice Dog</p>
-                    <p className="text-xs text-muted-foreground">Original advice animal (2006)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Baby Insanity Wolf</p>
-                    <p className="text-xs text-muted-foreground">Petty rebellion variant (2013)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Scene Wolf</p>
-                    <p className="text-xs text-muted-foreground">Emo/punk teen parody (2009)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Foul Bachelor Frog</p>
-                    <p className="text-xs text-muted-foreground">Gross habit advice (2009)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Socially Awkward Penguin</p>
-                    <p className="text-xs text-muted-foreground">Social anxiety meme (2009)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-8">
-              {/* Quick Facts */}
-              <div className="sticky top-8 overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Quick Facts</h3>
-                </div>
-                <div className="space-y-4 p-6 text-sm">
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">First Seen</p>
-                    <p className="font-bold text-foreground">2009 (4chan /b/)</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Know Your Meme Entry
-                    </p>
-                    <p className="font-bold text-foreground">November 2009</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Peak Years</p>
-                    <p className="font-bold text-foreground">2009-2012</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Image Source
-                    </p>
-                    <p className="font-bold text-foreground">Stock photo (pre-2006)</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Library of Congress
-                    </p>
-                    <p className="font-bold text-foreground">610 instances archived</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Platform Rank
-                    </p>
-                    <p className="font-bold text-foreground">#3 Most-Used Template</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                      Character Type
-                    </p>
-                    <p className="font-bold text-foreground">Chaotic Evil</p>
-                  </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Humor Style</p>
-                    <p className="font-bold text-foreground">Shock / Dark Comedy</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Timeline */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Timeline</h3>
-                </div>
-                <div className="space-y-4 p-6 text-sm">
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2006</div>
-                    <div className="text-muted-foreground">Wolf photo circulates online</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2009</div>
-                    <div className="text-muted-foreground">Meme born on 4chan /b/</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2009</div>
-                    <div className="text-muted-foreground">Reaches God Tier status</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2010</div>
-                    <div className="text-muted-foreground">Peak viral spread</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2013</div>
-                    <div className="text-muted-foreground">Baby Insanity Wolf emerges</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2018</div>
-                    <div className="text-muted-foreground">Library of Congress archives</div>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0 font-black text-primary">2020</div>
-                    <div className="text-muted-foreground">Nostalgic resurgence</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Related Memes */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
-                <div className="border-b border-border bg-muted/50 px-6 py-4">
-                  <h3 className="font-sans text-xl font-black uppercase tracking-tight">Related Memes</h3>
-                </div>
-                <div className="space-y-3 p-6 text-sm">
-                  <div>
-                    <p className="font-bold text-foreground">Advice Dog</p>
-                    <p className="text-xs text-muted-foreground">Original advice animal (2006)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Baby Insanity Wolf</p>
-                    <p className="text-xs text-muted-foreground">Petty rebellion variant (2013)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Scene Wolf</p>
-                    <p className="text-xs text-muted-foreground">Emo/punk teen parody (2009)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Foul Bachelor Frog</p>
-                    <p className="text-xs text-muted-foreground">Gross habit advice (2009)</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">Socially Awkward Penguin</p>
-                    <p className="text-xs text-muted-foreground">Social anxiety meme (2009)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section - BODY COUNT */}
-      <section id="stats" className="relative px-6 py-24 blood-pulse">
+      <section id="stats" className="relative px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-5 py-2.5 text-xs font-bold uppercase tracking-wider anger-border">
-              <TrendingUp className="h-4 w-4 text-red-500 tremor" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
+              <TrendingUp className="h-4 w-4 text-red-500" />
               <span className="text-red-400">BODY COUNT</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-7xl fire-text" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-7xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               HALL OF CARNAGE
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
               The numbers don't lie. The DESTRUCTION is real.
             </p>
           </div>
-          <div className="relative overflow-hidden rounded-3xl border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1 anger-border">
+          <div className="relative overflow-hidden rounded-3xl border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,0,0,0.1)_0%,transparent_60%)]" />
             <div className="relative grid gap-px rounded-3xl bg-red-900/30 md:grid-cols-3">
               <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500 glitch-constant" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
+                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
                 <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">Years of Terror</div>
                 <p className="text-sm text-red-300/50">Born in the abyss, 2009</p>
               </div>
               <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500 fire-text" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GOD</div>
+                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GOD</div>
                 <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">TIER STATUS</div>
                 <p className="text-sm text-red-300/50">Untouchable. Unstoppable.</p>
               </div>
               <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500 glitch-constant" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>100%</div>
+                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>100%</div>
                 <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">PURE CHAOS</div>
                 <p className="text-sm text-red-300/50">No mercy. No regrets.</p>
               </div>
@@ -1205,11 +622,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider anger-border">
-              <Zap className="h-4 w-4 text-red-500 tremor" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+              <Zap className="h-4 w-4 text-red-500" />
               <span className="text-red-400">JOIN THE CHAOS</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl fire-text" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               ENTER THE WARZONE
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
@@ -1224,14 +641,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative px-6 py-24 blood-pulse">
+      <section className="relative px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider anger-border">
-              <Flame className="h-4 w-4 text-red-500 tremor" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+              <Flame className="h-4 w-4 text-red-500" />
               <span className="text-red-400">FIGHT TO THE DEATH</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl glitch-constant" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               MEME BATTLE ROYALE
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-pretty text-lg text-red-300/70">
@@ -1247,11 +664,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider anger-border">
-              <Trophy className="h-4 w-4 text-red-500 tremor" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+              <Trophy className="h-4 w-4 text-red-500" />
               <span className="text-red-400">COLLECT TROPHIES</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl fire-text" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               EARN YOUR SCARS
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
@@ -1263,17 +680,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="generator" className="relative px-6 py-24 blood-pulse">
+      <section id="generator" className="relative px-6 py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider anger-border">
-              <Zap className="h-4 w-4 text-red-500 tremor" />
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+              <Zap className="h-4 w-4 text-red-500" />
               <span className="text-red-400">WEAPON OF MASS DESTRUCTION</span>
             </div>
             <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-              <span className="glitch-constant">CREATE YOUR OWN</span>
-              <span className="mt-2 block text-red-500 fire-text">INSANITY WOLF MEME</span>
+              CREATE YOUR OWN
+              <span className="mt-2 block text-red-500">INSANITY WOLF MEME</span>
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
               Join MILLIONS who have unleashed their inner chaos. Create. Download. DESTROY.
@@ -1285,28 +702,28 @@ export default function Home() {
           </div>
 
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center berserk">
+            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-4 flex justify-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-950/50 border border-red-900/50">
-                  <Clock className="h-6 w-6 text-red-500 tremor" />
+                  <Clock className="h-6 w-6 text-red-500" />
                 </div>
               </div>
               <h3 className="mb-2 font-sans text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSTANT CHAOS</h3>
               <p className="text-sm text-red-300/60">Type. Generate. Destroy. No waiting.</p>
             </div>
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center berserk">
+            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-4 flex justify-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-950/50 border border-red-900/50">
-                  <Flame className="h-6 w-6 text-red-500 tremor" />
+                  <Flame className="h-6 w-6 text-red-500" />
                 </div>
               </div>
               <h3 className="mb-2 font-sans text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>MAXIMUM QUALITY</h3>
               <p className="text-sm text-red-300/60">Perfect resolution. Perfect destruction.</p>
             </div>
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center berserk">
+            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-4 flex justify-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-950/50 border border-red-900/50">
-                  <Share2 className="h-6 w-6 text-red-500 tremor" />
+                  <Share2 className="h-6 w-6 text-red-500" />
                 </div>
               </div>
               <h3 className="mb-2 font-sans text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>SPREAD THE MADNESS</h3>
@@ -1317,15 +734,15 @@ export default function Home() {
       </section>
 
       {/* Footer - CHAOS */}
-      <footer className="border-t border-red-900/50 bg-black px-6 py-16 blood-pulse">
+      <footer className="border-t border-red-900/50 bg-black px-6 py-16">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">
-              <div className="mb-6 flex items-center gap-3 cursor-pointer glitch-hover berserk">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-950/50 overflow-hidden border-2 border-red-900/50 wolf-eyes-intense">
+              <div className="mb-6 flex items-center gap-3 cursor-pointer">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-950/50 overflow-hidden border-2 border-red-900/50">
                   <Image src="/insanity-wolf.png" alt="Insanity Wolf" width={48} height={48} className="object-cover" />
                 </div>
-                <div className="text-2xl font-black tracking-tighter fire-text" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSANITY WOLF</div>
+                <div className="text-2xl font-black tracking-tighter" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSANITY WOLF</div>
               </div>
               <p className="mb-6 max-w-md text-pretty leading-relaxed text-red-300/60">
                 The legendary advice animal that DESTROYED internet humor since 2009. Over 10 million memes. ZERO regrets. MAXIMUM chaos.
@@ -1339,46 +756,38 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="mb-6 font-sans text-sm font-bold uppercase tracking-wider">Quick Links</h4>
-              <ul className="space-y-3 text-muted-foreground">
+              <h4 className="mb-6 font-sans text-sm font-bold uppercase tracking-wider text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>Quick Links</h4>
+              <ul className="space-y-3 text-red-300/70">
                 <li>
                   <a
-                    href="#memes"
-                    className="blood-underline glitch-hover inline-block"
+                    href="/gallery"
+                    className="blood-underline inline-block hover:text-red-400"
                   >
-                    Classic Memes
+                    Gallery
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#gallery"
-                    className="blood-underline glitch-hover inline-block"
+                    href="/battle"
+                    className="blood-underline inline-block hover:text-red-400"
                   >
-                    Community Gallery
+                    Battle Arena
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#history"
-                    className="blood-underline glitch-hover inline-block"
+                    href="/create"
+                    className="blood-underline inline-block hover:text-red-400"
                   >
-                    History
+                    Create Meme
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#wiki"
-                    className="blood-underline glitch-hover inline-block"
+                    href="/store"
+                    className="blood-underline inline-block hover:text-red-400"
                   >
-                    Complete Wiki
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#generator"
-                    className="blood-underline glitch-hover inline-block"
-                  >
-                    Meme Generator
+                    Store
                   </a>
                 </li>
               </ul>
@@ -1388,19 +797,19 @@ export default function Home() {
               <h4 className="mb-6 font-sans text-sm font-bold uppercase tracking-wider text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>KILL COUNT</h4>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center gap-2">
-                  <Flame className="h-4 w-4 text-red-500 tremor" />
+                  <Flame className="h-4 w-4 text-red-500" />
                   <span className="text-red-300/70">10M+ Souls Corrupted</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Trophy className="h-4 w-4 text-red-500 tremor" />
+                  <Trophy className="h-4 w-4 text-red-500" />
                   <span className="text-red-300/70">GOD TIER Since Day One</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-red-500 tremor" />
+                  <Users className="h-4 w-4 text-red-500" />
                   <span className="text-red-300/70">Terrorizing Since 2009</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Skull className="h-4 w-4 text-red-500 tremor" />
+                  <Skull className="h-4 w-4 text-red-500" />
                   <span className="text-red-300/70">Born in the Abyss</span>
                 </li>
               </ul>
@@ -1408,7 +817,7 @@ export default function Home() {
           </div>
 
           <div className="mt-12 border-t border-red-900/30 pt-8 text-center text-sm text-red-400/50">
-            <p className="tremor">
+            <p>
               © 2009-2025 INSANITY WOLF. Born from chaos. Fed by rage. DON'T follow this advice. We're NOT responsible for the consequences.
             </p>
           </div>
