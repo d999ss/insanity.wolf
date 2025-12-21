@@ -1,113 +1,187 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { ShoppingBag, Flame, Zap, Shirt, Star, TrendingUp, Package, Sparkles } from "lucide-react"
+import { ShoppingBag, Flame, Zap, Shirt, Star, TrendingUp, Package, Sparkles, Check } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { SiteNav } from "@/components/site-nav"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Insanity Wolf Store | Merch & Gear",
-  description: "Get your Insanity Wolf merch. T-shirts, hoodies, stickers, and more chaos-fueled gear.",
-  openGraph: {
-    title: "Insanity Wolf Store",
-    description: "Wear the chaos. Own the madness. Insanity Wolf merch available now.",
-  },
-}
 
 const featuredProducts = [
   {
-    name: "CLASSIC WOLF TEE",
-    price: "$29.99",
-    originalPrice: "$39.99",
+    id: "monday-tee",
+    name: "MONDAY MORNING TEE",
+    topText: "ALARM GOES OFF",
+    bottomText: "DESTROY IT",
+    price: 29.99,
+    originalPrice: 39.99,
     image: "/insanity-wolf-template.webp",
     tag: "BESTSELLER",
-    description: "The OG design. 100% cotton. 100% chaos.",
+    description: "Start every week with unhinged energy. 100% cotton.",
     colors: ["Black", "Red", "White"],
+    productType: "tshirt",
   },
   {
-    name: "CHAOS HOODIE",
-    price: "$54.99",
+    id: "coffee-hoodie",
+    name: "COFFEE CHAOS HOODIE",
+    topText: "COFFEE IS COLD",
+    bottomText: "DRINK LAVA",
+    price: 54.99,
     originalPrice: null,
     image: "/insanity-wolf-template.webp",
     tag: "NEW",
-    description: "Soft fleece interior. Maximum warmth for cold-blooded decisions.",
+    description: "Soft fleece. For those who prefer their beverages volcanic.",
     colors: ["Black", "Gray"],
+    productType: "hoodie",
   },
   {
-    name: "RAGE MUG",
-    price: "$16.99",
+    id: "deadline-mug",
+    name: "DEADLINE MUG",
+    topText: "DEADLINE TOMORROW",
+    bottomText: "START NEXT WEEK",
+    price: 19.99,
     originalPrice: null,
     image: "/insanity-wolf-template.webp",
     tag: "HOT",
-    description: "11oz ceramic. Dishwasher safe. Perfect for morning rage.",
-    colors: ["Black", "White"],
+    description: "11oz ceramic. Perfect for procrastinating with style.",
+    colors: ["White", "Black"],
+    productType: "mug",
   },
 ]
 
 const allProducts = [
   {
-    name: "CLASSIC WOLF TEE",
-    price: "$29.99",
+    id: "og-wolf-tee",
+    name: "OG INSANITY WOLF",
+    topText: "PROBLEM?",
+    bottomText: "BECOME THE PROBLEM",
+    price: 29.99,
     image: "/insanity-wolf-template.webp",
-    tag: "BESTSELLER",
-    category: "Apparel",
+    tag: "CLASSIC",
+    category: "T-Shirts",
+    productType: "tshirt",
   },
   {
-    name: "CHAOS HOODIE",
-    price: "$54.99",
+    id: "gym-tee",
+    name: "GYM BRO TEE",
+    topText: "SKIP LEG DAY",
+    bottomText: "EVERY DAY IS ARM DAY",
+    price: 29.99,
+    image: "/insanity-wolf-template.webp",
+    tag: null,
+    category: "T-Shirts",
+    productType: "tshirt",
+  },
+  {
+    id: "diet-tee",
+    name: "DIET MODE TEE",
+    topText: "ON A DIET",
+    bottomText: "EAT THE DIET BOOK",
+    price: 29.99,
+    image: "/insanity-wolf-template.webp",
+    tag: null,
+    category: "T-Shirts",
+    productType: "tshirt",
+  },
+  {
+    id: "meeting-hoodie",
+    name: "MEETING HOODIE",
+    topText: "ZOOM MEETING",
+    bottomText: "PANTS OPTIONAL",
+    price: 54.99,
     image: "/insanity-wolf-template.webp",
     tag: "NEW",
-    category: "Apparel",
+    category: "Hoodies",
+    productType: "hoodie",
   },
   {
-    name: "STICKER PACK (10)",
-    price: "$12.99",
+    id: "sleep-hoodie",
+    name: "SLEEP HOODIE",
+    topText: "CAN'T SLEEP",
+    bottomText: "STAY AWAKE FOREVER",
+    price: 54.99,
     image: "/insanity-wolf-template.webp",
     tag: null,
-    category: "Accessories",
+    category: "Hoodies",
+    productType: "hoodie",
   },
   {
-    name: "POSTER 24x36",
-    price: "$24.99",
+    id: "password-mug",
+    name: "PASSWORD MUG",
+    topText: "FORGOT PASSWORD",
+    bottomText: "USE PASSWORD123",
+    price: 19.99,
     image: "/insanity-wolf-template.webp",
     tag: null,
-    category: "Art",
+    category: "Mugs",
+    productType: "mug",
   },
   {
-    name: "RAGE MUG",
-    price: "$16.99",
+    id: "monday-mug",
+    name: "MONDAY MUG",
+    topText: "CASE OF THE MONDAYS",
+    bottomText: "CALL IN SICK FOREVER",
+    price: 19.99,
     image: "/insanity-wolf-template.webp",
     tag: "HOT",
-    category: "Accessories",
+    category: "Mugs",
+    productType: "mug",
   },
   {
-    name: "PHONE CASE",
-    price: "$24.99",
+    id: "boss-poster",
+    name: "BOSS POSTER",
+    topText: "BOSS SAYS NO",
+    bottomText: "BECOME THE BOSS",
+    price: 24.99,
     image: "/insanity-wolf-template.webp",
     tag: null,
-    category: "Accessories",
+    category: "Posters",
+    productType: "poster",
   },
   {
-    name: "DAD HAT",
-    price: "$27.99",
+    id: "traffic-poster",
+    name: "TRAFFIC POSTER",
+    topText: "STUCK IN TRAFFIC",
+    bottomText: "HONK UNTIL DEAF",
+    price: 24.99,
     image: "/insanity-wolf-template.webp",
     tag: null,
-    category: "Apparel",
+    category: "Posters",
+    productType: "poster",
   },
   {
-    name: "TANK TOP",
-    price: "$24.99",
+    id: "wifi-stickers",
+    name: "WIFI STICKERS",
+    topText: "WIFI DOWN",
+    bottomText: "LIVE OFF THE GRID",
+    price: 14.99,
     image: "/insanity-wolf-template.webp",
     tag: null,
-    category: "Apparel",
+    category: "Stickers",
+    productType: "stickers",
   },
   {
-    name: "LAPTOP SLEEVE",
-    price: "$34.99",
+    id: "battery-case",
+    name: "BATTERY PHONE CASE",
+    topText: "1% BATTERY",
+    bottomText: "MAXIMUM POWER",
+    price: 24.99,
     image: "/insanity-wolf-template.webp",
     tag: "NEW",
-    category: "Accessories",
+    category: "Phone Cases",
+    productType: "phonecase",
+  },
+  {
+    id: "email-tee",
+    name: "EMAIL TEE",
+    topText: "1000 UNREAD EMAILS",
+    bottomText: "DELETE THEM ALL",
+    price: 29.99,
+    image: "/insanity-wolf-template.webp",
+    tag: null,
+    category: "T-Shirts",
+    productType: "tshirt",
   },
 ]
 
@@ -119,6 +193,40 @@ const stats = [
 ]
 
 export default function StorePage() {
+  const [cartItems, setCartItems] = useState<any[]>([])
+  const [addedId, setAddedId] = useState<string | null>(null)
+
+  useEffect(() => {
+    const cart = localStorage.getItem("insanity-cart")
+    if (cart) {
+      setCartItems(JSON.parse(cart))
+    }
+  }, [])
+
+  const addToCart = (product: any) => {
+    const item = {
+      id: product.id + "-" + Date.now(),
+      product: {
+        id: product.productType,
+        name: product.name,
+        basePrice: product.price,
+      },
+      size: product.productType === "tshirt" || product.productType === "hoodie" ? "M" : "Standard",
+      color: { name: "Black", hex: "#000000" },
+      quantity: 1,
+      image: null, // Pre-made designs
+      topText: product.topText,
+      bottomText: product.bottomText,
+      price: product.price,
+      isPreMade: true,
+    }
+    const newCart = [...cartItems, item]
+    setCartItems(newCart)
+    localStorage.setItem("insanity-cart", JSON.stringify(newCart))
+    setAddedId(product.id)
+    setTimeout(() => setAddedId(null), 1500)
+  }
+
   return (
     <div className="min-h-screen bg-black text-foreground">
       <SiteNav />
@@ -176,16 +284,24 @@ export default function StorePage() {
 
           {/* Featured Products */}
           <div className="mb-12 md:mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <Star className="h-5 w-5 text-red-500" />
-              <h2 className="text-xl md:text-2xl font-black uppercase text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                FEATURED
-              </h2>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <Star className="h-5 w-5 text-red-500" />
+                <h2 className="text-xl md:text-2xl font-black uppercase text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+                  FEATURED
+                </h2>
+              </div>
+              {cartItems.length > 0 && (
+                <Link href="/checkout" className="flex items-center gap-2 text-red-400 hover:text-white transition-colors">
+                  <ShoppingBag className="h-4 w-4" />
+                  <span className="text-sm font-bold">Cart ({cartItems.length})</span>
+                </Link>
+              )}
             </div>
             <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
-              {featuredProducts.map((product, idx) => (
+              {featuredProducts.map((product) => (
                 <div
-                  key={idx}
+                  key={product.id}
                   className="group relative overflow-hidden border-2 border-red-900/30 bg-gradient-to-br from-black via-red-950/10 to-black transition-all hover:border-red-500/50 hover:shadow-xl hover:shadow-red-500/10"
                 >
                   {product.tag && (
@@ -195,15 +311,21 @@ export default function StorePage() {
                       </span>
                     </div>
                   )}
-                  <div className="aspect-square bg-black/50 p-6 md:p-8 flex items-center justify-center relative overflow-hidden">
+                  <div className="aspect-square bg-black/50 p-4 flex flex-col items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent" />
+                    <p className="text-white font-black text-center text-sm md:text-base uppercase mb-2 relative z-10" style={{ fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '2px 2px 0 #000' }}>
+                      {product.topText}
+                    </p>
                     <Image
                       src={product.image}
                       alt={product.name}
-                      width={250}
-                      height={250}
-                      className="object-contain w-32 h-32 md:w-48 md:h-48 transition-transform duration-300 group-hover:scale-110 relative z-10"
+                      width={180}
+                      height={180}
+                      className="object-contain w-24 h-24 md:w-36 md:h-36 transition-transform duration-300 group-hover:scale-110 relative z-10"
                     />
+                    <p className="text-white font-black text-center text-sm md:text-base uppercase mt-2 relative z-10" style={{ fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '2px 2px 0 #000' }}>
+                      {product.bottomText}
+                    </p>
                   </div>
                   <div className="border-t border-red-900/30 bg-red-950/20 p-4 md:p-6">
                     <h3 className="mb-1 font-black uppercase text-base md:text-lg text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
@@ -219,14 +341,21 @@ export default function StorePage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-xl md:text-2xl font-black text-red-500">{product.price}</span>
+                        <span className="text-xl md:text-2xl font-black text-red-500">${product.price}</span>
                         {product.originalPrice && (
-                          <span className="text-sm text-red-400/40 line-through">{product.originalPrice}</span>
+                          <span className="text-sm text-red-400/40 line-through">${product.originalPrice}</span>
                         )}
                       </div>
-                      <Button size="sm" className="gap-2 font-bold bg-red-600 hover:bg-red-500 border-0 text-xs md:text-sm">
-                        <ShoppingBag className="h-3 w-3 md:h-4 md:w-4" />
-                        ADD
+                      <Button
+                        size="sm"
+                        onClick={() => addToCart(product)}
+                        className={`gap-2 font-bold border-0 text-xs md:text-sm transition-all ${addedId === product.id ? 'bg-green-600 hover:bg-green-600' : 'bg-red-600 hover:bg-red-500'}`}
+                      >
+                        {addedId === product.id ? (
+                          <><Check className="h-3 w-3 md:h-4 md:w-4" /> ADDED</>
+                        ) : (
+                          <><ShoppingBag className="h-3 w-3 md:h-4 md:w-4" /> ADD</>
+                        )}
                       </Button>
                     </div>
                   </div>
@@ -244,9 +373,9 @@ export default function StorePage() {
               </h2>
             </div>
             <div className="grid gap-4 md:gap-6 grid-cols-2 lg:grid-cols-3">
-              {allProducts.map((product, idx) => (
+              {allProducts.map((product) => (
                 <div
-                  key={idx}
+                  key={product.id}
                   className="group relative overflow-hidden border border-red-900/30 bg-gradient-to-br from-black via-red-950/5 to-black transition-all hover:border-red-500/50"
                 >
                   {product.tag && (
@@ -256,14 +385,20 @@ export default function StorePage() {
                       </span>
                     </div>
                   )}
-                  <div className="aspect-square bg-black/30 p-4 md:p-6 flex items-center justify-center">
+                  <div className="aspect-square bg-black/30 p-2 md:p-4 flex flex-col items-center justify-center">
+                    <p className="text-white font-black text-center text-[10px] md:text-xs uppercase mb-1 relative z-10" style={{ fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '1px 1px 0 #000' }}>
+                      {product.topText}
+                    </p>
                     <Image
                       src={product.image}
                       alt={product.name}
-                      width={150}
-                      height={150}
-                      className="object-contain w-20 h-20 md:w-32 md:h-32 transition-transform duration-300 group-hover:scale-105"
+                      width={120}
+                      height={120}
+                      className="object-contain w-16 h-16 md:w-24 md:h-24 transition-transform duration-300 group-hover:scale-105"
                     />
+                    <p className="text-white font-black text-center text-[10px] md:text-xs uppercase mt-1 relative z-10" style={{ fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '1px 1px 0 #000' }}>
+                      {product.bottomText}
+                    </p>
                   </div>
                   <div className="border-t border-red-900/30 bg-red-950/10 p-3 md:p-4">
                     <span className="text-[9px] md:text-[10px] uppercase text-red-400/50 font-mono">{product.category}</span>
@@ -271,10 +406,18 @@ export default function StorePage() {
                       {product.name}
                     </h3>
                     <div className="flex items-center justify-between">
-                      <span className="text-base md:text-lg font-black text-red-500">{product.price}</span>
-                      <Button size="sm" variant="outline" className="h-7 md:h-8 gap-1 font-bold border-red-900/50 hover:bg-red-950/50 hover:border-red-500 text-[10px] md:text-xs px-2">
-                        <ShoppingBag className="h-3 w-3" />
-                        <span className="hidden sm:inline">ADD</span>
+                      <span className="text-base md:text-lg font-black text-red-500">${product.price}</span>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => addToCart(product)}
+                        className={`h-7 md:h-8 gap-1 font-bold text-[10px] md:text-xs px-2 transition-all ${addedId === product.id ? 'bg-green-600 border-green-600 text-white hover:bg-green-600' : 'border-red-900/50 hover:bg-red-950/50 hover:border-red-500'}`}
+                      >
+                        {addedId === product.id ? (
+                          <><Check className="h-3 w-3" /></>
+                        ) : (
+                          <><ShoppingBag className="h-3 w-3" /><span className="hidden sm:inline">ADD</span></>
+                        )}
                       </Button>
                     </div>
                   </div>
