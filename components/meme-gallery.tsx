@@ -120,28 +120,28 @@ export function MemeGallery() {
               </div>
             </div>
 
-            <div className="border-t border-red-900/30 bg-red-950/30 p-3">
-              <div className="flex items-center justify-between gap-2">
+            <div className="border-t border-red-900/30 bg-red-950/30 p-2 md:p-3">
+              <div className="flex items-center justify-between gap-1 md:gap-2">
                 <Button
                   onClick={(e) => handleVote(idx, e)}
                   variant={voted.has(idx) ? "default" : "outline"}
                   size="sm"
-                  className={`gap-1.5 text-xs ${voted.has(idx) ? 'bg-red-900 hover:bg-red-800' : 'border-red-900/50 text-red-400 hover:bg-red-950/50'}`}
+                  className={`gap-1 md:gap-1.5 text-[10px] md:text-xs px-2 md:px-3 ${voted.has(idx) ? 'bg-red-900 hover:bg-red-800' : 'border-red-900/50 text-red-400 hover:bg-red-950/50'}`}
                   disabled={voted.has(idx)}
                 >
-                  <ThumbsUp className="h-3 w-3" />
+                  <ThumbsUp className="h-2.5 w-2.5 md:h-3 md:w-3" />
                   {meme.votes.toLocaleString()}
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="p-2 text-red-400 hover:text-red-300 hover:bg-red-950/50"
+                  className="p-1.5 md:p-2 text-red-400 hover:text-red-300 hover:bg-red-950/50"
                   onClick={(e) => {
                     e.stopPropagation()
                     // Share functionality placeholder
                   }}
                 >
-                  <Share2 className="h-3 w-3" />
+                  <Share2 className="h-2.5 w-2.5 md:h-3 md:w-3" />
                 </Button>
               </div>
             </div>
@@ -150,19 +150,19 @@ export function MemeGallery() {
       </div>
 
       {visibleMemes.length < memes.length && (
-        <div className="flex justify-center pt-8">
+        <div className="flex justify-center pt-6 md:pt-8">
           <Button
             onClick={loadMore}
             size="lg"
-            className="gap-2 bg-red-900 hover:bg-red-800 border border-red-500"
+            className="gap-2 bg-red-900 hover:bg-red-800 border border-red-500 text-sm md:text-base"
             style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
           >
-            SHOW ME MORE INSANITY ({memes.length - visibleMemes.length} remaining)
+            MORE INSANITY ({memes.length - visibleMemes.length})
           </Button>
         </div>
       )}
 
-      <p className="text-center text-sm text-red-400/50">
+      <p className="text-center text-xs md:text-sm text-red-400/50">
         Showing {visibleMemes.length} of {memes.length} legendary memes
       </p>
 

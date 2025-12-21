@@ -36,28 +36,28 @@ export function DailyChallenge() {
 
   return (
     <div className="overflow-hidden border-2 border-primary bg-gradient-to-br from-card via-primary/5 to-card shadow-xl">
-      <div className="border-b border-primary/20 bg-primary/10 px-6 py-4">
+      <div className="border-b border-primary/20 bg-primary/10 px-4 py-3 md:px-6 md:py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center bg-primary text-primary-foreground">
-              <Trophy className="h-5 w-5" />
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center bg-primary text-primary-foreground">
+              <Trophy className="h-4 w-4 md:h-5 md:w-5" />
             </div>
             <div>
-              <h3 className="font-sans text-lg font-black uppercase tracking-tight">Daily Challenge</h3>
-              <p className="text-xs font-semibold text-muted-foreground">Create the most extreme solution</p>
+              <h3 className="font-sans text-sm md:text-lg font-black uppercase tracking-tight">Daily Challenge</h3>
+              <p className="text-[10px] md:text-xs font-semibold text-muted-foreground">Create the most extreme solution</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 border border-primary bg-background px-3 py-1.5">
-            <Clock className="h-4 w-4 text-primary" />
-            <span className="text-sm font-bold text-primary">{timeLeft}</span>
+          <div className="flex items-center gap-1.5 md:gap-2 border border-primary bg-background px-2 py-1 md:px-3 md:py-1.5">
+            <Clock className="h-3 w-3 md:h-4 md:w-4 text-primary" />
+            <span className="text-xs md:text-sm font-bold text-primary">{timeLeft}</span>
           </div>
         </div>
       </div>
 
-      <div className="p-6">
-        <div className="mb-6 space-y-4">
+      <div className="p-4 md:p-6">
+        <div className="mb-4 md:mb-6 space-y-3 md:space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Today's Problem</span>
+            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-muted-foreground">Today's Problem</span>
             <span
               className={`px-3 py-1 text-xs font-black uppercase tracking-wide ${
                 currentChallenge.difficulty === "INSANE"
@@ -73,19 +73,19 @@ export function DailyChallenge() {
             </span>
           </div>
 
-          <p className="font-sans text-2xl font-black uppercase leading-tight tracking-tight text-foreground">
+          <p className="font-sans text-lg md:text-2xl font-black uppercase leading-tight tracking-tight text-foreground">
             {currentChallenge.prompt}
           </p>
 
-          <div className="flex items-center gap-4 text-sm">
+          <div className="flex items-center gap-4 text-xs md:text-sm">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <Users className="h-4 w-4" />
+              <Users className="h-3 w-3 md:h-4 md:w-4" />
               <span className="font-semibold">{currentChallenge.participants.toLocaleString()} participating</span>
             </div>
           </div>
         </div>
 
-        <Button className="w-full gap-2 font-bold" size="lg">
+        <Button className="w-full gap-2 font-bold text-sm md:text-base" size="lg">
           <Zap className="h-4 w-4" />
           SUBMIT YOUR SOLUTION
         </Button>

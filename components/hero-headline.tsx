@@ -41,7 +41,7 @@ export function HeroHeadline({ children }: HeroHeadlineProps) {
       {/* TOP TEXT */}
       <div className="text-center">
         <h1
-          className={`text-4xl font-black uppercase leading-none tracking-tight text-white md:text-6xl lg:text-8xl xl:text-9xl transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
+          className={`text-3xl font-black uppercase leading-none tracking-tight text-white sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
           style={{
             fontFamily: 'Impact, "Arial Black", sans-serif',
             textShadow: '-4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000'
@@ -57,7 +57,7 @@ export function HeroHeadline({ children }: HeroHeadlineProps) {
       {/* BOTTOM TEXT */}
       <div className="text-center">
         <h2
-          className={`text-4xl font-black uppercase leading-none tracking-tight text-white md:text-6xl lg:text-8xl xl:text-9xl transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
+          className={`text-3xl font-black uppercase leading-none tracking-tight text-white sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
           style={{
             fontFamily: 'Impact, "Arial Black", sans-serif',
             textShadow: '-4px -4px 0 #000, 4px -4px 0 #000, -4px 4px 0 #000, 4px 4px 0 #000'

@@ -65,27 +65,27 @@ export function MemeBattle() {
 
   return (
     <div className="overflow-hidden border-2 border-red-900/50 bg-card shadow-2xl">
-      <div className="border-b border-red-900/30 bg-gradient-to-r from-red-950/30 via-red-900/10 to-red-950/30 px-6 py-4">
+      <div className="border-b border-red-900/30 bg-gradient-to-r from-red-950/30 via-red-900/10 to-red-950/30 px-4 py-3 md:px-6 md:py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Swords className="h-6 w-6 text-red-500" />
+          <div className="flex items-center gap-2 md:gap-3">
+            <Swords className="h-5 w-5 md:h-6 md:w-6 text-red-500" />
             <div>
-              <h3 className="font-sans text-xl font-black uppercase tracking-tight text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+              <h3 className="font-sans text-base md:text-xl font-black uppercase tracking-tight text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
                 MEME BATTLE ROYALE
               </h3>
-              <p className="text-xs font-bold text-red-400/70">WHICH SOLUTION IS MORE INSANE?!</p>
+              <p className="text-[10px] md:text-xs font-bold text-red-400/70">WHICH IS MORE INSANE?!</p>
             </div>
           </div>
           {streak > 0 && (
-            <div className="flex items-center gap-2 border border-red-500 bg-red-950/50 px-3 py-1.5">
-              <Flame className="h-4 w-4 text-red-500" />
-              <span className="text-sm font-black text-red-400">{streak} STREAK</span>
+            <div className="flex items-center gap-1.5 md:gap-2 border border-red-500 bg-red-950/50 px-2 py-1 md:px-3 md:py-1.5">
+              <Flame className="h-3 w-3 md:h-4 md:w-4 text-red-500" />
+              <span className="text-xs md:text-sm font-black text-red-400">{streak}</span>
             </div>
           )}
         </div>
       </div>
 
-      <div className="grid gap-4 p-6 md:grid-cols-2">
+      <div className="grid gap-3 p-3 md:gap-4 md:p-6 md:grid-cols-2">
         <div
           className={`group relative cursor-pointer overflow-hidden border-2 transition-all ${
             voted === "left"
@@ -104,9 +104,9 @@ export function MemeBattle() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
-            <div className="absolute inset-0 flex flex-col items-center justify-between p-6 text-center">
+            <div className="absolute inset-0 flex flex-col items-center justify-between p-3 md:p-6 text-center">
               <p
-                className="text-xl md:text-2xl font-black uppercase leading-tight text-white"
+                className="text-base md:text-xl lg:text-2xl font-black uppercase leading-tight text-white"
                 style={{
                   fontFamily: 'Impact, "Arial Black", sans-serif',
                   textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
@@ -115,7 +115,7 @@ export function MemeBattle() {
                 {battle.left.top}
               </p>
               <p
-                className="text-xl md:text-2xl font-black uppercase leading-tight text-white"
+                className="text-base md:text-xl lg:text-2xl font-black uppercase leading-tight text-white"
                 style={{
                   fontFamily: 'Impact, "Arial Black", sans-serif',
                   textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
@@ -125,11 +125,11 @@ export function MemeBattle() {
               </p>
             </div>
           </div>
-          <div className="border-t border-red-900/30 bg-red-950/30 px-4 py-3">
+          <div className="border-t border-red-900/30 bg-red-950/30 px-3 py-2 md:px-4 md:py-3">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-2xl font-black text-red-500">{(battle.left.votes + (voted === "left" ? 1 : 0)).toLocaleString()}</p>
-                <p className="text-xs font-bold uppercase tracking-wider text-red-400/60">VOTES</p>
+                <p className="text-lg md:text-2xl font-black text-red-500">{(battle.left.votes + (voted === "left" ? 1 : 0)).toLocaleString()}</p>
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-red-400/60">VOTES</p>
               </div>
               {voted && (
                 <div className="text-right">
@@ -171,9 +171,9 @@ export function MemeBattle() {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
-            <div className="absolute inset-0 flex flex-col items-center justify-between p-6 text-center">
+            <div className="absolute inset-0 flex flex-col items-center justify-between p-3 md:p-6 text-center">
               <p
-                className="text-xl md:text-2xl font-black uppercase leading-tight text-white"
+                className="text-base md:text-xl lg:text-2xl font-black uppercase leading-tight text-white"
                 style={{
                   fontFamily: 'Impact, "Arial Black", sans-serif',
                   textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
@@ -182,7 +182,7 @@ export function MemeBattle() {
                 {battle.right.top}
               </p>
               <p
-                className="text-xl md:text-2xl font-black uppercase leading-tight text-white"
+                className="text-base md:text-xl lg:text-2xl font-black uppercase leading-tight text-white"
                 style={{
                   fontFamily: 'Impact, "Arial Black", sans-serif',
                   textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
@@ -192,11 +192,11 @@ export function MemeBattle() {
               </p>
             </div>
           </div>
-          <div className="border-t border-red-900/30 bg-red-950/30 px-4 py-3">
+          <div className="border-t border-red-900/30 bg-red-950/30 px-3 py-2 md:px-4 md:py-3">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-2xl font-black text-red-500">{(battle.right.votes + (voted === "right" ? 1 : 0)).toLocaleString()}</p>
-                <p className="text-xs font-bold uppercase tracking-wider text-red-400/60">VOTES</p>
+                <p className="text-lg md:text-2xl font-black text-red-500">{(battle.right.votes + (voted === "right" ? 1 : 0)).toLocaleString()}</p>
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-red-400/60">VOTES</p>
               </div>
               {voted && (
                 <div className="text-right">
@@ -222,20 +222,20 @@ export function MemeBattle() {
       </div>
 
       {!voted && (
-        <div className="border-t border-red-900/30 bg-red-950/20 px-6 py-4 text-center">
-          <p className="text-sm font-bold text-red-400/80 flex items-center justify-center gap-2">
-            <Skull className="h-4 w-4" />
+        <div className="border-t border-red-900/30 bg-red-950/20 px-4 py-3 md:px-6 md:py-4 text-center">
+          <p className="text-xs md:text-sm font-bold text-red-400/80 flex items-center justify-center gap-2">
+            <Skull className="h-3 w-3 md:h-4 md:w-4" />
             CHOOSE YOUR DESTINY
-            <Skull className="h-4 w-4" />
+            <Skull className="h-3 w-3 md:h-4 md:w-4" />
           </p>
         </div>
       )}
 
       {voted && (
-        <div className="border-t border-red-500/30 bg-red-900/30 px-6 py-4">
+        <div className="border-t border-red-500/30 bg-red-900/30 px-4 py-3 md:px-6 md:py-4">
           <div className="flex items-center justify-between">
-            <p className="font-black text-red-400">
-              VOTE RECORDED! NEXT BATTLE IN {countdown}s
+            <p className="text-xs md:text-sm font-black text-red-400">
+              VOTE RECORDED! NEXT IN {countdown}s
             </p>
             <Button
               variant="ghost"

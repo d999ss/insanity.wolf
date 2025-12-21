@@ -49,37 +49,37 @@ export default function Home() {
       </section>
 
       {/* Stats Section - BODY COUNT */}
-      <section id="stats" className="relative px-6 py-24">
+      <section id="stats" className="relative px-4 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
+          <div className="mb-8 md:mb-16 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <TrendingUp className="h-4 w-4 text-red-500" />
               <span className="text-red-400">BODY COUNT</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-7xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-3xl font-black uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-7xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               HALL OF CARNAGE
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
+            <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-pretty text-base md:text-xl text-red-300/70">
               The numbers don't lie. The DESTRUCTION is real.
             </p>
           </div>
           <div className="relative overflow-hidden border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,0,0,0.1)_0%,transparent_60%)]" />
-            <div className="relative grid gap-px bg-red-900/30 md:grid-cols-3">
-              <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
-                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">Years of Terror</div>
-                <p className="text-sm text-red-300/50">Born in the abyss, 2009</p>
+            <div className="relative grid gap-px bg-red-900/30 grid-cols-1 md:grid-cols-3">
+              <div className="bg-black p-6 md:p-12 text-center">
+                <div className="mb-2 md:mb-4 font-sans text-5xl md:text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
+                <div className="mb-1 md:mb-2 text-sm font-bold uppercase tracking-widest text-red-400">Years of Terror</div>
+                <p className="text-xs md:text-sm text-red-300/50">Born in the abyss, 2009</p>
               </div>
-              <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GOD</div>
-                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">TIER STATUS</div>
-                <p className="text-sm text-red-300/50">Untouchable. Unstoppable.</p>
+              <div className="bg-black p-6 md:p-12 text-center">
+                <div className="mb-2 md:mb-4 font-sans text-5xl md:text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GOD</div>
+                <div className="mb-1 md:mb-2 text-sm font-bold uppercase tracking-widest text-red-400">TIER STATUS</div>
+                <p className="text-xs md:text-sm text-red-300/50">Untouchable. Unstoppable.</p>
               </div>
-              <div className="bg-black p-12 text-center">
-                <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>100%</div>
-                <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">PURE CHAOS</div>
-                <p className="text-sm text-red-300/50">No mercy. No regrets.</p>
+              <div className="bg-black p-6 md:p-12 text-center">
+                <div className="mb-2 md:mb-4 font-sans text-5xl md:text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>100%</div>
+                <div className="mb-1 md:mb-2 text-sm font-bold uppercase tracking-widest text-red-400">PURE CHAOS</div>
+                <p className="text-xs md:text-sm text-red-300/50">No mercy. No regrets.</p>
               </div>
             </div>
           </div>
@@ -87,15 +87,15 @@ export default function Home() {
       </section>
 
       {/* THE HALL OF INSANITY */}
-      <section id="gallery" className="relative bg-black/50 px-6 py-24">
+      <section id="gallery" className="relative bg-black/50 px-4 py-12 md:px-6 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/20 via-transparent to-red-950/20" />
         <div className="mx-auto max-w-7xl relative z-10">
-          <div className="mb-16 text-center">
-            <h2 className="text-balance text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+          <div className="mb-8 md:mb-16 text-center">
+            <h2 className="text-balance text-3xl font-black uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               THE HALL OF INSANITY
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/80">
-              You think YOUR meme is crazy?! Let me tell you something — these people are COMMITTED! They went ALL THE WAY! No HALF MEASURES! VOTE!
+            <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-pretty text-base md:text-xl text-red-300/80">
+              You think YOUR meme is crazy?! These people went ALL THE WAY! VOTE!
             </p>
           </div>
 
@@ -104,16 +104,16 @@ export default function Home() {
       </section>
 
       {/* History Section - ORIGIN STORY */}
-      <section id="history" className="relative border-y border-red-900/30 bg-black px-6 py-24">
+      <section id="history" className="relative border-y border-red-900/30 bg-black px-4 py-12 md:px-6 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-4xl relative z-10">
-          <div className="mb-12 text-center">
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight lg:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+          <div className="mb-8 md:mb-12 text-center">
+            <h2 className="text-balance font-sans text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-4xl lg:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               WHERE DID THIS COME FROM?!
             </h2>
           </div>
 
-          <div className="space-y-8 text-lg leading-relaxed text-red-300/70">
+          <div className="space-y-6 md:space-y-8 text-base md:text-lg leading-relaxed text-red-300/70">
             <p className="horror-shake">
               You want the HISTORY?! Let me TELL you about 2009! 4chan's /b/ board — the place your parents warned you about! Someone looked at a motivational poster and said "You know what? NO! I'm gonna do the OPPOSITE!" AND THEY DID IT! THEY ACTUALLY DID IT!
             </p>
@@ -133,18 +133,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative border-y border-red-900/30 bg-red-950/20 px-6 py-24">
+      <section className="relative border-y border-red-900/30 bg-red-950/20 px-4 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
+          <div className="mb-8 md:mb-12 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/50 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="h-4 w-4 text-red-500" />
               <span className="text-red-400">FEELING DANGEROUS?!</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight lg:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-4xl lg:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               SPIN THE WHEEL OF CHAOS
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-red-300/70">
-              You want to leave it up to FATE?! Fine! Let the UNIVERSE decide how UNHINGED you're gonna get today!
+            <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-pretty text-base md:text-lg text-red-300/70">
+              Let the UNIVERSE decide how UNHINGED you're gonna get today!
             </p>
           </div>
 
@@ -153,19 +153,19 @@ export default function Home() {
       </section>
 
       {/* Wiki Section */}
-      <section id="wiki" className="relative px-6 py-24">
+      <section id="wiki" className="relative px-4 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-20 text-center">
+          <div className="mb-10 md:mb-20 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Skull className="h-4 w-4 text-red-500" />
-              <span className="text-red-400">COMPLETE ENCYCLOPEDIA</span>
+              <span className="text-red-400">ENCYCLOPEDIA</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               The Ultimate
-              <span className="mt-2 block text-primary">Insanity Wolf Archive</span>
+              <span className="mt-1 md:mt-2 block text-primary">Insanity Wolf Archive</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-balance text-lg leading-relaxed text-muted-foreground">
-              Everything you need to know about the legendary meme that pushed internet humor to its absolute limits
+            <p className="mx-auto mt-4 md:mt-6 max-w-3xl text-balance text-base md:text-lg leading-relaxed text-muted-foreground">
+              Everything you need to know about the legendary meme
             </p>
           </div>
 
@@ -552,41 +552,41 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative bg-black px-6 py-24 heavy-scanlines">
+      <section className="relative bg-black px-4 py-12 md:px-6 md:py-24 heavy-scanlines">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
-          <div className="mb-16 text-center">
+          <div className="mb-8 md:mb-16 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Zap className="h-4 w-4 text-red-500" />
               <span className="text-red-400">JOIN THE CHAOS</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               ENTER THE WARZONE
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
-              Daily challenges, live destruction, and epic meme battles happening RIGHT NOW
+            <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-pretty text-base md:text-xl text-red-300/70">
+              Daily challenges and epic meme battles happening RIGHT NOW
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
             <DailyChallenge />
             <LiveFeed />
           </div>
         </div>
       </section>
 
-      <section className="relative px-6 py-24">
+      <section className="relative px-4 py-12 md:px-6 md:py-24">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-12 text-center">
+          <div className="mb-8 md:mb-12 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Flame className="h-4 w-4 text-red-500" />
               <span className="text-red-400">FIGHT TO THE DEATH</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-5xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               MEME BATTLE ROYALE
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-pretty text-lg text-red-300/70">
-              Which extreme solution reigns supreme? CHOOSE YOUR CHAMPION!
+            <p className="mx-auto mt-4 max-w-2xl text-pretty text-base md:text-lg text-red-300/70">
+              CHOOSE YOUR CHAMPION!
             </p>
           </div>
 
@@ -594,19 +594,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative border-y border-red-900/30 bg-black px-6 py-24">
+      <section className="relative border-y border-red-900/30 bg-black px-4 py-12 md:px-6 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
-          <div className="mb-16 text-center">
+          <div className="mb-8 md:mb-16 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Trophy className="h-4 w-4 text-red-500" />
-              <span className="text-red-400">COLLECT TROPHIES</span>
+              <span className="text-red-400">TROPHIES</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               EARN YOUR SCARS
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
-              Create memes, DESTROY opponents, and unlock badges of HONOR
+            <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-pretty text-base md:text-xl text-red-300/70">
+              Create memes, DESTROY opponents, unlock badges
             </p>
           </div>
 
@@ -614,20 +614,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="generator" className="relative px-6 py-24">
+      <section id="generator" className="relative px-4 py-12 md:px-6 md:py-24">
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
-          <div className="mb-16 text-center">
+          <div className="mb-8 md:mb-16 text-center">
             <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Zap className="h-4 w-4 text-red-500" />
-              <span className="text-red-400">WEAPON OF MASS DESTRUCTION</span>
+              <span className="text-red-400">MEME FORGE</span>
             </div>
-            <h2 className="text-balance font-sans text-4xl font-black uppercase tracking-tight md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <h2 className="text-balance font-sans text-2xl font-black uppercase tracking-tight sm:text-3xl md:text-5xl lg:text-6xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               CREATE YOUR OWN
-              <span className="mt-2 block text-red-500">INSANITY WOLF MEME</span>
+              <span className="mt-1 md:mt-2 block text-red-500">INSANITY WOLF MEME</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-xl text-red-300/70">
-              Join MILLIONS who have unleashed their inner chaos. Create. Download. DESTROY.
+            <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-pretty text-base md:text-xl text-red-300/70">
+              Create. Download. DESTROY.
             </p>
           </div>
 
@@ -635,59 +635,59 @@ export default function Home() {
             <MemeGenerator />
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
-              <div className="mb-4 flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
-                  <Clock className="h-6 w-6 text-red-500" />
+          <div className="mt-8 md:mt-16 grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
+            <div className="border border-red-900/30 bg-black/50 p-4 md:p-6 text-center">
+              <div className="mb-3 md:mb-4 flex justify-center">
+                <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
+                  <Clock className="h-5 w-5 md:h-6 md:w-6 text-red-500" />
                 </div>
               </div>
-              <h3 className="mb-2 font-sans text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSTANT CHAOS</h3>
-              <p className="text-sm text-red-300/60">Type. Generate. Destroy. No waiting.</p>
+              <h3 className="mb-2 font-sans text-base md:text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSTANT CHAOS</h3>
+              <p className="text-xs md:text-sm text-red-300/60">Type. Generate. Destroy.</p>
             </div>
-            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
-              <div className="mb-4 flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
-                  <Flame className="h-6 w-6 text-red-500" />
+            <div className="border border-red-900/30 bg-black/50 p-4 md:p-6 text-center">
+              <div className="mb-3 md:mb-4 flex justify-center">
+                <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
+                  <Flame className="h-5 w-5 md:h-6 md:w-6 text-red-500" />
                 </div>
               </div>
-              <h3 className="mb-2 font-sans text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>MAXIMUM QUALITY</h3>
-              <p className="text-sm text-red-300/60">Perfect resolution. Perfect destruction.</p>
+              <h3 className="mb-2 font-sans text-base md:text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>MAX QUALITY</h3>
+              <p className="text-xs md:text-sm text-red-300/60">Perfect resolution.</p>
             </div>
-            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
-              <div className="mb-4 flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
-                  <Share2 className="h-6 w-6 text-red-500" />
+            <div className="border border-red-900/30 bg-black/50 p-4 md:p-6 text-center">
+              <div className="mb-3 md:mb-4 flex justify-center">
+                <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
+                  <Share2 className="h-5 w-5 md:h-6 md:w-6 text-red-500" />
                 </div>
               </div>
-              <h3 className="mb-2 font-sans text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>SPREAD THE MADNESS</h3>
-              <p className="text-sm text-red-300/60">Download and unleash on social media.</p>
+              <h3 className="mb-2 font-sans text-base md:text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>SPREAD IT</h3>
+              <p className="text-xs md:text-sm text-red-300/60">Download and share.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Quote Section - MAXIMUM RAGE */}
-      <section className="relative border-y border-red-900/50 bg-card px-6 py-20">
+      <section className="relative border-y border-red-900/50 bg-card px-4 py-12 md:px-6 md:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,0,0,0.1)_0%,transparent_70%)]" />
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
         <div className="relative mx-auto max-w-5xl text-center">
-          <blockquote className="space-y-6">
-            <div className="text-6xl opacity-40 text-red-500">"</div>
-            <p className="text-2xl font-black uppercase leading-tight tracking-tight text-foreground md:text-4xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-              Oh, you got PROBLEMS? You want a SOLUTION?! HERE'S YOUR SOLUTION —
-              <span className="text-red-500"> SET IT ON FIRE AND WALK AWAY!</span>
+          <blockquote className="space-y-4 md:space-y-6">
+            <div className="text-4xl md:text-6xl opacity-40 text-red-500">"</div>
+            <p className="text-xl font-black uppercase leading-tight tracking-tight text-foreground sm:text-2xl md:text-4xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+              Got PROBLEMS?
+              <span className="text-red-500"> SET IT ON FIRE!</span>
             </p>
-            <footer className="pt-4 text-sm font-bold uppercase tracking-widest text-red-400/70">
-              — THE ONLY PHILOSOPHY THAT MATTERS
+            <footer className="pt-2 md:pt-4 text-xs md:text-sm font-bold uppercase tracking-widest text-red-400/70">
+              — THE ONLY PHILOSOPHY
             </footer>
           </blockquote>
         </div>
       </section>
 
       {/* Footer - CHAOS */}
-      <footer className="border-t border-red-900/50 bg-black px-6 py-16">
+      <footer className="border-t border-red-900/50 bg-black px-4 py-10 md:px-6 md:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">

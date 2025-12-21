@@ -96,10 +96,10 @@ export function MemeGenerator() {
       <div className="overflow-hidden border-2 border-border bg-card shadow-2xl shadow-primary/5">
         <div className="grid gap-0 lg:grid-cols-2">
           {/* Left side - Inputs */}
-          <div className="space-y-6 border-b border-border p-8 lg:border-b-0 lg:border-r">
-            <div className="mb-6 flex items-center gap-3">
+          <div className="space-y-4 md:space-y-6 border-b border-border p-4 md:p-8 lg:border-b-0 lg:border-r">
+            <div className="mb-4 md:mb-6 flex items-center gap-3">
               <Sparkles className="h-5 w-5 text-primary" />
-              <h3 className="font-sans text-lg font-black uppercase tracking-tight">Customize Your Meme</h3>
+              <h3 className="font-sans text-base md:text-lg font-black uppercase tracking-tight">Customize Your Meme</h3>
             </div>
 
             <div className="space-y-2">
@@ -143,9 +143,9 @@ export function MemeGenerator() {
               </p>
             </div>
 
-            <div className="border border-border bg-muted/30 p-5">
-              <p className="mb-3 text-xs font-bold uppercase tracking-wider text-foreground">Quick Tips:</p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+            <div className="border border-border bg-muted/30 p-3 md:p-5">
+              <p className="mb-2 md:mb-3 text-xs font-bold uppercase tracking-wider text-foreground">Quick Tips:</p>
+              <ul className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="mt-0.5 text-primary">•</span>
                   <span>Keep it short and punchy for maximum impact</span>
@@ -163,8 +163,8 @@ export function MemeGenerator() {
           </div>
 
           {/* Right side - Preview */}
-          <div className="bg-muted/20 p-8">
-            <div className="mb-4 flex items-center justify-between">
+          <div className="bg-muted/20 p-4 md:p-8">
+            <div className="mb-3 md:mb-4 flex items-center justify-between">
               <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Live Preview</p>
               <div className="flex items-center gap-1.5">
                 <div className="h-2 w-2 animate-pulse bg-primary"></div>
@@ -181,9 +181,9 @@ export function MemeGenerator() {
                   className="w-full"
                 />
                 {topText && (
-                  <div className="absolute left-0 right-0 top-8 px-8 text-center">
+                  <div className="absolute left-0 right-0 top-4 md:top-8 px-4 md:px-8 text-center">
                     <p
-                      className="break-words text-3xl font-black uppercase leading-tight tracking-tight text-white md:text-4xl"
+                      className="break-words text-xl md:text-3xl lg:text-4xl font-black uppercase leading-tight tracking-tight text-white"
                       style={{
                         fontFamily: "Impact, 'Arial Black', sans-serif",
                         textShadow: "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 8px #000",
@@ -196,9 +196,9 @@ export function MemeGenerator() {
                   </div>
                 )}
                 {bottomText && (
-                  <div className="absolute bottom-8 left-0 right-0 px-8 text-center">
+                  <div className="absolute bottom-4 md:bottom-8 left-0 right-0 px-4 md:px-8 text-center">
                     <p
-                      className="break-words text-3xl font-black uppercase leading-tight tracking-tight text-white md:text-4xl"
+                      className="break-words text-xl md:text-3xl lg:text-4xl font-black uppercase leading-tight tracking-tight text-white"
                       style={{
                         fontFamily: "Impact, 'Arial Black', sans-serif",
                         textShadow: "-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 0 8px #000",
@@ -212,7 +212,7 @@ export function MemeGenerator() {
                 )}
                 {!topText && !bottomText && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-                    <p className="px-8 text-center text-lg font-bold uppercase tracking-wide text-white">
+                    <p className="px-4 md:px-8 text-center text-sm md:text-lg font-bold uppercase tracking-wide text-white">
                       Start typing to see your meme
                     </p>
                   </div>
