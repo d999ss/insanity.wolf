@@ -1,9 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Zap, Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 import Link from "next/link"
 
 const navLinks = [
@@ -17,21 +16,21 @@ export function SiteNav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-red-900/50 bg-black/90 backdrop-blur-xl">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-red-900/30 bg-black/95 backdrop-blur-md">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="cursor-pointer hover:opacity-80 transition-opacity">
-          <span className="font-sans text-xl font-black uppercase tracking-tighter text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+        <Link href="/" className="cursor-pointer hover:opacity-70 transition-opacity">
+          <span className="font-mono text-sm font-medium uppercase tracking-tight text-white">
             Insanity Wolf
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold text-red-300/80 hover:text-red-400 transition-colors"
+              className="font-mono text-sm text-red-400/70 hover:text-white transition-colors"
             >
               {link.label}
             </Link>
@@ -40,45 +39,38 @@ export function SiteNav() {
 
         <div className="flex items-center gap-4">
           {/* Desktop Create Button */}
-          <Button
-            size="lg"
-            className="hidden font-bold bg-red-900 hover:bg-red-800 border border-red-500 px-6 py-2 md:inline-flex"
-            asChild
+          <Link
+            href="/create"
+            className="hidden md:inline-flex font-mono text-sm font-medium text-black bg-white hover:bg-white/90 px-4 py-2 transition-colors"
           >
-            <Link href="/create">
-              CREATE
-            </Link>
-          </Button>
+            CREATE
+          </Link>
 
           {/* Mobile Menu */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden text-red-400 hover:text-red-300 hover:bg-red-950/50"
-              >
-                <Menu className="h-6 w-6" />
+              <button className="md:hidden text-red-400/70 hover:text-white p-2 transition-colors">
+                <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
-              </Button>
+              </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-black border-red-900/50 p-0">
+            <SheetContent side="right" className="w-[280px] bg-black border-red-900/30 p-0">
               <div className="flex flex-col h-full">
                 {/* Mobile Header */}
-                <div className="flex items-center justify-between border-b border-red-900/50 p-6">
-                  <span className="font-sans text-lg font-black uppercase tracking-tighter text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+                <div className="flex items-center justify-between border-b border-red-900/30 p-6">
+                  <span className="font-mono text-sm font-medium uppercase text-white">
                     Menu
                   </span>
                 </div>
 
                 {/* Mobile Links */}
-                <div className="flex-1 py-6">
+                <div className="flex-1 py-4">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-center gap-4 px-6 py-4 text-lg font-bold uppercase tracking-wide text-red-300/80 hover:text-red-400 hover:bg-red-950/30 transition-colors"
+                      className="flex items-center px-6 py-3 font-mono text-sm text-red-400/70 hover:text-white hover:bg-red-950/20 transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -86,18 +78,14 @@ export function SiteNav() {
                 </div>
 
                 {/* Mobile CTA */}
-                <div className="border-t border-red-900/50 p-6">
-                  <Button
-                    size="lg"
-                    className="w-full gap-2 font-bold bg-red-900 hover:bg-red-800 border border-red-500"
-                    asChild
+                <div className="border-t border-red-900/30 p-6">
+                  <Link
+                    href="/create"
                     onClick={() => setOpen(false)}
+                    className="flex items-center justify-center font-mono text-sm font-medium text-black bg-white hover:bg-white/90 px-4 py-3 transition-colors w-full"
                   >
-                    <Link href="/create">
-                      <Zap className="h-5 w-5" />
-                      CREATE MEME
-                    </Link>
-                  </Button>
+                    CREATE MEME
+                  </Link>
                 </div>
               </div>
             </SheetContent>

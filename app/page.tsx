@@ -1,4 +1,4 @@
-import { ArrowRight, Users, Flame, Skull, Zap, Sparkles, Trophy, Clock, Share2 } from "lucide-react"
+import { ArrowRight, Zap, Sparkles, Flame, Trophy } from "lucide-react"
 import Image from "next/image"
 import { MemeGenerator } from "@/components/meme-generator"
 import { ShareButton } from "@/components/share-button"
@@ -18,57 +18,28 @@ export default function Home() {
       {/* Header */}
       <HomeNav />
 
-      {/* HERO: Meme Creator - Front and Center */}
-      <section className="relative pt-20 md:pt-24 pb-12 md:pb-20 px-4 md:px-6 overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-black">
-          <div className="absolute inset-0 bg-gradient-to-b from-red-950/30 via-black to-red-950/20" />
-          <div className="absolute inset-x-0 top-0 h-32 blood-drip" />
-        </div>
+      {/* Viral Stats Dashboard - Vercel Style */}
+      <div className="pt-16 md:pt-20">
+        <ViralStats />
+      </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl">
-          {/* Hero Header */}
-          <div className="mb-6 md:mb-10 text-center">
-            <h1
-              className="text-3xl font-black uppercase tracking-tight sm:text-4xl md:text-6xl lg:text-7xl text-white mb-3 md:mb-4"
-              style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
-            >
-              CREATE YOUR
-              <span className="block text-red-500">INSANITY WOLF MEME</span>
-            </h1>
-            <p className="mx-auto max-w-xl text-base md:text-xl text-red-300/80">
-              Make it. Download it. Share it. Watch it go VIRAL.
+      {/* Meme Creator */}
+      <section className="relative py-12 md:py-20 px-4 md:px-6 bg-black">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-6 md:mb-8">
+            <p className="font-mono text-xs md:text-sm uppercase text-red-400/80 mb-2">
+              Meme Generator
+              <span className="block text-red-400/50 font-mono">
+                [CREATE YOUR OWN]
+              </span>
             </p>
           </div>
 
-          {/* Meme Generator */}
           <div className="flex justify-center">
             <MemeGenerator />
           </div>
-
-          {/* Share & Shop CTAs */}
-          <div className="mt-8 md:mt-12 grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-3 max-w-3xl mx-auto">
-            <div className="border border-red-900/50 bg-black/50 p-4 md:p-5 text-center">
-              <Clock className="h-6 w-6 md:h-8 md:w-8 text-red-500 mx-auto mb-2" />
-              <h3 className="font-bold text-red-400 uppercase text-sm md:text-base" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSTANT</h3>
-              <p className="text-xs text-red-300/60">Create in seconds</p>
-            </div>
-            <div className="border border-red-900/50 bg-black/50 p-4 md:p-5 text-center">
-              <Share2 className="h-6 w-6 md:h-8 md:w-8 text-red-500 mx-auto mb-2" />
-              <h3 className="font-bold text-red-400 uppercase text-sm md:text-base" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>SHARE</h3>
-              <p className="text-xs text-red-300/60">Go viral everywhere</p>
-            </div>
-            <a href="/store" className="border border-red-500 bg-red-950/50 p-4 md:p-5 text-center hover:bg-red-900/50 transition-colors group">
-              <Flame className="h-6 w-6 md:h-8 md:w-8 text-red-500 mx-auto mb-2 group-hover:animate-pulse" />
-              <h3 className="font-bold text-red-400 uppercase text-sm md:text-base" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GET MERCH</h3>
-              <p className="text-xs text-red-300/60">Wear the chaos</p>
-            </a>
-          </div>
         </div>
       </section>
-
-      {/* Viral Stats Dashboard - Vercel Style */}
-      <ViralStats />
 
       {/* THE HALL OF INSANITY */}
       <section id="gallery" className="relative bg-black/50 px-4 py-12 md:px-6 md:py-24">
@@ -263,60 +234,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer - CHAOS */}
-      <footer className="border-t border-red-900/50 bg-black px-4 py-10 md:px-6 md:py-16">
+      {/* Footer */}
+      <footer className="border-t border-red-900/30 bg-black px-4 py-10 md:px-6 md:py-16">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">
-              <div className="mb-6 flex items-center gap-3 cursor-pointer">
-                <div className="relative h-12 w-12 bg-red-950/50 overflow-hidden border-2 border-red-900/50">
-                  <Image src="/insanity-wolf.png" alt="Insanity Wolf" fill className="object-cover" />
-                </div>
-                <div className="text-2xl font-black tracking-tighter" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSANITY WOLF</div>
+              <div className="mb-4">
+                <span className="font-mono text-sm font-medium uppercase text-white">
+                  Insanity Wolf
+                </span>
               </div>
-              <p className="mb-6 max-w-md text-pretty leading-relaxed text-red-300/60">
-                The legendary advice animal that DESTROYED internet humor since 2009. Over 10 million memes. ZERO regrets. MAXIMUM chaos.
+              <p className="mb-6 max-w-md font-mono text-xs text-red-400/50 leading-relaxed">
+                The legendary advice animal since 2009. Over 10 million memes created. The original chaos meme.
               </p>
-              <div className="flex gap-4">
-                <ShareButton
-                  title="Insanity Wolf - The Most Extreme Meme"
-                  text="Check out Insanity Wolf, the legendary advice animal meme!"
-                />
-              </div>
+              <ShareButton
+                title="Insanity Wolf - The Most Extreme Meme"
+                text="Check out Insanity Wolf, the legendary advice animal meme!"
+              />
             </div>
 
             <div>
-              <h4 className="mb-6 font-sans text-sm font-bold uppercase tracking-wider text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>Quick Links</h4>
-              <ul className="space-y-3 text-red-300/70">
+              <h4 className="mb-4 font-mono text-xs uppercase text-red-400/60">Links</h4>
+              <ul className="space-y-2">
                 <li>
-                  <a
-                    href="/gallery"
-                    className="blood-underline inline-block hover:text-red-400"
-                  >
+                  <a href="/gallery" className="font-mono text-sm text-red-400/70 hover:text-white transition-colors">
                     Gallery
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/battle"
-                    className="blood-underline inline-block hover:text-red-400"
-                  >
-                    Battle Arena
+                  <a href="/battle" className="font-mono text-sm text-red-400/70 hover:text-white transition-colors">
+                    Battle
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/create"
-                    className="blood-underline inline-block hover:text-red-400"
-                  >
-                    Create Meme
+                  <a href="/create" className="font-mono text-sm text-red-400/70 hover:text-white transition-colors">
+                    Create
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/store"
-                    className="blood-underline inline-block hover:text-red-400"
-                  >
+                  <a href="/store" className="font-mono text-sm text-red-400/70 hover:text-white transition-colors">
                     Store
                   </a>
                 </li>
@@ -324,31 +280,31 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="mb-6 font-sans text-sm font-bold uppercase tracking-wider text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>KILL COUNT</h4>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-center gap-2">
-                  <Flame className="h-4 w-4 text-red-500" />
-                  <span className="text-red-300/70">10M+ Souls Corrupted</span>
+              <h4 className="mb-4 font-mono text-xs uppercase text-red-400/60">Stats</h4>
+              <ul className="space-y-2 font-mono text-sm">
+                <li className="flex items-center justify-between">
+                  <span className="text-red-400/50">Since</span>
+                  <span className="text-white tabular-nums">2009</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Trophy className="h-4 w-4 text-red-500" />
-                  <span className="text-red-300/70">GOD TIER Since Day One</span>
+                <li className="flex items-center justify-between">
+                  <span className="text-red-400/50">Memes</span>
+                  <span className="text-white tabular-nums">10M+</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-red-500" />
-                  <span className="text-red-300/70">Terrorizing Since 2009</span>
+                <li className="flex items-center justify-between">
+                  <span className="text-red-400/50">Status</span>
+                  <span className="text-white">GOD TIER</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Skull className="h-4 w-4 text-red-500" />
-                  <span className="text-red-300/70">Born in the Abyss</span>
+                <li className="flex items-center justify-between">
+                  <span className="text-red-400/50">Countries</span>
+                  <span className="text-white tabular-nums">147</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="mt-12 border-t border-red-900/30 pt-8 text-center text-sm text-red-400/50">
-            <p>
-              © 2009-2025 INSANITY WOLF. Born from chaos. Fed by rage. DON'T follow this advice. We're NOT responsible for the consequences.
+          <div className="mt-10 pt-6 border-t border-red-900/30">
+            <p className="font-mono text-xs text-red-400/40 text-center">
+              © 2009-2025 Insanity Wolf. This is satire. Don't actually follow this advice.
             </p>
           </div>
         </div>
