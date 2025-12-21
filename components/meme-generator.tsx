@@ -31,11 +31,68 @@ export function MemeGenerator() {
   const extremeWolf = "/extreme-wolf.png"
 
   const handleMakeMerch = () => {
-    const params = new URLSearchParams({
-      top: topText,
-      bottom: bottomText,
-    })
-    router.push(`/merch?${params.toString()}`)
+    // Generate the meme image and save to localStorage before navigating
+    const canvas = document.createElement("canvas")
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    const generateAndNavigate = () => {
+      ctx.fillStyle = "white"
+      ctx.strokeStyle = "black"
+      ctx.lineWidth = 4
+      ctx.textAlign = "center"
+      const fontSize = Math.floor(canvas.width * 0.08)
+      ctx.font = `bold ${fontSize}px Impact, 'Arial Black', sans-serif`
+
+      const maxWidth = canvas.width - 120
+      const lineHeight = fontSize * 1.15
+
+      if (topText) {
+        const topY = fontSize + 20
+        wrapText(ctx, topText.toUpperCase(), canvas.width / 2, topY, maxWidth, lineHeight, false)
+      }
+
+      if (bottomText) {
+        const bottomY = canvas.height - 40
+        wrapText(ctx, bottomText.toUpperCase(), canvas.width / 2, bottomY, maxWidth, lineHeight, true)
+      }
+
+      // Save to localStorage and navigate
+      const imageData = canvas.toDataURL("image/png")
+      localStorage.setItem("insanity-meme-image", imageData)
+      router.push("/merch")
+    }
+
+    if (extremeMode) {
+      const wolfImg = new window.Image()
+      wolfImg.crossOrigin = "anonymous"
+      wolfImg.src = extremeWolf
+
+      wolfImg.onload = () => {
+        canvas.width = 600
+        canvas.height = 600
+        ctx.fillStyle = currentBg.color
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        const scale = Math.min(canvas.width / wolfImg.width, canvas.height / wolfImg.height) * 0.67
+        const w = wolfImg.width * scale
+        const h = wolfImg.height * scale
+        const x = (canvas.width - w) / 2
+        const y = (canvas.height - h) / 2
+        ctx.drawImage(wolfImg, x, y, w, h)
+        generateAndNavigate()
+      }
+    } else {
+      const img = new window.Image()
+      img.crossOrigin = "anonymous"
+      img.src = standardTemplate
+
+      img.onload = () => {
+        canvas.width = img.width
+        canvas.height = img.height
+        ctx.drawImage(img, 0, 0)
+        generateAndNavigate()
+      }
+    }
   }
 
   const problems = [
