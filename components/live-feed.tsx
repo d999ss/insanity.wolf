@@ -36,11 +36,11 @@ export function LiveFeed() {
   }, [])
 
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-border bg-card shadow-xl">
+    <div className="overflow-hidden border-2 border-border bg-card shadow-xl">
       <div className="border-b border-border bg-muted/50 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+            <div className="flex h-10 w-10 items-center justify-center bg-primary/10">
               <TrendingUp className="h-5 w-5 text-primary" />
             </div>
             <div>
@@ -49,7 +49,7 @@ export function LiveFeed() {
             </div>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className={`h-2 w-2 rounded-full bg-primary ${newActivity ? "animate-ping" : "animate-pulse"}`}></div>
+            <div className={`h-2 w-2 bg-primary ${newActivity ? "animate-ping" : "animate-pulse"}`}></div>
             <span className="text-xs font-semibold text-primary">LIVE</span>
           </div>
         </div>

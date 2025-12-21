@@ -52,7 +52,7 @@ export function RandomMeme() {
 
   return (
     <div className="space-y-6">
-      <div className={`relative overflow-hidden rounded-2xl border-2 ${isSpinning ? 'border-red-500 shadow-lg shadow-red-500/30' : 'border-red-900/50'} bg-black transition-all`}>
+      <div className={`relative overflow-hidden border-2 ${isSpinning ? 'border-red-500 shadow-lg shadow-red-500/30' : 'border-red-900/50'} bg-black transition-all`}>
         <div className="relative aspect-square">
           <Image
             src={`/gallery/${currentImage}`}
@@ -70,7 +70,7 @@ export function RandomMeme() {
           )}
         </div>
         {spinCount > 0 && !isSpinning && (
-          <div className="absolute top-4 right-4 flex items-center gap-2 rounded-full border border-red-500 bg-black/80 px-3 py-1.5">
+          <div className="absolute top-4 right-4 flex items-center gap-2 border border-red-500 bg-black/80 px-3 py-1.5">
             <Flame className="h-4 w-4 text-red-500" />
             <span className="text-sm font-black text-red-400">{spinCount} SPINS</span>
           </div>

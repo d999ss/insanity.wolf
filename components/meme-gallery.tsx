@@ -103,7 +103,7 @@ export function MemeGallery() {
         {visibleMemes.map((meme, idx) => (
           <div
             key={`${meme.src}-${idx}`}
-            className="group relative overflow-hidden rounded-xl border-2 border-red-900/30 bg-gradient-to-br from-black via-red-950/10 to-black cursor-pointer transition-all hover:border-red-500/50 hover:shadow-lg hover:shadow-red-500/10"
+            className="group relative overflow-hidden border-2 border-red-900/30 bg-gradient-to-br from-black via-red-950/10 to-black cursor-pointer transition-all hover:border-red-500/50 hover:shadow-lg hover:shadow-red-500/10"
             onClick={() => setSelectedMeme(idx)}
           >
             <div className="relative aspect-square">

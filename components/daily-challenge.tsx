@@ -35,11 +35,11 @@ export function DailyChallenge() {
   }, [])
 
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-primary bg-gradient-to-br from-card via-primary/5 to-card shadow-xl">
+    <div className="overflow-hidden border-2 border-primary bg-gradient-to-br from-card via-primary/5 to-card shadow-xl">
       <div className="border-b border-primary/20 bg-primary/10 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+            <div className="flex h-10 w-10 items-center justify-center bg-primary text-primary-foreground">
               <Trophy className="h-5 w-5" />
             </div>
             <div>
@@ -47,7 +47,7 @@ export function DailyChallenge() {
               <p className="text-xs font-semibold text-muted-foreground">Create the most extreme solution</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 rounded-full border border-primary bg-background px-3 py-1.5">
+          <div className="flex items-center gap-2 border border-primary bg-background px-3 py-1.5">
             <Clock className="h-4 w-4 text-primary" />
             <span className="text-sm font-bold text-primary">{timeLeft}</span>
           </div>
@@ -59,7 +59,7 @@ export function DailyChallenge() {
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Today's Problem</span>
             <span
-              className={`rounded-full px-3 py-1 text-xs font-black uppercase tracking-wide ${
+              className={`px-3 py-1 text-xs font-black uppercase tracking-wide ${
                 currentChallenge.difficulty === "INSANE"
                   ? "bg-primary text-primary-foreground"
                   : currentChallenge.difficulty === "HARD"

@@ -52,7 +52,7 @@ export default function Home() {
       <section id="stats" className="relative px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
               <TrendingUp className="h-4 w-4 text-red-500" />
               <span className="text-red-400">BODY COUNT</span>
             </div>
@@ -63,9 +63,9 @@ export default function Home() {
               The numbers don't lie. The DESTRUCTION is real.
             </p>
           </div>
-          <div className="relative overflow-hidden rounded-3xl border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1">
+          <div className="relative overflow-hidden border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,0,0,0.1)_0%,transparent_60%)]" />
-            <div className="relative grid gap-px rounded-3xl bg-red-900/30 md:grid-cols-3">
+            <div className="relative grid gap-px bg-red-900/30 md:grid-cols-3">
               <div className="bg-black p-12 text-center">
                 <div className="mb-4 font-sans text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
                 <div className="mb-2 text-sm font-bold uppercase tracking-widest text-red-400">Years of Terror</div>
@@ -136,7 +136,7 @@ export default function Home() {
       <section className="relative border-y border-red-900/30 bg-red-950/20 px-6 py-24">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/50 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/50 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="h-4 w-4 text-red-500" />
               <span className="text-red-400">FEELING DANGEROUS?!</span>
             </div>
@@ -156,7 +156,7 @@ export default function Home() {
       <section id="wiki" className="relative px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Skull className="h-4 w-4 text-red-500" />
               <span className="text-red-400">COMPLETE ENCYCLOPEDIA</span>
             </div>
@@ -173,7 +173,7 @@ export default function Home() {
             {/* Main Content */}
             <div className="space-y-12 lg:col-span-2">
               {/* Overview */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-8 py-6">
                   <h3 className="font-sans text-2xl font-black uppercase tracking-tight">Overview</h3>
                 </div>
@@ -190,7 +190,7 @@ export default function Home() {
                     violent or insane course of action imaginable. It represented the internet's id unleashed – saying
                     what no one would ever actually do, the intrusive crazy thought given shape.
                   </p>
-                  <div className="grid gap-4 rounded-lg border border-border bg-background/50 p-6 md:grid-cols-2">
+                  <div className="grid gap-4 border border-border bg-background/50 p-6 md:grid-cols-2">
                     <div>
                       <p className="mb-2 text-xs font-bold uppercase tracking-wider text-foreground">Origin</p>
                       <p className="text-sm">4chan's /b/ board, 2009</p>
@@ -212,7 +212,7 @@ export default function Home() {
               </div>
 
               {/* Origins & History */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-8 py-6">
                   <h3 className="font-sans text-2xl font-black uppercase tracking-tight">Origins & Evolution</h3>
                 </div>
@@ -275,7 +275,7 @@ export default function Home() {
               </div>
 
               {/* Format & Structure */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-8 py-6">
                   <h3 className="font-sans text-2xl font-black uppercase tracking-tight">Format & Structure</h3>
                 </div>
@@ -326,7 +326,7 @@ export default function Home() {
               </div>
 
               {/* Iconic Examples */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-8 py-6">
                   <h3 className="font-sans text-2xl font-black uppercase tracking-tight">Legendary Examples</h3>
                 </div>
@@ -345,7 +345,7 @@ export default function Home() {
                       { top: "Baby on board sign", bottom: "TARGET ACQUIRED" },
                       { top: "Deck the halls", bottom: "With bloody corpses" },
                     ].map((meme, i) => (
-                      <div key={i} className="rounded-lg border border-border bg-background/50 p-4">
+                      <div key={i} className="border border-border bg-background/50 p-4">
                         <p className="mb-1 text-sm font-bold uppercase text-foreground">{meme.top}</p>
                         <p className="text-sm font-black uppercase text-primary">{meme.bottom}</p>
                       </div>
@@ -355,7 +355,7 @@ export default function Home() {
               </div>
 
               {/* Variants & Spin-Offs */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-8 py-6">
                   <h3 className="font-sans text-2xl font-black uppercase tracking-tight">Variants & Spin-Offs</h3>
                 </div>
@@ -389,7 +389,7 @@ export default function Home() {
               </div>
 
               {/* Cultural Impact */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-8 py-6">
                   <h3 className="font-sans text-2xl font-black uppercase tracking-tight">Cultural Impact</h3>
                 </div>
@@ -399,7 +399,7 @@ export default function Home() {
                     acceptable in meme culture. It embodied the "edgelord" aesthetic of early 2010s internet, where
                     shock value and transgression were forms of social currency on platforms like 4chan and Reddit.
                   </p>
-                  <div className="rounded-lg border border-border bg-background/50 p-6">
+                  <div className="border border-border bg-background/50 p-6">
                     <h4 className="mb-4 font-sans text-lg font-bold text-foreground">Legacy Metrics</h4>
                     <div className="grid gap-4 md:grid-cols-2">
                       <div>
@@ -432,7 +432,7 @@ export default function Home() {
             {/* Sidebar */}
             <div className="space-y-8">
               {/* Quick Facts */}
-              <div className="sticky top-8 overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="sticky top-8 overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-6 py-4">
                   <h3 className="font-sans text-xl font-black uppercase tracking-tight">Quick Facts</h3>
                 </div>
@@ -483,7 +483,7 @@ export default function Home() {
               </div>
 
               {/* Timeline */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-6 py-4">
                   <h3 className="font-sans text-xl font-black uppercase tracking-tight">Timeline</h3>
                 </div>
@@ -520,7 +520,7 @@ export default function Home() {
               </div>
 
               {/* Related Memes */}
-              <div className="overflow-hidden rounded-2xl border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
+              <div className="overflow-hidden border-2 border-border bg-gradient-to-br from-card via-card to-muted/30">
                 <div className="border-b border-border bg-muted/50 px-6 py-4">
                   <h3 className="font-sans text-xl font-black uppercase tracking-tight">Related Memes</h3>
                 </div>
@@ -556,7 +556,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Zap className="h-4 w-4 text-red-500" />
               <span className="text-red-400">JOIN THE CHAOS</span>
             </div>
@@ -578,7 +578,7 @@ export default function Home() {
       <section className="relative px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Flame className="h-4 w-4 text-red-500" />
               <span className="text-red-400">FIGHT TO THE DEATH</span>
             </div>
@@ -598,7 +598,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Trophy className="h-4 w-4 text-red-500" />
               <span className="text-red-400">COLLECT TROPHIES</span>
             </div>
@@ -618,7 +618,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-red-950/10 via-transparent to-red-950/10" />
         <div className="mx-auto max-w-7xl relative z-10">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Zap className="h-4 w-4 text-red-500" />
               <span className="text-red-400">WEAPON OF MASS DESTRUCTION</span>
             </div>
@@ -636,27 +636,27 @@ export default function Home() {
           </div>
 
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
+            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-4 flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-950/50 border border-red-900/50">
+                <div className="flex h-12 w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
                   <Clock className="h-6 w-6 text-red-500" />
                 </div>
               </div>
               <h3 className="mb-2 font-sans text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSTANT CHAOS</h3>
               <p className="text-sm text-red-300/60">Type. Generate. Destroy. No waiting.</p>
             </div>
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
+            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-4 flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-950/50 border border-red-900/50">
+                <div className="flex h-12 w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
                   <Flame className="h-6 w-6 text-red-500" />
                 </div>
               </div>
               <h3 className="mb-2 font-sans text-lg font-bold text-red-400" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>MAXIMUM QUALITY</h3>
               <p className="text-sm text-red-300/60">Perfect resolution. Perfect destruction.</p>
             </div>
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
+            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-4 flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-950/50 border border-red-900/50">
+                <div className="flex h-12 w-12 items-center justify-center bg-red-950/50 border border-red-900/50">
                   <Share2 className="h-6 w-6 text-red-500" />
                 </div>
               </div>
@@ -692,7 +692,7 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">
               <div className="mb-6 flex items-center gap-3 cursor-pointer">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-950/50 overflow-hidden border-2 border-red-900/50">
+                <div className="flex h-12 w-12 items-center justify-center bg-red-950/50 overflow-hidden border-2 border-red-900/50">
                   <Image src="/insanity-wolf.png" alt="Insanity Wolf" width={48} height={48} className="object-cover" />
                 </div>
                 <div className="text-2xl font-black tracking-tighter" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>INSANITY WOLF</div>

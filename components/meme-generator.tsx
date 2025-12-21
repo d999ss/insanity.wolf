@@ -93,7 +93,7 @@ export function MemeGenerator() {
 
   return (
     <div className="w-full max-w-5xl">
-      <div className="overflow-hidden rounded-2xl border-2 border-border bg-card shadow-2xl shadow-primary/5">
+      <div className="overflow-hidden border-2 border-border bg-card shadow-2xl shadow-primary/5">
         <div className="grid gap-0 lg:grid-cols-2">
           {/* Left side - Inputs */}
           <div className="space-y-6 border-b border-border p-8 lg:border-b-0 lg:border-r">
@@ -143,7 +143,7 @@ export function MemeGenerator() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-border bg-muted/30 p-5">
+            <div className="border border-border bg-muted/30 p-5">
               <p className="mb-3 text-xs font-bold uppercase tracking-wider text-foreground">Quick Tips:</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
@@ -167,11 +167,11 @@ export function MemeGenerator() {
             <div className="mb-4 flex items-center justify-between">
               <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Live Preview</p>
               <div className="flex items-center gap-1.5">
-                <div className="h-2 w-2 animate-pulse rounded-full bg-primary"></div>
+                <div className="h-2 w-2 animate-pulse bg-primary"></div>
                 <span className="text-xs font-semibold text-primary">LIVE</span>
               </div>
             </div>
-            <div className="sticky top-24 overflow-hidden rounded-xl border-4 border-border bg-card shadow-2xl">
+            <div className="sticky top-24 overflow-hidden border-4 border-border bg-card shadow-2xl">
               <div className="relative">
                 <Image
                   src="/insanity-wolf-template.webp"

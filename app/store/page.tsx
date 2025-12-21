@@ -63,7 +63,7 @@ export default function StorePage() {
         <div className="mx-auto max-w-7xl">
           {/* Hero Section */}
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <ShoppingBag className="h-4 w-4 text-red-500" />
               <span className="text-red-400">WEAR THE CHAOS</span>
             </div>
@@ -81,11 +81,11 @@ export default function StorePage() {
             {products.map((product, idx) => (
               <div
                 key={idx}
-                className="group relative overflow-hidden rounded-2xl border-2 border-red-900/30 bg-gradient-to-br from-black via-red-950/10 to-black transition-all hover:border-red-500/50 hover:shadow-xl hover:shadow-red-500/10"
+                className="group relative overflow-hidden border-2 border-red-900/30 bg-gradient-to-br from-black via-red-950/10 to-black transition-all hover:border-red-500/50 hover:shadow-xl hover:shadow-red-500/10"
               >
                 {product.tag && (
                   <div className="absolute top-4 right-4 z-10">
-                    <span className="rounded-full bg-red-500 px-3 py-1 text-xs font-black uppercase text-white">
+                    <span className="bg-red-500 px-3 py-1 text-xs font-black uppercase text-white">
                       {product.tag}
                     </span>
                   </div>
@@ -117,7 +117,7 @@ export default function StorePage() {
 
           {/* Coming Soon */}
           <div className="mt-16 text-center">
-            <div className="rounded-2xl border-2 border-red-900/30 bg-red-950/10 p-12">
+            <div className="border-2 border-red-900/30 bg-red-950/10 p-12">
               <Flame className="h-12 w-12 text-red-500 mx-auto mb-4" />
               <h3 className="text-2xl font-black uppercase text-white mb-4" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
                 MORE CHAOS COMING SOON
@@ -129,7 +129,7 @@ export default function StorePage() {
                 <input
                   type="email"
                   placeholder="your@email.com"
-                  className="flex-1 rounded-lg border border-red-900/50 bg-black/50 px-4 py-3 text-white placeholder:text-red-400/50 focus:border-red-500 focus:outline-none"
+                  className="flex-1 border border-red-900/50 bg-black/50 px-4 py-3 text-white placeholder:text-red-400/50 focus:border-red-500 focus:outline-none"
                 />
                 <Button className="font-bold bg-red-900 hover:bg-red-800 border border-red-500">
                   <Zap className="h-4 w-4" />

@@ -15,7 +15,7 @@ export function AchievementBadge() {
       {badges.map((badge, idx) => (
         <div
           key={idx}
-          className={`group relative overflow-hidden rounded-xl border-2 p-6 text-center transition-all hover:scale-105 hover:shadow-2xl ${
+          className={`group relative overflow-hidden border-2 p-6 text-center transition-all hover:scale-105 hover:shadow-2xl ${
             badge.rarity === "legendary"
               ? "border-yellow-500 bg-gradient-to-br from-yellow-500/10 to-orange-500/10"
               : badge.rarity === "epic"
@@ -27,7 +27,7 @@ export function AchievementBadge() {
         >
           <div className="mb-4 flex justify-center">
             <div
-              className={`flex h-16 w-16 items-center justify-center rounded-full ${
+              className={`flex h-16 w-16 items-center justify-center ${
                 badge.rarity === "legendary"
                   ? "bg-yellow-500/20"
                   : badge.rarity === "epic"
@@ -54,7 +54,7 @@ export function AchievementBadge() {
           <p className="text-xs text-muted-foreground">{badge.description}</p>
           <div className="absolute right-2 top-2">
             <span
-              className={`rounded-full px-2 py-0.5 text-[10px] font-black uppercase ${
+              className={`px-2 py-0.5 text-[10px] font-black uppercase ${
                 badge.rarity === "legendary"
                   ? "bg-yellow-500 text-black"
                   : badge.rarity === "epic"

@@ -23,7 +23,7 @@ export default function BattlePage() {
         <div className="mx-auto max-w-5xl">
           {/* Hero Section */}
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
+            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
               <Swords className="h-4 w-4 text-red-500" />
               <span className="text-red-400">FIGHT TO THE DEATH</span>
             </div>
@@ -41,15 +41,15 @@ export default function BattlePage() {
 
           {/* Battle Stats */}
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
+            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-2 text-4xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>2,140</div>
               <p className="text-sm font-bold uppercase tracking-wider text-red-400/60">BATTLES TODAY</p>
             </div>
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
+            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-2 text-4xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>89,432</div>
               <p className="text-sm font-bold uppercase tracking-wider text-red-400/60">TOTAL VOTES</p>
             </div>
-            <div className="rounded-xl border border-red-900/30 bg-black/50 p-6 text-center">
+            <div className="border border-red-900/30 bg-black/50 p-6 text-center">
               <div className="mb-2 flex items-center justify-center gap-2">
                 <Flame className="h-8 w-8 text-red-500" />
               </div>

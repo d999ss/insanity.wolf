@@ -54,7 +54,7 @@ export function ShareButton({ title, text }: { title: string; text: string }) {
       </Button>
 
       {showMenu && (
-        <div className="absolute right-0 top-full z-50 mt-2 flex flex-col gap-2 rounded-lg border border-border bg-card p-2 shadow-xl">
+        <div className="absolute right-0 top-full z-50 mt-2 flex flex-col gap-2 border border-border bg-card p-2 shadow-xl">
           <Button onClick={shareToTwitter} variant="ghost" size="sm" className="justify-start gap-2">
             <Twitter className="h-4 w-4" />
             Twitter

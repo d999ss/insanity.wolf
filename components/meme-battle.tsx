@@ -64,7 +64,7 @@ export function MemeBattle() {
   const rightPercent = 100 - leftPercent
 
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-red-900/50 bg-card shadow-2xl">
+    <div className="overflow-hidden border-2 border-red-900/50 bg-card shadow-2xl">
       <div className="border-b border-red-900/30 bg-gradient-to-r from-red-950/30 via-red-900/10 to-red-950/30 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -77,7 +77,7 @@ export function MemeBattle() {
             </div>
           </div>
           {streak > 0 && (
-            <div className="flex items-center gap-2 rounded-full border border-red-500 bg-red-950/50 px-3 py-1.5">
+            <div className="flex items-center gap-2 border border-red-500 bg-red-950/50 px-3 py-1.5">
               <Flame className="h-4 w-4 text-red-500" />
               <span className="text-sm font-black text-red-400">{streak} STREAK</span>
             </div>
@@ -87,7 +87,7 @@ export function MemeBattle() {
 
       <div className="grid gap-4 p-6 md:grid-cols-2">
         <div
-          className={`group relative cursor-pointer overflow-hidden rounded-xl border-2 transition-all ${
+          className={`group relative cursor-pointer overflow-hidden border-2 transition-all ${
             voted === "left"
               ? "border-red-500 scale-[1.02] shadow-xl shadow-red-500/30"
               : voted === "right"
@@ -96,13 +96,33 @@ export function MemeBattle() {
           }`}
           onClick={() => handleVote("left")}
         >
-          <div className="aspect-square bg-black/50 p-6">
-            <div className="flex h-full flex-col items-center justify-between text-center">
-              <p className="font-sans text-lg font-black uppercase leading-tight" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>{battle.left.top}</p>
-              <div className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-red-900/50 bg-black overflow-hidden group-hover:border-red-500 group-hover:shadow-[0_0_30px_rgba(255,0,0,0.5)] transition-all">
-                <Image src="/insanity-wolf.png" alt="Insanity Wolf" width={96} height={96} className="object-cover" />
-              </div>
-              <p className="font-sans text-lg font-black uppercase leading-tight text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>{battle.left.bottom}</p>
+          <div className="relative aspect-square bg-black">
+            <Image
+              src="/insanity-wolf.png"
+              alt="Insanity Wolf"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
+            <div className="absolute inset-0 flex flex-col items-center justify-between p-6 text-center">
+              <p
+                className="text-xl md:text-2xl font-black uppercase leading-tight text-white"
+                style={{
+                  fontFamily: 'Impact, "Arial Black", sans-serif',
+                  textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                }}
+              >
+                {battle.left.top}
+              </p>
+              <p
+                className="text-xl md:text-2xl font-black uppercase leading-tight text-white"
+                style={{
+                  fontFamily: 'Impact, "Arial Black", sans-serif',
+                  textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                }}
+              >
+                {battle.left.bottom}
+              </p>
             </div>
           </div>
           <div className="border-t border-red-900/30 bg-red-950/30 px-4 py-3">
@@ -118,7 +138,7 @@ export function MemeBattle() {
               )}
             </div>
             {voted && (
-              <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-red-950">
+              <div className="mt-2 h-2 w-full overflow-hidden bg-red-950">
                 <div
                   className="h-full bg-red-500 transition-all duration-500"
                   style={{ width: `${leftPercent}%` }}
@@ -134,7 +154,7 @@ export function MemeBattle() {
         </div>
 
         <div
-          className={`group relative cursor-pointer overflow-hidden rounded-xl border-2 transition-all ${
+          className={`group relative cursor-pointer overflow-hidden border-2 transition-all ${
             voted === "right"
               ? "border-red-500 scale-[1.02] shadow-xl shadow-red-500/30"
               : voted === "left"
@@ -143,13 +163,33 @@ export function MemeBattle() {
           }`}
           onClick={() => handleVote("right")}
         >
-          <div className="aspect-square bg-black/50 p-6">
-            <div className="flex h-full flex-col items-center justify-between text-center">
-              <p className="font-sans text-lg font-black uppercase leading-tight" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>{battle.right.top}</p>
-              <div className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-red-900/50 bg-black overflow-hidden group-hover:border-red-500 group-hover:shadow-[0_0_30px_rgba(255,0,0,0.5)] transition-all">
-                <Image src="/insanity-wolf.png" alt="Insanity Wolf" width={96} height={96} className="object-cover" />
-              </div>
-              <p className="font-sans text-lg font-black uppercase leading-tight text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>{battle.right.bottom}</p>
+          <div className="relative aspect-square bg-black">
+            <Image
+              src="/insanity-wolf.png"
+              alt="Insanity Wolf"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
+            <div className="absolute inset-0 flex flex-col items-center justify-between p-6 text-center">
+              <p
+                className="text-xl md:text-2xl font-black uppercase leading-tight text-white"
+                style={{
+                  fontFamily: 'Impact, "Arial Black", sans-serif',
+                  textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                }}
+              >
+                {battle.right.top}
+              </p>
+              <p
+                className="text-xl md:text-2xl font-black uppercase leading-tight text-white"
+                style={{
+                  fontFamily: 'Impact, "Arial Black", sans-serif',
+                  textShadow: '-2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                }}
+              >
+                {battle.right.bottom}
+              </p>
             </div>
           </div>
           <div className="border-t border-red-900/30 bg-red-950/30 px-4 py-3">
@@ -165,7 +205,7 @@ export function MemeBattle() {
               )}
             </div>
             {voted && (
-              <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-red-950">
+              <div className="mt-2 h-2 w-full overflow-hidden bg-red-950">
                 <div
                   className="h-full bg-red-500 transition-all duration-500"
                   style={{ width: `${rightPercent}%` }}
