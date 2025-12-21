@@ -1,6 +1,7 @@
 import { Trophy } from "lucide-react"
 import { MemeGallery } from "@/components/meme-gallery"
 import { SiteNav } from "@/components/site-nav"
+import { ScrollToTop } from "@/components/scroll-to-top"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -48,6 +49,8 @@ export default function GalleryPage() {
           </p>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { Zap } from "lucide-react"
 import { MemeGenerator } from "@/components/meme-generator"
 import { SiteNav } from "@/components/site-nav"
+import { ScrollToTop } from "@/components/scroll-to-top"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -65,6 +66,8 @@ export default function CreatePage() {
           <p>Insanity Wolf - Born from chaos since 2009. DON'T follow this advice.</p>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   )
 }

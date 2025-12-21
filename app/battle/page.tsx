@@ -1,6 +1,7 @@
 import { Swords, Flame } from "lucide-react"
 import { MemeBattle } from "@/components/meme-battle"
 import { SiteNav } from "@/components/site-nav"
+import { ScrollToTop } from "@/components/scroll-to-top"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -66,6 +67,8 @@ export default function BattlePage() {
           </p>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   )
 }

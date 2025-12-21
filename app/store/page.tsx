@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ShoppingBag, Flame, Skull, Zap } from "lucide-react"
 import Image from "next/image"
 import { SiteNav } from "@/components/site-nav"
+import { ScrollToTop } from "@/components/scroll-to-top"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -148,6 +149,8 @@ export default function StorePage() {
           </p>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   )
 }

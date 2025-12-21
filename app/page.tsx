@@ -10,6 +10,7 @@ import { LiveFeed } from "@/components/live-feed"
 import { AchievementBadge } from "@/components/achievement-badge"
 import { MemeBattle } from "@/components/meme-battle"
 import { HomeNav } from "@/components/home-nav"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 export default function Home() {
   return (
@@ -775,6 +776,8 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   )
 }
