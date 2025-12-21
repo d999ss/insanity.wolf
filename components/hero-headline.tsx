@@ -4,7 +4,7 @@ import { useState, useEffect, ReactNode } from "react"
 
 const headlines = [
   { top: "DONATE BLOOD", bottom: "ALL OF IT!" },
-  { top: "FASTEST WAY TO A WOMAN'S HEART?", bottom: "THROUGH HER RIBCAGE!" },
+  { top: "WAY TO A WOMAN'S HEART?", bottom: "THROUGH HER RIBCAGE!" },
   { top: "FEED THE HOMELESS", bottom: "TO THE HOMELESS" },
 ]
 
