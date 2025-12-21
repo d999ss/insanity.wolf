@@ -11,7 +11,7 @@ import { AchievementBadge } from "@/components/achievement-badge"
 import { MemeBattle } from "@/components/meme-battle"
 import { HomeNav } from "@/components/home-nav"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { PageViewCounter } from "@/components/page-view-counter"
+import { ViralStats } from "@/components/viral-stats"
 
 export default function Home() {
   return (
@@ -94,44 +94,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section - BODY COUNT */}
-      <section id="stats" className="relative px-4 py-12 md:px-6 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 md:mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 border border-red-900/50 bg-red-950/30 px-4 py-2 text-xs font-bold uppercase tracking-wider">
-              <TrendingUp className="h-4 w-4 text-red-500" />
-              <span className="text-red-400">BODY COUNT</span>
-            </div>
-            <h2 className="text-balance font-sans text-3xl font-black uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-7xl" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-              HALL OF CARNAGE
-            </h2>
-            <p className="mx-auto mt-4 md:mt-6 max-w-2xl text-pretty text-base md:text-xl text-red-300/70">
-              The numbers don't lie. The DESTRUCTION is real.
-            </p>
-          </div>
-          <div className="relative overflow-hidden border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/20 to-black p-1">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,0,0,0.1)_0%,transparent_60%)]" />
-            <div className="relative grid gap-px bg-red-900/30 grid-cols-2 md:grid-cols-4">
-              <PageViewCounter />
-              <div className="bg-black p-6 md:p-12 text-center">
-                <div className="mb-2 md:mb-4 font-sans text-5xl md:text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>15+</div>
-                <div className="mb-1 md:mb-2 text-sm font-bold uppercase tracking-widest text-red-400">Years of Terror</div>
-                <p className="text-xs md:text-sm text-red-300/50">Born in the abyss, 2009</p>
-              </div>
-              <div className="bg-black p-6 md:p-12 text-center">
-                <div className="mb-2 md:mb-4 font-sans text-5xl md:text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>GOD</div>
-                <div className="mb-1 md:mb-2 text-sm font-bold uppercase tracking-widest text-red-400">TIER STATUS</div>
-                <p className="text-xs md:text-sm text-red-300/50">Untouchable. Unstoppable.</p>
-              </div>
-              <div className="bg-black p-6 md:p-12 text-center">
-                <div className="mb-2 md:mb-4 font-sans text-5xl md:text-7xl font-black text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>100%</div>
-                <div className="mb-1 md:mb-2 text-sm font-bold uppercase tracking-widest text-red-400">PURE CHAOS</div>
-                <p className="text-xs md:text-sm text-red-300/50">No mercy. No regrets.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Viral Stats Dashboard - Vercel Style */}
+      <ViralStats />
 
       {/* THE HALL OF INSANITY */}
       <section id="gallery" className="relative bg-black/50 px-4 py-12 md:px-6 md:py-24">
