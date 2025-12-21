@@ -2,10 +2,30 @@ import { NextRequest, NextResponse } from "next/server"
 
 // Printful product IDs for mockup generation
 const PRODUCTS = {
-  tshirt: { id: 71, variant: 4018, placement: "front" },      // Unisex Staple T-Shirt (Black, L)
-  hoodie: { id: 146, variant: 7854, placement: "front" },     // Unisex Heavy Blend Hoodie (Black, L)
-  mug: { id: 19, variant: 1320, placement: "default" },       // White Glossy Mug 11oz
-  poster: { id: 1, variant: 2103, placement: "default" },     // Enhanced Matte Paper Poster 18x24
+  tshirt: {
+    id: 71,
+    variant: 4018,
+    placement: "front",
+    position: { area_width: 1800, area_height: 2400, width: 1800, height: 1800, top: 300, left: 0 }
+  },
+  hoodie: {
+    id: 380,
+    variant: 10784,
+    placement: "front",
+    position: { area_width: 1800, area_height: 2400, width: 1400, height: 1400, top: 500, left: 200 }
+  },
+  mug: {
+    id: 19,
+    variant: 1320,
+    placement: "default",
+    position: { area_width: 1800, area_height: 1800, width: 1400, height: 1400, top: 200, left: 200 }
+  },
+  poster: {
+    id: 1,
+    variant: 2103,
+    placement: "default",
+    position: { area_width: 1800, area_height: 2400, width: 1600, height: 1600, top: 400, left: 100 }
+  },
 }
 
 export async function POST(request: NextRequest) {
@@ -33,14 +53,7 @@ export async function POST(request: NextRequest) {
             {
               placement: product.placement,
               image_url: imageUrl,
-              position: {
-                area_width: 1800,
-                area_height: 2400,
-                width: 1800,
-                height: 1800,
-                top: 300,
-                left: 0,
-              },
+              position: product.position,
             },
           ],
         }),
