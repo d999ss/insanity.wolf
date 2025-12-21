@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { ShoppingBag, Flame, Zap, Shirt, Star, TrendingUp, Package, Sparkles, Check } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { SiteNav } from "@/components/site-nav"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { MemePreview } from "@/components/meme-preview"
 
 const featuredProducts = [
   {
@@ -311,21 +311,11 @@ export default function StorePage() {
                       </span>
                     </div>
                   )}
-                  <div className="aspect-square bg-black/50 p-4 flex flex-col items-center justify-center relative overflow-hidden">
+                  <div className="aspect-square bg-black/50 p-4 flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent" />
-                    <p className="text-white font-black text-center text-sm md:text-base uppercase mb-2 relative z-10" style={{ fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '2px 2px 0 #000' }}>
-                      {product.topText}
-                    </p>
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      width={180}
-                      height={180}
-                      className="object-contain w-24 h-24 md:w-36 md:h-36 transition-transform duration-300 group-hover:scale-110 relative z-10"
-                    />
-                    <p className="text-white font-black text-center text-sm md:text-base uppercase mt-2 relative z-10" style={{ fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '2px 2px 0 #000' }}>
-                      {product.bottomText}
-                    </p>
+                    <div className="transition-transform duration-300 group-hover:scale-110 relative z-10">
+                      <MemePreview topText={product.topText} bottomText={product.bottomText} size="lg" />
+                    </div>
                   </div>
                   <div className="border-t border-red-900/30 bg-red-950/20 p-4 md:p-6">
                     <h3 className="mb-1 font-black uppercase text-base md:text-lg text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
@@ -385,20 +375,10 @@ export default function StorePage() {
                       </span>
                     </div>
                   )}
-                  <div className="aspect-square bg-black/30 p-2 md:p-4 flex flex-col items-center justify-center">
-                    <p className="text-white font-black text-center text-[10px] md:text-xs uppercase mb-1 relative z-10" style={{ fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '1px 1px 0 #000' }}>
-                      {product.topText}
-                    </p>
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      width={120}
-                      height={120}
-                      className="object-contain w-16 h-16 md:w-24 md:h-24 transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <p className="text-white font-black text-center text-[10px] md:text-xs uppercase mt-1 relative z-10" style={{ fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '1px 1px 0 #000' }}>
-                      {product.bottomText}
-                    </p>
+                  <div className="aspect-square bg-black/30 p-2 md:p-4 flex items-center justify-center">
+                    <div className="transition-transform duration-300 group-hover:scale-105">
+                      <MemePreview topText={product.topText} bottomText={product.bottomText} size="sm" />
+                    </div>
                   </div>
                   <div className="border-t border-red-900/30 bg-red-950/10 p-3 md:p-4">
                     <span className="text-[9px] md:text-[10px] uppercase text-red-400/50 font-mono">{product.category}</span>
