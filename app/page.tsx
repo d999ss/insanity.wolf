@@ -18,7 +18,7 @@ export default function Home() {
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl chaos-header">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <a href="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-            <span className="font-sans text-xl font-black uppercase tracking-tighter text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+            <span className="font-sans text-xl font-black uppercase tracking-tighter text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
               Insanity Wolf
             </span>
           </a>

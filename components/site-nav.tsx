@@ -11,7 +11,7 @@ export function SiteNav() {
           <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-red-900/50">
             <Image src="/insanity-wolf.png" alt="Wolf" width={32} height={32} className="object-cover" />
           </div>
-          <span className="font-sans text-xl font-black uppercase tracking-tighter text-red-500" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+          <span className="font-sans text-xl font-black uppercase tracking-tighter text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
             Insanity Wolf
           </span>
         </Link>
