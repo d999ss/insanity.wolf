@@ -26,6 +26,18 @@ const PRODUCTS = {
     placement: "default",
     position: { area_width: 1800, area_height: 2400, width: 1600, height: 1600, top: 400, left: 100 }
   },
+  stickers: {
+    id: 358,
+    variant: 10163,
+    placement: "default",
+    position: { area_width: 1800, area_height: 1800, width: 1400, height: 1400, top: 200, left: 200 }
+  },
+  phonecase: {
+    id: 175,
+    variant: 8503,
+    placement: "default",
+    position: { area_width: 1800, area_height: 1800, width: 1200, height: 1200, top: 300, left: 300 }
+  },
 }
 
 export async function POST(request: NextRequest) {
