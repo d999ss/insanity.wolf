@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import { Zap } from "lucide-react"
 
 const USERNAMES = [
@@ -29,6 +30,7 @@ const LOCATIONS = [
 ]
 
 export function LiveActivityFeed() {
+  const pathname = usePathname()
   const [activities, setActivities] = useState<Array<{
     id: number
     username: string
@@ -70,6 +72,11 @@ export function LiveActivityFeed() {
 
     return () => clearInterval(interval)
   }, [])
+
+  // Don't show on pages with the meme builder to avoid covering it
+  if (pathname === "/" || pathname === "/create") {
+    return null
+  }
 
   return (
     <div className="fixed left-4 top-1/3 z-30 hidden lg:block w-64">
