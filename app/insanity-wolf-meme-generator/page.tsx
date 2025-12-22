@@ -53,23 +53,80 @@ export default function MemeGeneratorPage() {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Insanity Wolf Meme Generator",
-    "url": "https://insanitywolf.com/insanity-wolf-meme-generator",
-    "description": "Create Insanity Wolf memes instantly with our free online generator",
-    "applicationCategory": "EntertainmentApplication",
-    "operatingSystem": "Any",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "10847",
-      "bestRating": "5"
-    }
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Insanity Wolf Meme Generator",
+        "url": "https://insanitywolf.com/insanity-wolf-meme-generator",
+        "description": "Create Insanity Wolf memes instantly with our free online generator",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "10847",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Insanity Wolf?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Insanity Wolf is an advice animal meme that originated on 4chan in 2009. It features a snarling wolf and provides absurdly extreme 'solutions' to everyday problems. It's rated 'GOD TIER' on meme databases and is one of the most iconic internet memes ever created."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this meme generator free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! Our Insanity Wolf meme generator is 100% free. No signup, no watermarks, no hidden fees. Create unlimited memes and download them instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I share my Insanity Wolf memes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every meme you create gets a unique shareable URL. Download the image or share the link directly to Twitter, Reddit, Discord, and more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I make an Insanity Wolf meme?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter a mundane problem in the top text field, add an absurdly extreme solution in the bottom text, then download or share your creation. The classic format is: everyday situation on top, insane overreaction on bottom."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What makes a good Insanity Wolf meme?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The best Insanity Wolf memes take a relatable everyday problem and suggest the most extreme, over-the-top solution imaginable. The humor comes from the absurd escalation. Keep text short, punchy, and memorable."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When was Insanity Wolf created?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Insanity Wolf was created in 2009 on 4chan's /b/ board. It quickly became one of the most popular advice animal memes and has been archived by the Library of Congress as part of internet cultural history."
+            }
+          }
+        ]
+      }
+    ]
   }
 
   return (
@@ -203,25 +260,43 @@ export default function MemeGeneratorPage() {
               className="text-xl font-black uppercase mb-6"
               style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
             >
-              About <span className="text-red-500">Insanity Wolf</span>
+              Frequently Asked <span className="text-red-500">Questions</span>
             </h2>
             <div className="space-y-4">
               <div className="border border-red-900/30 bg-red-950/10 p-4">
                 <h3 className="font-bold text-white mb-2">What is Insanity Wolf?</h3>
                 <p className="text-sm text-white/70">
-                  Insanity Wolf is an advice animal meme that originated on 4chan in 2009. It features a snarling wolf and provides absurdly extreme "solutions" to everyday problems. It's rated "GOD TIER" on meme databases.
+                  Insanity Wolf is an advice animal meme that originated on 4chan in 2009. It features a snarling wolf and provides absurdly extreme "solutions" to everyday problems. It's rated "GOD TIER" on meme databases and is one of the most iconic internet memes ever created.
                 </p>
               </div>
               <div className="border border-red-900/30 bg-red-950/10 p-4">
                 <h3 className="font-bold text-white mb-2">Is this meme generator free?</h3>
                 <p className="text-sm text-white/70">
-                  Yes! Our Insanity Wolf meme generator is 100% free. No signup, no watermarks, no hidden fees. Create unlimited memes.
+                  Yes! Our Insanity Wolf meme generator is 100% free. No signup, no watermarks, no hidden fees. Create unlimited memes and download them instantly.
                 </p>
               </div>
               <div className="border border-red-900/30 bg-red-950/10 p-4">
-                <h3 className="font-bold text-white mb-2">Can I share my memes?</h3>
+                <h3 className="font-bold text-white mb-2">Can I share my Insanity Wolf memes?</h3>
                 <p className="text-sm text-white/70">
                   Every meme you create gets a unique shareable URL. Download the image or share the link directly to Twitter, Reddit, Discord, and more.
+                </p>
+              </div>
+              <div className="border border-red-900/30 bg-red-950/10 p-4">
+                <h3 className="font-bold text-white mb-2">How do I make an Insanity Wolf meme?</h3>
+                <p className="text-sm text-white/70">
+                  Enter a mundane problem in the top text field, add an absurdly extreme solution in the bottom text, then download or share your creation. The classic format is: everyday situation on top, insane overreaction on bottom.
+                </p>
+              </div>
+              <div className="border border-red-900/30 bg-red-950/10 p-4">
+                <h3 className="font-bold text-white mb-2">What makes a good Insanity Wolf meme?</h3>
+                <p className="text-sm text-white/70">
+                  The best Insanity Wolf memes take a relatable everyday problem and suggest the most extreme, over-the-top solution imaginable. The humor comes from the absurd escalation. Keep text short, punchy, and memorable.
+                </p>
+              </div>
+              <div className="border border-red-900/30 bg-red-950/10 p-4">
+                <h3 className="font-bold text-white mb-2">When was Insanity Wolf created?</h3>
+                <p className="text-sm text-white/70">
+                  Insanity Wolf was created in 2009 on 4chan's /b/ board. It quickly became one of the most popular advice animal memes and has been archived by the Library of Congress as part of internet cultural history.
                 </p>
               </div>
             </div>

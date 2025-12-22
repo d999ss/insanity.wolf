@@ -1,45 +1,55 @@
-import { NextResponse } from "next/server"
-
-const SAMPLE_MEMES = [
-  { top: "WIFI IS DOWN", bottom: "DECLARE WAR ON ISP", date: new Date(Date.now() - 1000 * 60 * 60) },
-  { top: "BOSS SAYS WORK LATE", bottom: "BURN DOWN THE OFFICE", date: new Date(Date.now() - 1000 * 60 * 60 * 24) },
-  { top: "PIZZA ARRIVES COLD", bottom: "SUE ENTIRE COUNTRY OF ITALY", date: new Date(Date.now() - 1000 * 60 * 60 * 48) },
-  { top: "ALARM DIDN'T GO OFF", bottom: "BLAME TIMEZONE CONSPIRACY", date: new Date(Date.now() - 1000 * 60 * 60 * 72) },
-  { top: "COFFEE MACHINE BROKE", bottom: "SNORT THE GROUNDS", date: new Date(Date.now() - 1000 * 60 * 60 * 96) },
-]
+import { getNewestMemes } from "@/lib/memes"
 
 export async function GET() {
-  const baseUrl = "https://insanitywolf.com"
+  const memes = getNewestMemes(50)
+  const siteUrl = "https://insanitywolf.com"
 
-  const items = SAMPLE_MEMES.map((meme) => {
-    const memeId = Buffer.from(JSON.stringify({ top: meme.top, bottom: meme.bottom })).toString("base64")
-    const memeUrl = `${baseUrl}/meme/${memeId}`
+  const rssItems = memes
+    .map((meme) => {
+      const pubDate = new Date(meme.createdAt).toUTCString()
+      const title = `${meme.topText} / ${meme.bottomText}`
+      const description = `Insanity Wolf: ${meme.topText}. ${meme.bottomText}.`
+      const link = `${siteUrl}/meme/${meme.slug}`
+      const imageUrl = `${siteUrl}${meme.imageUrl}`
 
-    return `<item>
-      <title><![CDATA[${meme.top} / ${meme.bottom}]]></title>
-      <link>${memeUrl}</link>
-      <guid isPermaLink="true">${memeUrl}</guid>
-      <description><![CDATA[Insanity Wolf meme. Create your own at insanitywolf.com!]]></description>
-      <pubDate>${meme.date.toUTCString()}</pubDate>
+      return `
+    <item>
+      <title><![CDATA[${title}]]></title>
+      <link>${link}</link>
+      <guid isPermaLink="true">${link}</guid>
+      <description><![CDATA[${description}]]></description>
+      <pubDate>${pubDate}</pubDate>
+      <enclosure url="${imageUrl}" type="image/webp" />
+      <media:content url="${imageUrl}" type="image/webp" medium="image" />
+      <media:thumbnail url="${imageUrl}" />
     </item>`
-  }).join("")
+    })
+    .join("")
 
-  const feed = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>Insanity Wolf - Latest Memes</title>
-    <link>${baseUrl}</link>
-    <description>The most insane Insanity Wolf memes</description>
+    <link>${siteUrl}</link>
+    <description>The latest Insanity Wolf memes. Extreme solutions to everyday problems since 2009.</description>
     <language>en-us</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    ${items}
+    <atom:link href="${siteUrl}/feed" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>${siteUrl}/insanity-wolf-template.webp</url>
+      <title>Insanity Wolf</title>
+      <link>${siteUrl}</link>
+    </image>
+    ${rssItems}
   </channel>
 </rss>`
 
-  return new NextResponse(feed, {
+  return new Response(rss, {
     headers: {
-      "Content-Type": "application/xml",
-      "Cache-Control": "public, max-age=3600",
+      "Content-Type": "application/rss+xml; charset=utf-8",
+      "Cache-Control": "s-maxage=3600, stale-while-revalidate",
     },
   })
 }

@@ -280,6 +280,16 @@ export default function Home() {
                     Store
                   </a>
                 </li>
+                <li>
+                  <a href="/blog" className="font-mono text-sm text-red-400/70 hover:text-white transition-colors">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="/wiki" className="font-mono text-sm text-red-400/70 hover:text-white transition-colors">
+                    Wiki
+                  </a>
+                </li>
               </ul>
             </div>
 

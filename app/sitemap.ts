@@ -53,9 +53,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/store",
     "/merch",
     "/blog/history",
+    "/blog/what-is-insanity-wolf",
+    "/blog/how-to-make-insanity-wolf-meme",
+    "/blog/best-insanity-wolf-memes",
     "/templates",
     "/examples",
     "/random",
+    "/wiki",
+    "/feed",
+    "/insanity-wolf-vs-courage-wolf",
+    "/blog",
   ]
 
   const standardEntries: MetadataRoute.Sitemap = standardPages.map((page) => ({
