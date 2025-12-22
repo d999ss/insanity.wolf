@@ -74,7 +74,7 @@ export function LiveActivityFeed() {
   }, [])
 
   // Don't show on pages where it would block content
-  const hiddenPages = ["/", "/create", "/merch", "/store", "/battle", "/gallery", "/poster", "/widget"]
+  const hiddenPages = ["/", "/create", "/merch", "/store", "/battle", "/gallery", "/poster", "/widget", "/wiki"]
   if (hiddenPages.includes(pathname)) {
     return null
   }
