@@ -5,6 +5,8 @@ import { Analytics } from "@vercel/analytics/next"
 import { ViralShareWidget } from "@/components/viral-share-widget"
 import { TrendingBanner } from "@/components/trending-banner"
 import { EmailCapture } from "@/components/email-capture"
+import { ExitIntent } from "@/components/exit-intent"
+import { LiveCounter } from "@/components/live-counter"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -234,7 +236,9 @@ export default function RootLayout({
         <TrendingBanner />
         {children}
         <ViralShareWidget />
+        <LiveCounter />
         <EmailCapture />
+        <ExitIntent />
         <Analytics />
       </body>
     </html>

@@ -247,6 +247,18 @@ export default function StorePage() {
             <p className="mx-auto mt-3 md:mt-6 max-w-2xl text-sm md:text-xl text-red-300/80">
               Merch so EXTREME your coworkers will ask if you're okay.
             </p>
+
+            {/* Urgency Banner */}
+            <div className="mt-6 inline-flex items-center gap-3 bg-yellow-500/10 border border-yellow-500/50 px-4 py-2 animate-pulse">
+              <Flame className="h-4 w-4 text-yellow-500" />
+              <span className="text-yellow-400 text-xs md:text-sm font-bold uppercase">
+                <span className="text-yellow-300">47 people</span> viewing right now
+              </span>
+              <span className="text-yellow-500/50">|</span>
+              <span className="text-yellow-400 text-xs md:text-sm font-bold uppercase">
+                <span className="text-yellow-300">12 sold</span> in the last hour
+              </span>
+            </div>
           </div>
 
           {/* Stats Bar */}
