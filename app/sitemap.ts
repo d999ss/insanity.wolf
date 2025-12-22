@@ -1,50 +1,29 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://insanitywolf.com'
+  const baseUrl = "https://insanitywolf.com"
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/create`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/gallery`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/battle`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/wiki`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/store`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/merch`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
+  const staticPages = [
+    "",
+    "/gallery",
+    "/store",
+    "/merch",
+    "/history",
+    "/templates",
+    "/examples",
+    "/embed-code",
+    "/api-docs",
+    "/battle",
+    "/leaderboard",
+    "/meme-of-the-day",
   ]
+
+  const staticEntries = staticPages.map((page) => ({
+    url: `${baseUrl}${page}`,
+    lastModified: new Date(),
+    changeFrequency: page === "" ? "daily" as const : "weekly" as const,
+    priority: page === "" ? 1 : page === "/gallery" ? 0.9 : 0.8,
+  }))
+
+  return staticEntries
 }

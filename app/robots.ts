@@ -1,23 +1,12 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/_next/'],
-      },
-      {
-        userAgent: 'Googlebot',
-        allow: '/',
-      },
-      {
-        userAgent: 'Googlebot-Image',
-        allow: '/',
-      },
-    ],
-    sitemap: 'https://insanitywolf.com/sitemap.xml',
-    host: 'https://insanitywolf.com',
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/api/"],
+    },
+    sitemap: "https://insanitywolf.com/sitemap.xml",
   }
 }
