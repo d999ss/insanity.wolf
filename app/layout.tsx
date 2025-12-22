@@ -13,7 +13,6 @@ import { FloatingCreateButton } from "@/components/floating-create-button"
 import { ReferralWidget } from "@/components/referral-widget"
 import { StreakCounter } from "@/components/streak-counter"
 import { LeaderboardTeaser } from "@/components/leaderboard-teaser"
-import { AchievementPopup } from "@/components/achievement-popup"
 import { MemeOfTheDay } from "@/components/meme-of-the-day"
 import { SpinWheel } from "@/components/spin-wheel"
 import { ViralAlert } from "@/components/viral-alert"
@@ -272,7 +271,6 @@ export default function RootLayout({
         <ReferralWidget />
         <StreakCounter />
         <LeaderboardTeaser />
-        <AchievementPopup />
         <MemeOfTheDay />
         <SpinWheel />
         <ViralAlert />
