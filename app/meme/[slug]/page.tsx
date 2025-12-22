@@ -4,6 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowRight, Share2, Download, Users, Repeat2, ShoppingBag } from "lucide-react"
 import { getMemeBySlug, getRelatedMemes, incrementViews, getTopMemes } from "@/lib/memes"
+import { MakeMerchButton } from "@/components/make-merch-button"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -166,6 +167,15 @@ export default async function MemePage({ params }: Props) {
               <span className="text-red-500 mx-2">/</span>
               <span className="text-red-400">{meme.bottomText}</span>
             </h1>
+          </div>
+
+          {/* Make Merch - prominent CTA */}
+          <div className="mb-4">
+            <MakeMerchButton
+              imageUrl={meme.imageUrl}
+              topText={meme.topText}
+              bottomText={meme.bottomText}
+            />
           </div>
 
           {/* Action buttons */}
