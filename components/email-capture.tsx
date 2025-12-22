@@ -14,6 +14,10 @@ export function EmailCapture() {
     const subscribed = localStorage.getItem("email-subscribed")
     if (dismissed || subscribed) return
 
+    // Don't show on first page - only after navigation
+    const pageViews = parseInt(sessionStorage.getItem("insanity-page-views") || "0")
+    if (pageViews < 1) return
+
     // Show after 15 seconds
     const timer = setTimeout(() => {
       setIsVisible(true)

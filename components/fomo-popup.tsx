@@ -12,6 +12,10 @@ export function FOMOPopup() {
     const shown = sessionStorage.getItem("insanity-fomo-shown")
     if (shown) return
 
+    // Don't show on first page - only after navigation
+    const pageViews = parseInt(sessionStorage.getItem("insanity-page-views") || "0")
+    if (pageViews < 1) return
+
     // Show after 40 seconds
     const timer = setTimeout(() => {
       setStats({

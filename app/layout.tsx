@@ -30,6 +30,7 @@ import { WolfEyesCursor } from "@/components/wolf-eyes-cursor"
 import { ScratchCard } from "@/components/scratch-card"
 import { TestimonialsTicker } from "@/components/testimonials-ticker"
 import { UrgencyBar } from "@/components/urgency-bar"
+import { PageViewTracker } from "@/components/page-view-tracker"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -256,6 +257,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        <PageViewTracker />
         <TrendingBanner />
         <main className="pt-10 pb-28">
           {children}

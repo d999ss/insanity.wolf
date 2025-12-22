@@ -24,6 +24,10 @@ export function ExitIntent() {
     const shown = sessionStorage.getItem("exit-intent-shown")
     if (shown) return
 
+    // Don't show on first page - only after navigation
+    const pageViews = parseInt(sessionStorage.getItem("insanity-page-views") || "0")
+    if (pageViews < 1) return
+
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
         setIsVisible(true)
