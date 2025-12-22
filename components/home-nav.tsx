@@ -7,7 +7,8 @@ import Link from "next/link"
 
 const navLinks = [
   { href: "/gallery", label: "GALLERY" },
-  { href: "/battle", label: "BATTLE" },
+  { href: "/trending-insanity-wolf-memes", label: "TRENDING" },
+  { href: "/blog", label: "BLOG" },
   { href: "/wiki", label: "WIKI" },
   { href: "/store", label: "STORE" },
 ]
