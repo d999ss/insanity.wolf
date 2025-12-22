@@ -4,11 +4,11 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Insanity Wolf Wiki | History, Origins & Lore",
-  description: "The complete encyclopedia of Insanity Wolf. Learn the history, origins, and cultural impact of the legendary advice animal meme born in 2009.",
+  title: "Insanity Wolf Wiki | History, Origins & Library of Congress Archive",
+  description: "The complete encyclopedia of Insanity Wolf. History, origins, cultural impact, and official Library of Congress archived instances of the legendary advice animal meme.",
   openGraph: {
     title: "Insanity Wolf Wiki - The Complete Encyclopedia",
-    description: "Everything you need to know about the legendary meme. Origins, history, and cultural impact.",
+    description: "Everything you need to know about the legendary meme. Origins, history, cultural impact, and Library of Congress archive.",
   },
 }
 
@@ -290,6 +290,130 @@ export default function WikiPage() {
                     of internet humor's wilder days. While its shock-value style fell out of favor as platforms matured,
                     it remains one of the most recognizable and influential advice animals ever created.
                   </p>
+                </div>
+              </div>
+
+              {/* Library of Congress Archive */}
+              <div className="overflow-hidden border-2 border-red-900/50 bg-gradient-to-br from-black via-red-950/10 to-black">
+                <div className="border-b border-red-900/50 bg-red-950/30 px-6 py-4 md:px-8 md:py-6">
+                  <h2 className="font-sans text-xl md:text-2xl font-black uppercase tracking-tight text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>Library of Congress Archive</h2>
+                </div>
+                <div className="space-y-6 p-6 md:p-8 text-sm md:text-base leading-relaxed text-red-300/70">
+                  <p>
+                    Insanity Wolf has been officially preserved in the{" "}
+                    <strong className="text-white">U.S. Library of Congress Web Cultures Web Archive</strong> – a large-scale
+                    crawl of meme sites conducted by the LoC's Web Archiving Program. The meme is not cataloged as a traditional
+                    item but rather archived as part of web crawls preserving internet culture.
+                  </p>
+
+                  <div>
+                    <h3 className="mb-3 font-sans text-base md:text-lg font-bold text-white">Official Documentation</h3>
+                    <div className="space-y-3">
+                      <div className="border border-red-900/50 bg-black/50 p-4">
+                        <p className="font-bold text-white mb-1">LoC Blog: Data Mining Memes</p>
+                        <p className="text-xs text-red-300/60 mb-2">
+                          Official Library of Congress blog post listing Insanity Wolf as one of the top meme templates
+                          in the archived Meme Generator dataset.
+                        </p>
+                        <a
+                          href="https://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-red-400 hover:text-white transition-colors"
+                        >
+                          blogs.loc.gov/thesignal →
+                        </a>
+                      </div>
+                      <div className="border border-red-900/50 bg-black/50 p-4">
+                        <p className="font-bold text-white mb-1">LoC Dataset: MemeGenerator Metadata</p>
+                        <p className="text-xs text-red-300/60 mb-2">
+                          Official dataset documentation showing Insanity Wolf counts and archive methodology.
+                        </p>
+                        <a
+                          href="https://libraryofcongress.github.io/data-exploration/Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-red-400 hover:text-white transition-colors"
+                        >
+                          libraryofcongress.github.io →
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="mb-3 font-sans text-base md:text-lg font-bold text-white">Archived Instances</h3>
+                    <p className="mb-4">
+                      The Library of Congress Web Archive contains direct archived URLs for specific Insanity Wolf meme
+                      instances from memegenerator.net. These are preserved copies of original meme images and pages:
+                    </p>
+                    <div className="space-y-2 max-h-64 overflow-y-auto border border-red-900/50 bg-black/50 p-4">
+                      {[
+                        { id: "10179099", desc: "MONO! LOBO …" },
+                        { id: "10179175", desc: "tus amigos se vuelven …" },
+                        { id: "10179222", desc: "дрочи НА СУХУЮ!" },
+                        { id: "10179322", desc: "3 cartas en la mano? …" },
+                        { id: "10179437", desc: "tu vecino escucha reggaeton? …" },
+                        { id: "10179445", desc: "tu oponente usa …" },
+                      ].map((instance) => (
+                        <div key={instance.id} className="text-xs border-b border-red-900/30 pb-2 last:border-0">
+                          <p className="text-white font-mono">Instance #{instance.id}</p>
+                          <p className="text-red-300/50 italic truncate">{instance.desc}</p>
+                          <div className="flex gap-3 mt-1">
+                            <a
+                              href={`https://webarchive.loc.gov/all/0/http://cdn.meme.am/instances/250x250/${instance.id}.jpg`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-red-400 hover:text-white transition-colors"
+                            >
+                              [image]
+                            </a>
+                            <a
+                              href={`https://webarchive.loc.gov/all/0/http://memegenerator.net/instance/${instance.id}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-red-400 hover:text-white transition-colors"
+                            >
+                              [page]
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-3 text-xs text-red-300/50 italic">
+                      These are sample instances – the full archive contains 610+ Insanity Wolf memes.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="mb-3 font-sans text-base md:text-lg font-bold text-white">Dataset Access</h3>
+                    <p className="mb-3">
+                      The complete dataset of archived Insanity Wolf instances is available for research purposes:
+                    </p>
+                    <div className="border border-red-900/50 bg-black/50 p-4">
+                      <p className="font-bold text-white mb-1">Hugging Face: LoC Meme Generator Dataset</p>
+                      <p className="text-xs text-red-300/60 mb-2">
+                        Derivative dataset containing all archived meme URLs from the Library of Congress crawl,
+                        including every Insanity Wolf instance in CSV/JSON format.
+                      </p>
+                      <a
+                        href="https://huggingface.co/datasets/pszemraj/LoC-meme-generator"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-red-400 hover:text-white transition-colors"
+                      >
+                        huggingface.co/datasets/pszemraj/LoC-meme-generator →
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="border border-yellow-500/50 bg-yellow-950/20 p-4">
+                    <p className="text-xs text-yellow-300/80">
+                      <strong className="text-yellow-400">Note:</strong> The Library of Congress does not classify memes
+                      as traditional catalog items with descriptive records. Instead, they are archived as part of web
+                      crawls in the <strong>Web Cultures Web Archive</strong>, preserving internet culture for future research.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
