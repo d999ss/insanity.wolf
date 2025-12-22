@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { Confetti } from "./confetti"
 import { triggerViralCelebration } from "./viral-celebration"
 import { triggerWolfHowl } from "./wolf-howl"
 import { gainXP } from "./xp-system"
 import Image from "next/image"
-import { Download, Share2, Shirt, Shuffle, Flame, Palette, Check, Loader2, AlertCircle, Swords } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { Download, Share2, Shirt, Shuffle, Flame, Palette, Check, Loader2, AlertCircle, Swords, Link as LinkIcon } from "lucide-react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { TrendingTopics } from "./trending-topics"
 
 const backgroundOptions = [
@@ -24,10 +24,49 @@ export function MemeGenerator() {
   const [bottomText, setBottomText] = useState("")
   const [extremeMode, setExtremeMode] = useState(false)
   const [selectedBackground, setSelectedBackground] = useState("black")
-  const [shareStatus, setShareStatus] = useState<"idle" | "sharing" | "copied" | "error">("idle")
+  const [shareStatus, setShareStatus] = useState<"idle" | "sharing" | "copied" | "error" | "creating">("idle")
   const [showChallenge, setShowChallenge] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
+  const [memeUrl, setMemeUrl] = useState<string | null>(null)
+  const [memeImageUrl, setMemeImageUrl] = useState<string | null>(null)
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  // Handle remix URLs (pre-fill from query params)
+  useEffect(() => {
+    const top = searchParams.get("top")
+    const bottom = searchParams.get("bottom")
+    if (top) setTopText(top)
+    if (bottom) setBottomText(bottom)
+  }, [searchParams])
+
+  // Create meme via API and get shareable URL
+  const createMeme = useCallback(async (): Promise<{ url: string; imageUrl: string } | null> => {
+    if (!topText && !bottomText) return null
+
+    try {
+      setShareStatus("creating")
+      const response = await fetch("/api/meme", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topText, bottomText }),
+      })
+
+      if (!response.ok) throw new Error("Failed to create meme")
+
+      const data = await response.json()
+      const fullUrl = `https://insanitywolf.com${data.url}`
+      setMemeUrl(fullUrl)
+      setMemeImageUrl(data.imageUrl)
+      setShareStatus("idle")
+      return { url: fullUrl, imageUrl: data.imageUrl }
+    } catch (error) {
+      console.error("Error creating meme:", error)
+      setShareStatus("error")
+      setTimeout(() => setShareStatus("idle"), 2000)
+      return null
+    }
+  }, [topText, bottomText])
 
   const triggerConfetti = useCallback(() => {
     setShowConfetti(false)
@@ -300,7 +339,10 @@ export function MemeGenerator() {
     return lines.length
   }
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    // Create meme via API first (so it becomes a crawlable page)
+    const memeResult = await createMeme()
+
     const canvas = document.createElement("canvas")
     const ctx = canvas.getContext("2d")
     if (!ctx) return
@@ -335,10 +377,19 @@ export function MemeGenerator() {
       ctx.strokeText("insanitywolf.com", canvas.width - 10, canvas.height - 10)
       ctx.fillText("insanitywolf.com", canvas.width - 10, canvas.height - 10)
 
-      const link = document.createElement("a")
-      link.download = extremeMode ? "insanity-wolf-extreme-meme.png" : "insanity-wolf-meme.png"
-      link.href = canvas.toDataURL()
-      link.click()
+      // Download the server-generated image if available, else use canvas
+      if (memeResult?.imageUrl) {
+        const link = document.createElement("a")
+        link.download = "insanity-wolf-meme.webp"
+        link.href = memeResult.imageUrl
+        link.click()
+      } else {
+        const link = document.createElement("a")
+        link.download = extremeMode ? "insanity-wolf-extreme-meme.png" : "insanity-wolf-meme.png"
+        link.href = canvas.toDataURL()
+        link.click()
+      }
+
       triggerConfetti()
       triggerWolfHowl(50, 50)
       gainXP(15, "Meme Download")
@@ -651,41 +702,65 @@ export function MemeGenerator() {
                   </div>
                   <div className="flex gap-2 mt-2">
                     <button
-                      onClick={() => {
-                        const memeId = btoa(JSON.stringify({ top: topText, bottom: bottomText, extreme: extremeMode }))
-                        const shareUrl = `https://insanitywolf.com/meme/${memeId}`
-                        const text = encodeURIComponent(`${topText} / ${bottomText} 🐺 #InsanityWolf`)
-                        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(shareUrl)}`, '_blank')
+                      onClick={async () => {
+                        const result = await createMeme()
+                        if (result) {
+                          const text = encodeURIComponent(`${topText} / ${bottomText} 🐺 #InsanityWolf`)
+                          window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(result.url)}`, '_blank')
+                        }
                       }}
-                      className="flex-1 flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-[#1DA1F2]/20 border border-[#1DA1F2]/50 hover:bg-[#1DA1F2]/40 px-3 py-2 transition-colors"
+                      disabled={shareStatus === "creating"}
+                      className="flex-1 flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-[#1DA1F2]/20 border border-[#1DA1F2]/50 hover:bg-[#1DA1F2]/40 px-3 py-2 transition-colors disabled:opacity-50"
                     >
-                      <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                      {shareStatus === "creating" ? (
+                        <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                      ) : (
+                        <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                      )}
                       POST TO X
                     </button>
                     <button
-                      onClick={() => {
-                        const memeId = btoa(JSON.stringify({ top: topText, bottom: bottomText, extreme: extremeMode }))
-                        const shareUrl = `https://insanitywolf.com/meme/${memeId}`
-                        const title = encodeURIComponent(`${topText} / ${bottomText}`)
-                        window.open(`https://reddit.com/r/AdviceAnimals/submit?url=${encodeURIComponent(shareUrl)}&title=${title}`, '_blank')
+                      onClick={async () => {
+                        const result = await createMeme()
+                        if (result) {
+                          const title = encodeURIComponent(`${topText} / ${bottomText}`)
+                          window.open(`https://reddit.com/r/AdviceAnimals/submit?url=${encodeURIComponent(result.url)}&title=${title}`, '_blank')
+                        }
                       }}
-                      className="flex-1 flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-[#FF4500]/20 border border-[#FF4500]/50 hover:bg-[#FF4500]/40 px-3 py-2 transition-colors"
+                      disabled={shareStatus === "creating"}
+                      className="flex-1 flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-[#FF4500]/20 border border-[#FF4500]/50 hover:bg-[#FF4500]/40 px-3 py-2 transition-colors disabled:opacity-50"
                     >
-                      <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                      {shareStatus === "creating" ? (
+                        <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                      ) : (
+                        <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+                      )}
                       REDDIT
                     </button>
                     <button
-                      onClick={() => {
-                        const memeId = btoa(JSON.stringify({ top: topText, bottom: bottomText, extreme: extremeMode }))
-                        const shareUrl = `https://insanitywolf.com/meme/${memeId}`
-                        navigator.clipboard.writeText(shareUrl)
-                        setShareStatus("copied")
-                        setTimeout(() => setShareStatus("idle"), 2000)
+                      onClick={async () => {
+                        const result = await createMeme()
+                        if (result) {
+                          navigator.clipboard.writeText(result.url)
+                          setShareStatus("copied")
+                          setTimeout(() => setShareStatus("idle"), 2000)
+                        }
                       }}
-                      className="flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-green-600/20 border border-green-500/50 hover:bg-green-600/40 px-3 py-2 transition-colors"
+                      disabled={shareStatus === "creating"}
+                      className={`flex items-center justify-center gap-2 font-mono text-xs font-medium text-white px-3 py-2 transition-colors disabled:opacity-50 ${
+                        shareStatus === "copied"
+                          ? "bg-green-600 border border-green-500"
+                          : "bg-green-600/20 border border-green-500/50 hover:bg-green-600/40"
+                      }`}
                       title="Copy shareable link"
                     >
-                      <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                      {shareStatus === "creating" ? (
+                        <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                      ) : shareStatus === "copied" ? (
+                        <Check className="h-3.5 w-3.5" />
+                      ) : (
+                        <LinkIcon className="h-3.5 w-3.5" />
+                      )}
                     </button>
                   </div>
                   <button
@@ -873,33 +948,59 @@ export function MemeGenerator() {
 
             <div className="grid grid-cols-3 gap-2">
               <button
-                onClick={() => {
-                  const text = encodeURIComponent(`I challenge you to beat my Insanity Wolf meme: "${topText} / ${bottomText}" Can you do better? insanitywolf.com`)
-                  window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank')
+                onClick={async () => {
+                  const result = await createMeme()
+                  if (result) {
+                    const text = encodeURIComponent(`I challenge you to beat my Insanity Wolf meme: "${topText} / ${bottomText}" Can you do better? ${result.url}`)
+                    window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank')
+                  }
                 }}
-                className="flex items-center justify-center gap-2 bg-black border border-white/20 text-white p-3 hover:bg-white/10 transition-colors"
+                disabled={shareStatus === "creating"}
+                className="flex items-center justify-center gap-2 bg-black border border-white/20 text-white p-3 hover:bg-white/10 transition-colors disabled:opacity-50"
               >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                {shareStatus === "creating" ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : (
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                )}
               </button>
               <button
-                onClick={() => {
-                  window.open(`https://reddit.com/submit?title=${encodeURIComponent("I challenge you to beat this Insanity Wolf meme")}&url=https://insanitywolf.com`, '_blank')
+                onClick={async () => {
+                  const result = await createMeme()
+                  if (result) {
+                    window.open(`https://reddit.com/submit?title=${encodeURIComponent("I challenge you to beat this Insanity Wolf meme")}&url=${encodeURIComponent(result.url)}`, '_blank')
+                  }
                 }}
-                className="flex items-center justify-center gap-2 bg-[#FF4500] text-white p-3 hover:bg-[#FF5722] transition-colors"
+                disabled={shareStatus === "creating"}
+                className="flex items-center justify-center gap-2 bg-[#FF4500] text-white p-3 hover:bg-[#FF5722] transition-colors disabled:opacity-50"
               >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg>
+                {shareStatus === "creating" ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : (
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg>
+                )}
               </button>
               <button
-                onClick={() => {
-                  navigator.clipboard.writeText(`I challenge you to beat my Insanity Wolf meme: "${topText} / ${bottomText}" Can you do better? insanitywolf.com`)
-                  setShareStatus("copied")
-                  setTimeout(() => setShareStatus("idle"), 2000)
+                onClick={async () => {
+                  const result = await createMeme()
+                  if (result) {
+                    navigator.clipboard.writeText(`I challenge you to beat my Insanity Wolf meme: "${topText} / ${bottomText}" Can you do better? ${result.url}`)
+                    setShareStatus("copied")
+                    setTimeout(() => setShareStatus("idle"), 2000)
+                  }
                 }}
-                className={`flex items-center justify-center gap-2 p-3 transition-colors ${
+                disabled={shareStatus === "creating"}
+                className={`flex items-center justify-center gap-2 p-3 transition-colors disabled:opacity-50 ${
                   shareStatus === "copied" ? 'bg-green-600 text-white' : 'bg-yellow-500/20 border border-yellow-500/50 text-yellow-400 hover:bg-yellow-500/30'
                 }`}
               >
-                {shareStatus === "copied" ? <Check className="h-5 w-5" /> : <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>}
+                {shareStatus === "creating" ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : shareStatus === "copied" ? (
+                  <Check className="h-5 w-5" />
+                ) : (
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                )}
               </button>
             </div>
           </div>
