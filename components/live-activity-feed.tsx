@@ -73,8 +73,9 @@ export function LiveActivityFeed() {
     return () => clearInterval(interval)
   }, [])
 
-  // Don't show on pages with the meme builder to avoid covering it
-  if (pathname === "/" || pathname === "/create") {
+  // Don't show on pages where it would block content
+  const hiddenPages = ["/", "/create", "/merch", "/store", "/battle", "/gallery", "/poster", "/widget"]
+  if (hiddenPages.includes(pathname)) {
     return null
   }
 
