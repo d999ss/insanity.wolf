@@ -16,7 +16,7 @@ export function HomeNav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-red-900/30 bg-black/95 backdrop-blur-md">
+    <header className="fixed left-0 right-0 top-10 z-50 border-b border-red-900/30 bg-black/95 backdrop-blur-md">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link href="/" className="cursor-pointer hover:opacity-70 transition-opacity">
           <span className="font-mono text-sm font-medium uppercase tracking-tight text-white">
