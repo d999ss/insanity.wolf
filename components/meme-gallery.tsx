@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
-import { ThumbsUp, Share2, RefreshCw, X, ChevronLeft, ChevronRight, Download, Maximize2 } from "lucide-react"
+import { ThumbsUp, Share2, RefreshCw, X, ChevronLeft, ChevronRight, Download, Maximize2, Flame } from "lucide-react"
+import Link from "next/link"
 import Image from "next/image"
 import galleryImages from "@/lib/gallery-images.json"
 
@@ -132,17 +133,14 @@ export function MemeGallery() {
                   <ThumbsUp className="h-2.5 w-2.5 md:h-3 md:w-3" />
                   {meme.votes.toLocaleString()}
                 </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="p-1.5 md:p-2 text-red-400 hover:text-red-300 hover:bg-red-950/50"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    // Share functionality placeholder
-                  }}
+                <Link
+                  href="/"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex items-center gap-1 text-[10px] md:text-xs text-yellow-400 hover:text-yellow-300 font-bold uppercase transition-colors"
                 >
-                  <Share2 className="h-2.5 w-2.5 md:h-3 md:w-3" />
-                </Button>
+                  <Flame className="h-2.5 w-2.5 md:h-3 md:w-3" />
+                  <span className="hidden sm:inline">CREATE</span>
+                </Link>
               </div>
             </div>
           </div>

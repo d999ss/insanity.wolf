@@ -8,6 +8,11 @@ import { EmailCapture } from "@/components/email-capture"
 import { ExitIntent } from "@/components/exit-intent"
 import { LiveCounter } from "@/components/live-counter"
 import { SocialProof } from "@/components/social-proof"
+import { PWAPrompt } from "@/components/pwa-prompt"
+import { FloatingCreateButton } from "@/components/floating-create-button"
+import { ReferralWidget } from "@/components/referral-widget"
+import { StreakCounter } from "@/components/streak-counter"
+import { LeaderboardTeaser } from "@/components/leaderboard-teaser"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -241,6 +246,11 @@ export default function RootLayout({
         <SocialProof />
         <EmailCapture />
         <ExitIntent />
+        <PWAPrompt />
+        <FloatingCreateButton />
+        <ReferralWidget />
+        <StreakCounter />
+        <LeaderboardTeaser />
         <Analytics />
       </body>
     </html>

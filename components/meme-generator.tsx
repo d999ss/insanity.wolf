@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
+import { Confetti } from "./confetti"
 import Image from "next/image"
 import { Download, Share2, Shirt, Shuffle, Flame, Palette, Check, Loader2, AlertCircle, Swords } from "lucide-react"
 import { useRouter } from "next/navigation"
@@ -21,7 +22,13 @@ export function MemeGenerator() {
   const [selectedBackground, setSelectedBackground] = useState("black")
   const [shareStatus, setShareStatus] = useState<"idle" | "sharing" | "copied" | "error">("idle")
   const [showChallenge, setShowChallenge] = useState(false)
+  const [showConfetti, setShowConfetti] = useState(false)
   const router = useRouter()
+
+  const triggerConfetti = useCallback(() => {
+    setShowConfetti(false)
+    setTimeout(() => setShowConfetti(true), 10)
+  }, [])
 
   const memeReady = topText && bottomText
   const currentBg = backgroundOptions.find(bg => bg.id === selectedBackground) || backgroundOptions[0]
@@ -319,6 +326,7 @@ export function MemeGenerator() {
       link.download = extremeMode ? "insanity-wolf-extreme-meme.png" : "insanity-wolf-meme.png"
       link.href = canvas.toDataURL()
       link.click()
+      triggerConfetti()
     }
 
     if (extremeMode) {
@@ -791,6 +799,9 @@ export function MemeGenerator() {
           </div>
         </div>
       </div>
+
+      {/* Confetti */}
+      <Confetti trigger={showConfetti} />
 
       {/* Challenge Friend Modal */}
       {showChallenge && (

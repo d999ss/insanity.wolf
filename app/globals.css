@@ -886,6 +886,22 @@
     100% { transform: translateX(200%) skewX(-25deg); }
   }
 
+  /* CONFETTI ANIMATION */
+  @keyframes confetti {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-confetti {
+    animation: confetti linear forwards;
+  }
+
   /* INSANITY WOLF EYES */
   @keyframes wolfEyesIntense {
     0%, 90%, 100% {
