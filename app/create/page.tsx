@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { Zap } from "lucide-react"
 import { MemeGenerator } from "@/components/meme-generator"
 import { SiteNav } from "@/components/site-nav"
@@ -40,7 +41,9 @@ export default function CreatePage() {
           </div>
 
           {/* Meme Generator */}
-          <MemeGenerator />
+          <Suspense fallback={<div className="h-96 bg-red-950/20 animate-pulse border border-red-900/30" />}>
+            <MemeGenerator />
+          </Suspense>
 
           {/* Steps */}
           <div className="mt-8 md:mt-12 grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
