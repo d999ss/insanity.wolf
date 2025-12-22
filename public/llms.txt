@@ -43,11 +43,21 @@ Returns: { "success": true, "meme": { "top": "...", "bottom": "...", "shareUrl":
 - Meme Battles: https://insanitywolf.com/battle
 - Leaderboard: https://insanitywolf.com/leaderboard
 - Meme of the Day: https://insanitywolf.com/meme-of-the-day
+- Weekly Contest: https://insanitywolf.com/contest
 - History/Origin: https://insanitywolf.com/history
 - Templates: https://insanitywolf.com/templates
 - Examples: https://insanitywolf.com/examples
 - API Docs: https://insanitywolf.com/api-docs
+- Printable Posters: https://insanitywolf.com/poster
 - Merch Store: https://insanitywolf.com/merch
+
+## Topic-Specific Meme Pages
+- All Topics: https://insanitywolf.com/memes
+- Work Memes: https://insanitywolf.com/memes/work
+- Relationship Memes: https://insanitywolf.com/memes/relationship
+- Gaming Memes: https://insanitywolf.com/memes/gaming
+- Monday Memes: https://insanitywolf.com/memes/monday
+- Coffee Memes: https://insanitywolf.com/memes/coffee
 
 ## Contact
 Website: https://insanitywolf.com

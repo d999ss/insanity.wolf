@@ -16,6 +16,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/battle",
     "/leaderboard",
     "/meme-of-the-day",
+    "/contest",
+    "/memes",
+    "/memes/work",
+    "/memes/relationship",
+    "/memes/gaming",
+    "/memes/monday",
+    "/memes/coffee",
+    "/poster",
   ]
 
   const staticEntries = staticPages.map((page) => ({
