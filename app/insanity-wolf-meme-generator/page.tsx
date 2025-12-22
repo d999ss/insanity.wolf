@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
+import { Suspense } from "react"
 import { Zap, ArrowRight, Download, Share2, Clock } from "lucide-react"
 import { MemeGenerator } from "@/components/meme-generator"
 import { getTopMemes, getMemeCount } from "@/lib/memes"
@@ -130,7 +131,9 @@ export default function MemeGeneratorPage() {
 
           {/* Generator */}
           <section className="mb-12">
-            <MemeGenerator />
+            <Suspense fallback={<div className="h-96 bg-red-950/20 animate-pulse border border-red-900/30" />}>
+              <MemeGenerator />
+            </Suspense>
           </section>
 
           {/* How it works */}
