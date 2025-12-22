@@ -257,7 +257,9 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <TrendingBanner />
-        {children}
+        <main className="pt-10 pb-28">
+          {children}
+        </main>
         <ViralShareWidget />
         <LiveCounter />
         <SocialProof />
