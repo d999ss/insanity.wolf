@@ -382,41 +382,41 @@ export default function StorePage() {
                 ALL PRODUCTS
               </h2>
             </div>
-            <div className="grid gap-4 md:gap-6 grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {allProducts.map((product) => (
                 <div
                   key={product.id}
                   className="group relative overflow-hidden border border-red-900/30 bg-gradient-to-br from-black via-red-950/5 to-black transition-all hover:border-red-500/50"
                 >
                   {product.tag && (
-                    <div className="absolute top-2 right-2 z-10">
-                      <span className="bg-red-500 px-2 py-0.5 text-[10px] font-black uppercase text-white">
+                    <div className="absolute top-3 right-3 z-10">
+                      <span className="bg-red-500 px-2 py-1 text-[10px] font-black uppercase text-white">
                         {product.tag}
                       </span>
                     </div>
                   )}
-                  <div className="aspect-square bg-black/30 p-2 md:p-4 flex items-center justify-center">
+                  <div className="aspect-square bg-black/30 p-4 md:p-6 flex items-center justify-center">
                     <div className="transition-transform duration-300 group-hover:scale-105">
-                      <MemePreview topText={product.topText} bottomText={product.bottomText} size="sm" />
+                      <MemePreview topText={product.topText} bottomText={product.bottomText} size="md" />
                     </div>
                   </div>
-                  <div className="border-t border-red-900/30 bg-red-950/10 p-3 md:p-4">
-                    <span className="text-[9px] md:text-[10px] uppercase text-red-400/50 font-mono">{product.category}</span>
-                    <h3 className="mb-2 font-black uppercase text-xs md:text-sm text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
+                  <div className="border-t border-red-900/30 bg-red-950/10 p-4 md:p-5">
+                    <span className="text-[10px] md:text-xs uppercase text-red-400/50 font-mono">{product.category}</span>
+                    <h3 className="mb-3 font-black uppercase text-sm md:text-base text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
                       {product.name}
                     </h3>
                     <div className="flex items-center justify-between">
-                      <span className="text-base md:text-lg font-black text-red-500">${product.price}</span>
+                      <span className="text-lg md:text-xl font-black text-red-500">${product.price}</span>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => addToCart(product)}
-                        className={`h-7 md:h-8 gap-1 font-bold text-[10px] md:text-xs px-2 transition-all ${addedId === product.id ? 'bg-green-600 border-green-600 text-white hover:bg-green-600' : 'border-red-900/50 hover:bg-red-950/50 hover:border-red-500'}`}
+                        className={`h-8 md:h-9 gap-2 font-bold text-xs px-3 transition-all ${addedId === product.id ? 'bg-green-600 border-green-600 text-white hover:bg-green-600' : 'border-red-900/50 hover:bg-red-950/50 hover:border-red-500'}`}
                       >
                         {addedId === product.id ? (
-                          <><Check className="h-3 w-3" /></>
+                          <><Check className="h-4 w-4" /></>
                         ) : (
-                          <><ShoppingBag className="h-3 w-3" /><span className="hidden sm:inline">ADD</span></>
+                          <><ShoppingBag className="h-4 w-4" /> ADD</>
                         )}
                       </Button>
                     </div>

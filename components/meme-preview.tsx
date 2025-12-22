@@ -11,15 +11,15 @@ interface MemePreviewProps {
 
 export function MemePreview({ topText, bottomText, size = "md", className = "" }: MemePreviewProps) {
   const sizeClasses = {
-    sm: "w-[120px]",
-    md: "w-[180px]",
-    lg: "w-[250px]",
+    sm: "w-[160px]",
+    md: "w-[220px]",
+    lg: "w-[300px]",
   }
 
   const textSizes = {
-    sm: "text-[8px] md:text-[10px]",
-    md: "text-[10px] md:text-xs",
-    lg: "text-xs md:text-sm",
+    sm: "text-[10px] md:text-xs",
+    md: "text-xs md:text-sm",
+    lg: "text-sm md:text-base",
   }
 
   return (
