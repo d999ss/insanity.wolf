@@ -62,6 +62,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/wiki",
     "/feed",
     "/insanity-wolf-vs-courage-wolf",
+    "/insanity-wolf-vs-baby-insanity-wolf",
+    "/trending-insanity-wolf-memes",
     "/blog",
   ]
 
