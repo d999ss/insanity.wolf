@@ -7,6 +7,7 @@ import Link from "next/link"
 import { SiteNav } from "@/components/site-nav"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { MemePreview } from "@/components/meme-preview"
+import { CountdownTimer } from "@/components/countdown-timer"
 
 const featuredProducts = [
   {
@@ -230,9 +231,12 @@ export default function StorePage() {
   return (
     <div className="min-h-screen bg-black text-foreground">
       <SiteNav />
+      <div className="pt-16 md:pt-20">
+        <CountdownTimer />
+      </div>
 
       {/* Main Content */}
-      <main className="pt-20 md:pt-24 pb-10 md:pb-16 px-4 md:px-6">
+      <main className="pt-6 md:pt-10 pb-10 md:pb-16 px-4 md:px-6">
         <div className="mx-auto max-w-5xl">
           {/* Hero Section */}
           <div className="mb-8 md:mb-16 text-center">

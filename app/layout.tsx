@@ -7,6 +7,7 @@ import { TrendingBanner } from "@/components/trending-banner"
 import { EmailCapture } from "@/components/email-capture"
 import { ExitIntent } from "@/components/exit-intent"
 import { LiveCounter } from "@/components/live-counter"
+import { SocialProof } from "@/components/social-proof"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -237,6 +238,7 @@ export default function RootLayout({
         {children}
         <ViralShareWidget />
         <LiveCounter />
+        <SocialProof />
         <EmailCapture />
         <ExitIntent />
         <Analytics />
