@@ -217,29 +217,62 @@ export function MemeGallery() {
               </div>
 
               {/* Actions bar */}
-              <div className="border-t border-red-900/50 bg-red-950/30 p-4 flex items-center justify-between">
-                <div className="flex items-center gap-4">
+              <div className="border-t border-red-900/50 bg-red-950/30 p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-4">
+                    <Button
+                      onClick={() => handleVote(selectedMeme)}
+                      variant={voted.has(selectedMeme) ? "default" : "outline"}
+                      className={`gap-2 ${voted.has(selectedMeme) ? 'bg-red-900 hover:bg-red-800' : 'border-red-900/50 text-red-400 hover:bg-red-950/50'}`}
+                      disabled={voted.has(selectedMeme)}
+                    >
+                      <ThumbsUp className="h-4 w-4" />
+                      {memes[selectedMeme].votes.toLocaleString()} VOTES
+                    </Button>
+                    <span className="text-sm text-red-400/50">
+                      {selectedMeme + 1} of {memes.length}
+                    </span>
+                  </div>
                   <Button
-                    onClick={() => handleVote(selectedMeme)}
-                    variant={voted.has(selectedMeme) ? "default" : "outline"}
-                    className={`gap-2 ${voted.has(selectedMeme) ? 'bg-red-900 hover:bg-red-800' : 'border-red-900/50 text-red-400 hover:bg-red-950/50'}`}
-                    disabled={voted.has(selectedMeme)}
+                    variant="outline"
+                    className="gap-2 border-red-900/50 text-red-400 hover:bg-red-950/50"
+                    onClick={() => downloadMeme(memes[selectedMeme].src)}
                   >
-                    <ThumbsUp className="h-4 w-4" />
-                    {memes[selectedMeme].votes.toLocaleString()} VOTES
+                    <Download className="h-4 w-4" />
+                    DOWNLOAD
                   </Button>
-                  <span className="text-sm text-red-400/50">
-                    {selectedMeme + 1} of {memes.length}
-                  </span>
                 </div>
-                <Button
-                  variant="outline"
-                  className="gap-2 border-red-900/50 text-red-400 hover:bg-red-950/50"
-                  onClick={() => downloadMeme(memes[selectedMeme].src)}
-                >
-                  <Download className="h-4 w-4" />
-                  DOWNLOAD
-                </Button>
+
+                {/* Share buttons */}
+                <div className="flex items-center gap-2 pt-3 border-t border-red-900/30">
+                  <span className="text-xs text-red-400/50 uppercase mr-2">Share:</span>
+                  <button
+                    onClick={() => {
+                      const text = encodeURIComponent("This Insanity Wolf meme is absolutely unhinged! 🐺 insanitywolf.com #InsanityWolf")
+                      window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank')
+                    }}
+                    className="flex items-center justify-center w-8 h-8 bg-black border border-white/20 text-white hover:bg-white/10 transition-colors"
+                  >
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </button>
+                  <button
+                    onClick={() => {
+                      window.open(`https://reddit.com/submit?url=https://insanitywolf.com/gallery&title=${encodeURIComponent("This Insanity Wolf meme is unhinged")}`, '_blank')
+                    }}
+                    className="flex items-center justify-center w-8 h-8 bg-[#FF4500] text-white hover:bg-[#FF5722] transition-colors"
+                  >
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg>
+                  </button>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText("Check out this Insanity Wolf meme! 🐺 insanitywolf.com/gallery")
+                    }}
+                    className="flex items-center justify-center gap-1 px-3 h-8 bg-red-950/50 border border-red-900/30 text-red-400 hover:bg-red-950 text-xs transition-colors"
+                  >
+                    <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                    COPY
+                  </button>
+                </div>
               </div>
             </div>
           )}
