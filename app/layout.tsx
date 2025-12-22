@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ViralShareWidget } from "@/components/viral-share-widget"
 import { TrendingBanner } from "@/components/trending-banner"
+import { EmailCapture } from "@/components/email-capture"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -233,6 +234,7 @@ export default function RootLayout({
         <TrendingBanner />
         {children}
         <ViralShareWidget />
+        <EmailCapture />
         <Analytics />
       </body>
     </html>
