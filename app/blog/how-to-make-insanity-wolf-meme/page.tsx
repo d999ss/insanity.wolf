@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Calendar, Clock, CheckCircle } from "lucide-react"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export const metadata: Metadata = {
   title: "How to Make an Insanity Wolf Meme | Step-by-Step Guide 2024",
@@ -93,6 +94,13 @@ export default function HowToMakePage() {
         </nav>
 
         <article className="max-w-4xl mx-auto px-4 py-12">
+          <Breadcrumbs
+            items={[
+              { label: "Blog", href: "/blog" },
+              { label: "How to Make a Meme" },
+            ]}
+          />
+
           {/* Header */}
           <header className="mb-12">
             <div className="flex items-center gap-4 text-sm text-white/50 mb-4">

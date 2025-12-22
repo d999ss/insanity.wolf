@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Calendar, Clock, Star, Trophy } from "lucide-react"
 import { getTopMemes } from "@/lib/memes"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export const metadata: Metadata = {
   title: "50 Best Insanity Wolf Memes of All Time | Classic & New",
@@ -87,6 +88,13 @@ export default function BestMemesPage() {
         </nav>
 
         <article className="max-w-4xl mx-auto px-4 py-12">
+          <Breadcrumbs
+            items={[
+              { label: "Blog", href: "/blog" },
+              { label: "Best Memes" },
+            ]}
+          />
+
           {/* Header */}
           <header className="mb-12">
             <div className="flex items-center gap-4 text-sm text-white/50 mb-4">

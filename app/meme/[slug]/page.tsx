@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import { ArrowRight, Share2, Download, Users, Repeat2, ShoppingBag } from "lucide-react"
 import { getMemeBySlug, getRelatedMemes, incrementViews, getTopMemes } from "@/lib/memes"
 import { MakeMerchButton } from "@/components/make-merch-button"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -125,6 +126,13 @@ export default async function MemePage({ params }: Props) {
         </nav>
 
         <main className="max-w-4xl mx-auto px-4 py-8">
+          <Breadcrumbs
+            items={[
+              { label: "Gallery", href: "/gallery" },
+              { label: `${meme.topText.slice(0, 20)}...` },
+            ]}
+          />
+
           {/* Meme stats */}
           <div className="flex items-center justify-between mb-4 text-sm text-white/50">
             <div className="flex items-center gap-4">
