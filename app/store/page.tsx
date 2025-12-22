@@ -8,6 +8,7 @@ import { SiteNav } from "@/components/site-nav"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { MemePreview } from "@/components/meme-preview"
 import { CountdownTimer } from "@/components/countdown-timer"
+import { StockUrgency } from "@/components/stock-urgency"
 
 const featuredProducts = [
   {
@@ -337,7 +338,10 @@ export default function StorePage() {
                     <h3 className="mb-1 font-black uppercase text-base md:text-lg text-white" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
                       {product.name}
                     </h3>
-                    <p className="text-xs text-red-400/60 mb-3 line-clamp-2">{product.description}</p>
+                    <p className="text-xs text-red-400/60 mb-2 line-clamp-2">{product.description}</p>
+                    <div className="mb-3">
+                      <StockUrgency productName={product.name} />
+                    </div>
                     <div className="flex items-center gap-2 mb-3">
                       {product.colors.map((color, cidx) => (
                         <span key={cidx} className="text-[10px] uppercase text-red-400/50 border border-red-900/30 px-2 py-0.5">

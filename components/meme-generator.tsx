@@ -2,6 +2,9 @@
 
 import { useState, useCallback } from "react"
 import { Confetti } from "./confetti"
+import { triggerViralCelebration } from "./viral-celebration"
+import { triggerWolfHowl } from "./wolf-howl"
+import { gainXP } from "./xp-system"
 import Image from "next/image"
 import { Download, Share2, Shirt, Shuffle, Flame, Palette, Check, Loader2, AlertCircle, Swords } from "lucide-react"
 import { useRouter } from "next/navigation"
@@ -327,6 +330,13 @@ export function MemeGenerator() {
       link.href = canvas.toDataURL()
       link.click()
       triggerConfetti()
+      triggerWolfHowl(50, 50)
+      gainXP(15, "Meme Download")
+
+      // 30% chance to trigger viral celebration
+      if (Math.random() > 0.7) {
+        setTimeout(() => triggerViralCelebration(), 1500)
+      }
     }
 
     if (extremeMode) {

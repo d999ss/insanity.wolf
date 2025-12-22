@@ -19,6 +19,10 @@ import { SpinWheel } from "@/components/spin-wheel"
 import { ViralAlert } from "@/components/viral-alert"
 import { DailyChallenge } from "@/components/daily-challenge"
 import { NotificationPrompt } from "@/components/notification-prompt"
+import { XPSystem } from "@/components/xp-system"
+import { ViralCelebration } from "@/components/viral-celebration"
+import { WolfHowl } from "@/components/wolf-howl"
+import { ComebackBonus } from "@/components/comeback-bonus"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -263,6 +267,10 @@ export default function RootLayout({
         <ViralAlert />
         <DailyChallenge />
         <NotificationPrompt />
+        <XPSystem />
+        <ViralCelebration />
+        <WolfHowl />
+        <ComebackBonus />
         <Analytics />
       </body>
     </html>
