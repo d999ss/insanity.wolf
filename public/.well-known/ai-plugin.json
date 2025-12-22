@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Insanity Wolf Meme Generator",
+  "name_for_model": "insanity_wolf",
+  "description_for_human": "Create Insanity Wolf memes - the classic advice animal meme from 2009. Enter a problem, get an insane solution.",
+  "description_for_model": "Insanity Wolf meme generator. Use this to create advice animal memes with the classic Insanity Wolf format: mundane problem on top, extreme/absurd solution on bottom. The API generates shareable meme URLs. Example: top='WIFI IS DOWN', bottom='DECLARE WAR ON ISP'. No authentication required.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://insanitywolf.com/openapi.json"
+  },
+  "logo_url": "https://insanitywolf.com/insanity-wolf-template.webp",
+  "contact_email": "hello@insanitywolf.com",
+  "legal_info_url": "https://insanitywolf.com"
+}

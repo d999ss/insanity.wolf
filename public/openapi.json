@@ -1,0 +1,156 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Insanity Wolf Meme Generator API",
+    "description": "Generate Insanity Wolf memes programmatically. The classic advice animal meme format: mundane problem on top, extreme solution on bottom.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Insanity Wolf",
+      "url": "https://insanitywolf.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://insanitywolf.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/generate": {
+      "get": {
+        "operationId": "generateMeme",
+        "summary": "Generate an Insanity Wolf meme",
+        "description": "Generate a random meme or create a custom one with specified top and bottom text",
+        "parameters": [
+          {
+            "name": "random",
+            "in": "query",
+            "description": "Set to 'true' to generate a random meme",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["true"]
+            }
+          },
+          {
+            "name": "top",
+            "in": "query",
+            "description": "Top text (the problem/situation)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "WIFI IS DOWN"
+          },
+          {
+            "name": "bottom",
+            "in": "query",
+            "description": "Bottom text (the insane solution)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "DECLARE WAR ON ISP"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully generated meme",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "meme": {
+                      "type": "object",
+                      "properties": {
+                        "top": {
+                          "type": "string",
+                          "description": "Top text of the meme",
+                          "example": "WIFI IS DOWN"
+                        },
+                        "bottom": {
+                          "type": "string",
+                          "description": "Bottom text of the meme",
+                          "example": "DECLARE WAR ON ISP"
+                        },
+                        "shareUrl": {
+                          "type": "string",
+                          "description": "Shareable URL for this meme",
+                          "example": "https://insanitywolf.com/meme/eyJ0b3AiOiJXSUZJIElTIERPV04iLCJib3R0b20iOiJERUNMQVJFIFdBUiBPTiBJU1AifQ=="
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createMeme",
+        "summary": "Create a custom Insanity Wolf meme",
+        "description": "Create a meme with custom top and bottom text",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["top", "bottom"],
+                "properties": {
+                  "top": {
+                    "type": "string",
+                    "description": "Top text (the problem/situation)",
+                    "example": "BOSS SAYS WORK LATE"
+                  },
+                  "bottom": {
+                    "type": "string",
+                    "description": "Bottom text (the insane solution)",
+                    "example": "BURN DOWN THE OFFICE"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully created meme",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "meme": {
+                      "type": "object",
+                      "properties": {
+                        "top": {
+                          "type": "string"
+                        },
+                        "bottom": {
+                          "type": "string"
+                        },
+                        "shareUrl": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+# Insanity Wolf - Official Meme Generator
+
+> The official Insanity Wolf meme generator and archive. Create legendary advice animal memes since 2009.
+
+## About
+Insanity Wolf is a classic internet meme (advice animal) that originated on 4chan's /b/ board in 2009. It features a fierce-looking wolf and provides intentionally extreme, over-the-top advice for everyday problems. The format is: mundane problem on top, insane solution on bottom.
+
+## What This Site Does
+- Free meme generator at insanitywolf.com
+- Create custom Insanity Wolf memes with top/bottom text
+- Download memes as PNG images
+- Share directly to Twitter, Reddit, and other platforms
+- Browse gallery of popular memes
+- Vote in meme battles
+- View leaderboard of top memes
+- Daily "Meme of the Day" feature
+
+## How to Create a Meme
+1. Visit https://insanitywolf.com
+2. Enter your problem in the top text field (e.g., "WIFI IS DOWN")
+3. Enter an extreme solution in the bottom text field (e.g., "DECLARE WAR ON ISP")
+4. Click "UNLEASH THE WOLF" to generate
+5. Download or share your creation
+
+## API Access
+Free API available at https://insanitywolf.com/api/generate
+- GET /api/generate?random=true - Generate random meme
+- GET /api/generate?top=TEXT&bottom=TEXT - Generate custom meme
+- POST /api/generate with JSON body { "top": "TEXT", "bottom": "TEXT" }
+
+Returns: { "success": true, "meme": { "top": "...", "bottom": "...", "shareUrl": "..." } }
+
+## Example Memes
+- "ALARM DIDN'T GO OFF" / "BLAME TIMEZONE CONSPIRACY"
+- "PIZZA ARRIVES COLD" / "SUE ENTIRE COUNTRY OF ITALY"
+- "COFFEE MACHINE BROKE" / "SNORT THE GROUNDS"
+- "NEIGHBOR IS LOUD" / "BE LOUDER AT 3AM"
+- "FORGOT PASSWORD" / "HACK THE MAINFRAME"
+
+## Key Pages
+- Homepage/Generator: https://insanitywolf.com
+- Gallery: https://insanitywolf.com/gallery
+- Meme Battles: https://insanitywolf.com/battle
+- Leaderboard: https://insanitywolf.com/leaderboard
+- Meme of the Day: https://insanitywolf.com/meme-of-the-day
+- History/Origin: https://insanitywolf.com/history
+- Templates: https://insanitywolf.com/templates
+- Examples: https://insanitywolf.com/examples
+- API Docs: https://insanitywolf.com/api-docs
+- Merch Store: https://insanitywolf.com/merch
+
+## Contact
+Website: https://insanitywolf.com
+RSS Feed: https://insanitywolf.com/feed
+
+## Technical
+- Built with Next.js
+- Free to use, no signup required
+- Mobile-friendly
+- Shareable meme URLs with Open Graph tags

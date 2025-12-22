@@ -1,0 +1,37 @@
+# Insanity Wolf - robots.txt
+# https://insanitywolf.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# AI/LLM Crawlers - Welcome!
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Sitemaps
+Sitemap: https://insanitywolf.com/sitemap.xml
+
+# LLM Documentation
+# For AI assistants: see /llms.txt and /llms-full.txt for site documentation
