@@ -8,6 +8,7 @@ import { gainXP } from "./xp-system"
 import Image from "next/image"
 import { Download, Share2, Shirt, Shuffle, Flame, Palette, Check, Loader2, AlertCircle, Swords } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { TrendingTopics } from "./trending-topics"
 
 const backgroundOptions = [
   { id: "black", name: "Black", color: "#000000" },
@@ -325,6 +326,15 @@ export function MemeGenerator() {
         wrapText(ctx, bottomText.toUpperCase(), canvas.width / 2, bottomY, maxWidth, lineHeight, true)
       }
 
+      // Add watermark
+      ctx.fillStyle = "rgba(255, 255, 255, 0.7)"
+      ctx.strokeStyle = "rgba(0, 0, 0, 0.5)"
+      ctx.lineWidth = 2
+      ctx.font = "bold 14px Arial, sans-serif"
+      ctx.textAlign = "right"
+      ctx.strokeText("insanitywolf.com", canvas.width - 10, canvas.height - 10)
+      ctx.fillText("insanitywolf.com", canvas.width - 10, canvas.height - 10)
+
       const link = document.createElement("a")
       link.download = extremeMode ? "insanity-wolf-extreme-meme.png" : "insanity-wolf-meme.png"
       link.href = canvas.toDataURL()
@@ -405,6 +415,15 @@ export function MemeGenerator() {
         const bottomY = canvas.height - 40
         wrapText(ctx, bottomText.toUpperCase(), canvas.width / 2, bottomY, maxWidth, lineHeight, true)
       }
+
+      // Add watermark
+      ctx.fillStyle = "rgba(255, 255, 255, 0.7)"
+      ctx.strokeStyle = "rgba(0, 0, 0, 0.5)"
+      ctx.lineWidth = 2
+      ctx.font = "bold 14px Arial, sans-serif"
+      ctx.textAlign = "right"
+      ctx.strokeText("insanitywolf.com", canvas.width - 10, canvas.height - 10)
+      ctx.fillText("insanitywolf.com", canvas.width - 10, canvas.height - 10)
 
       try {
         const blob = await new Promise<Blob>((resolve, reject) => {
@@ -633,8 +652,10 @@ export function MemeGenerator() {
                   <div className="flex gap-2 mt-2">
                     <button
                       onClick={() => {
-                        const text = encodeURIComponent(`${topText} / ${bottomText} 🐺 Made at insanitywolf.com #InsanityWolf`)
-                        window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank')
+                        const memeId = btoa(JSON.stringify({ top: topText, bottom: bottomText, extreme: extremeMode }))
+                        const shareUrl = `https://insanitywolf.com/meme/${memeId}`
+                        const text = encodeURIComponent(`${topText} / ${bottomText} 🐺 #InsanityWolf`)
+                        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(shareUrl)}`, '_blank')
                       }}
                       className="flex-1 flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-[#1DA1F2]/20 border border-[#1DA1F2]/50 hover:bg-[#1DA1F2]/40 px-3 py-2 transition-colors"
                     >
@@ -643,8 +664,10 @@ export function MemeGenerator() {
                     </button>
                     <button
                       onClick={() => {
+                        const memeId = btoa(JSON.stringify({ top: topText, bottom: bottomText, extreme: extremeMode }))
+                        const shareUrl = `https://insanitywolf.com/meme/${memeId}`
                         const title = encodeURIComponent(`${topText} / ${bottomText}`)
-                        window.open(`https://reddit.com/submit?url=https://insanitywolf.com&title=${title}`, '_blank')
+                        window.open(`https://reddit.com/r/AdviceAnimals/submit?url=${encodeURIComponent(shareUrl)}&title=${title}`, '_blank')
                       }}
                       className="flex-1 flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-[#FF4500]/20 border border-[#FF4500]/50 hover:bg-[#FF4500]/40 px-3 py-2 transition-colors"
                     >
@@ -653,13 +676,16 @@ export function MemeGenerator() {
                     </button>
                     <button
                       onClick={() => {
-                        navigator.clipboard.writeText(`${topText} / ${bottomText} 🐺 insanitywolf.com`)
+                        const memeId = btoa(JSON.stringify({ top: topText, bottom: bottomText, extreme: extremeMode }))
+                        const shareUrl = `https://insanitywolf.com/meme/${memeId}`
+                        navigator.clipboard.writeText(shareUrl)
                         setShareStatus("copied")
                         setTimeout(() => setShareStatus("idle"), 2000)
                       }}
-                      className="flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-red-950/50 border border-red-900/30 hover:bg-red-950 px-3 py-2 transition-colors"
+                      className="flex items-center justify-center gap-2 font-mono text-xs font-medium text-white bg-green-600/20 border border-green-500/50 hover:bg-green-600/40 px-3 py-2 transition-colors"
+                      title="Copy shareable link"
                     >
-                      <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                      <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
                     </button>
                   </div>
                   <button
@@ -703,6 +729,8 @@ export function MemeGenerator() {
                 </li>
               </ul>
             </div>
+
+            <TrendingTopics onSelect={(topic) => setTopText(topic)} />
           </div>
 
           {/* Right side - Preview */}
