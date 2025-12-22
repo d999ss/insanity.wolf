@@ -60,7 +60,7 @@ export function StreakCounter() {
 
   return (
     <div
-      className={`fixed top-20 left-4 z-40 animate-in slide-in-from-left duration-500 ${isNew ? "animate-bounce" : ""}`}
+      className={`fixed top-28 left-4 z-40 animate-in slide-in-from-left duration-500 ${isNew ? "animate-bounce" : ""}`}
     >
       <div className={`bg-gradient-to-r ${getStreakColor()} text-white px-3 py-2 shadow-lg flex items-center gap-2`}>
         <div className="relative">
