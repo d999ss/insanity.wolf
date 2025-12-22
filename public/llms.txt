@@ -59,6 +59,19 @@ Returns: { "success": true, "meme": { "top": "...", "bottom": "...", "shareUrl":
 - Monday Memes: https://insanitywolf.com/memes/monday
 - Coffee Memes: https://insanitywolf.com/memes/coffee
 
+## Comparisons (vs Other Generators)
+- Comparison Hub: https://insanitywolf.com/vs
+- vs Imgflip: https://insanitywolf.com/vs/imgflip
+- vs Kapwing: https://insanitywolf.com/vs/kapwing
+- vs Make a Meme: https://insanitywolf.com/vs/makeameme
+- vs Meme Generator: https://insanitywolf.com/vs/memegenerator
+
+## Tools & Integrations
+- Browser Bookmarklet: https://insanitywolf.com/tools/bookmarklet
+- Discord Bot: https://insanitywolf.com/discord-bot
+- Chrome Extension: https://insanitywolf.com/chrome-extension
+- Embed Code: https://insanitywolf.com/embed-code
+
 ## Contact
 Website: https://insanitywolf.com
 RSS Feed: https://insanitywolf.com/feed

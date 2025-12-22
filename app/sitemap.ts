@@ -24,6 +24,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/memes/monday",
     "/memes/coffee",
     "/poster",
+    "/vs",
+    "/vs/imgflip",
+    "/vs/kapwing",
+    "/vs/makeameme",
+    "/vs/memegenerator",
+    "/tools/bookmarklet",
+    "/discord-bot",
+    "/chrome-extension",
+    "/widget",
+    "/ai-generator",
+    "/random",
+    "/testimonials",
   ]
 
   const staticEntries = staticPages.map((page) => ({
