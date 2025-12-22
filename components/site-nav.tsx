@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import Link from "next/link"
@@ -14,6 +14,14 @@ const navLinks = [
 
 export function SiteNav() {
   const [open, setOpen] = useState(false)
+  const [onlineCount, setOnlineCount] = useState(853)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOnlineCount(prev => prev + Math.floor(Math.random() * 21) - 10)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <header className="fixed left-0 right-0 top-10 z-50 border-b border-red-900/30 bg-black/95 backdrop-blur-md">
@@ -23,6 +31,16 @@ export function SiteNav() {
             INSANITYWOLF.COM
           </span>
         </Link>
+
+        {/* Online Counter */}
+        <div className="hidden md:flex items-center gap-1.5 text-xs">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          <span className="text-green-400 font-mono font-bold">{onlineCount}</span>
+          <span className="text-white/50 font-mono">ONLINE</span>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-6 md:flex">

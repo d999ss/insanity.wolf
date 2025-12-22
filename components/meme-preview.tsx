@@ -11,9 +11,9 @@ interface MemePreviewProps {
 
 export function MemePreview({ topText, bottomText, size = "md", className = "" }: MemePreviewProps) {
   const sizeClasses = {
-    sm: "w-full max-w-[120px]",
-    md: "w-full max-w-[180px]",
-    lg: "w-full max-w-[250px]",
+    sm: "w-[120px]",
+    md: "w-[180px]",
+    lg: "w-[250px]",
   }
 
   const textSizes = {
