@@ -23,6 +23,13 @@ import { XPSystem } from "@/components/xp-system"
 import { ViralCelebration } from "@/components/viral-celebration"
 import { WolfHowl } from "@/components/wolf-howl"
 import { ComebackBonus } from "@/components/comeback-bonus"
+import { LiveActivityFeed } from "@/components/live-activity-feed"
+import { BreakingNews } from "@/components/breaking-news"
+import { FOMOPopup } from "@/components/fomo-popup"
+import { WolfEyesCursor } from "@/components/wolf-eyes-cursor"
+import { ScratchCard } from "@/components/scratch-card"
+import { TestimonialsTicker } from "@/components/testimonials-ticker"
+import { UrgencyBar } from "@/components/urgency-bar"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -271,6 +278,13 @@ export default function RootLayout({
         <ViralCelebration />
         <WolfHowl />
         <ComebackBonus />
+        <LiveActivityFeed />
+        <BreakingNews />
+        <FOMOPopup />
+        <WolfEyesCursor />
+        <ScratchCard />
+        <TestimonialsTicker />
+        <UrgencyBar />
         <Analytics />
       </body>
     </html>
