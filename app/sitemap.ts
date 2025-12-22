@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-generator",
     "/random",
     "/testimonials",
+    "/blog/history",
   ]
 
   const staticEntries = staticPages.map((page) => ({
