@@ -1,303 +1,290 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, Calendar, Clock, CheckCircle } from "lucide-react"
-import { Breadcrumbs } from "@/components/breadcrumbs"
+import { ArrowRight, Download, Share2, Sparkles } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "How to Make an Insanity Wolf Meme | Step-by-Step Guide 2024",
-  description: "Learn how to create the perfect Insanity Wolf meme with our step-by-step guide. Master the format, understand the humor, and make viral memes in minutes.",
-  keywords: [
-    "how to make insanity wolf meme",
-    "create insanity wolf",
-    "insanity wolf tutorial",
-    "make wolf meme",
-    "meme making guide",
-    "advice animal tutorial",
-    "insanity wolf format",
-    "meme creation tips",
-  ],
+  title: "How to Make an Insanity Wolf Meme (Step-by-Step Guide 2024)",
+  description: "Learn how to create the perfect Insanity Wolf meme with our free generator. Step-by-step tutorial covering text placement, formatting, and sharing your memes.",
+  keywords: ["how to make insanity wolf meme", "insanity wolf generator", "create insanity wolf", "meme maker tutorial", "insanity wolf template"],
   openGraph: {
-    title: "How to Make an Insanity Wolf Meme",
-    description: "Step-by-step guide to creating the perfect Insanity Wolf meme.",
+    title: "How to Make an Insanity Wolf Meme - Complete Tutorial",
+    description: "Step-by-step guide to creating perfect Insanity Wolf memes with our free online generator.",
     type: "article",
-    publishedTime: "2024-02-01T00:00:00Z",
-    authors: ["Insanity Wolf"],
+    publishedTime: "2024-01-15T00:00:00.000Z",
+    modifiedTime: new Date().toISOString(),
   },
   alternates: {
-    canonical: "https://insanitywolf.com/blog/how-to-make-insanity-wolf-meme",
-  },
+    canonical: "https://insanitywolf.com/blog/how-to-make-insanity-wolf-meme"
+  }
 }
 
-export default function HowToMakePage() {
+export default function HowToMakeInsanityWolfMemePage() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How to Make an Insanity Wolf Meme",
-    "description": "A complete guide to creating the perfect Insanity Wolf meme",
-    "image": "https://insanitywolf.com/insanity-wolf-template.webp",
-    "totalTime": "PT2M",
-    "estimatedCost": {
-      "@type": "MonetaryAmount",
-      "currency": "USD",
-      "value": "0"
-    },
-    "tool": {
-      "@type": "HowToTool",
-      "name": "Insanity Wolf Meme Generator"
-    },
-    "step": [
+    "@graph": [
       {
-        "@type": "HowToStep",
-        "name": "Think of a mundane situation",
-        "text": "Start with an everyday problem or annoyance that everyone can relate to.",
-        "position": 1
+        "@type": "Article",
+        "headline": "How to Make an Insanity Wolf Meme (Step-by-Step Guide)",
+        "description": "Complete tutorial on creating Insanity Wolf memes using our free online generator.",
+        "image": "https://insanitywolf.com/insanity-wolf-default.jpg",
+        "author": {
+          "@type": "Organization",
+          "name": "Insanity Wolf"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Insanity Wolf",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://insanitywolf.com/insanity-wolf-default.jpg"
+          }
+        },
+        "datePublished": "2024-01-15T00:00:00.000Z",
+        "dateModified": new Date().toISOString(),
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://insanitywolf.com/blog/how-to-make-insanity-wolf-meme"
+        }
       },
       {
-        "@type": "HowToStep",
-        "name": "Craft the extreme response",
-        "text": "Think of the most absurdly over-the-top, violent, or insane response possible.",
-        "position": 2
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Enter your text",
-        "text": "Use our generator to add your top text (situation) and bottom text (response).",
-        "position": 3
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Download and share",
-        "text": "Download your meme and share it on social media.",
-        "position": 4
+        "@type": "HowTo",
+        "name": "How to Make an Insanity Wolf Meme",
+        "description": "Create your own Insanity Wolf meme using our free online generator",
+        "image": "https://insanitywolf.com/insanity-wolf-default.jpg",
+        "totalTime": "PT2M",
+        "tool": {
+          "@type": "HowToTool",
+          "name": "Insanity Wolf Meme Generator"
+        },
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Open the Generator",
+            "text": "Visit the Insanity Wolf Meme Generator at insanitywolf.com",
+            "url": "https://insanitywolf.com/insanity-wolf-meme-generator"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Enter Top Text",
+            "text": "Type your setup line in the top text field. This should present a normal or relatable situation."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Enter Bottom Text",
+            "text": "Type your punchline in the bottom text field. This is where the insane, extreme, or absurd twist goes."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Preview Your Meme",
+            "text": "Review your meme in the live preview to make sure the text looks good."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Download or Share",
+            "text": "Click Download to save your meme as an image, or use the share buttons to post directly to social media."
+          }
+        ]
       }
     ]
   }
 
   return (
-    <>
+    <main className="min-h-screen bg-black text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="min-h-screen bg-black text-white">
-        <nav className="border-b border-red-900/30 bg-black/95 px-4 py-3">
-          <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <Link href="/" className="font-mono text-sm text-white hover:text-red-400 transition-colors">
-              INSANITYWOLF.COM
-            </Link>
-            <Link href="/insanity-wolf-meme-generator" className="text-xs font-bold text-red-400 hover:text-white transition-colors">
-              CREATE MEME
-            </Link>
-          </div>
+      <article className="max-w-3xl mx-auto px-4 py-16">
+        {/* Breadcrumb */}
+        <nav className="mb-8 text-sm text-gray-400">
+          <Link href="/" className="hover:text-red-500">Home</Link>
+          <span className="mx-2">/</span>
+          <Link href="/blog" className="hover:text-red-500">Blog</Link>
+          <span className="mx-2">/</span>
+          <span className="text-gray-300">How to Make Insanity Wolf Meme</span>
         </nav>
 
-        <article className="max-w-4xl mx-auto px-4 py-12">
-          <Breadcrumbs
-            items={[
-              { label: "Blog", href: "/blog" },
-              { label: "How to Make a Meme" },
-            ]}
-          />
+        <header className="mb-12">
+          <h1 className="text-4xl md:text-5xl font-black mb-4">
+            How to Make an <span className="text-red-500">Insanity Wolf</span> Meme
+          </h1>
+          <p className="text-xl text-gray-400">
+            Complete step-by-step guide to creating the perfect Insanity Wolf meme
+          </p>
+          <div className="mt-4 text-sm text-gray-500">
+            Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+          </div>
+        </header>
 
-          {/* Header */}
-          <header className="mb-12">
-            <div className="flex items-center gap-4 text-sm text-white/50 mb-4">
-              <span className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" />
-                February 1, 2024
-              </span>
-              <span className="flex items-center gap-1">
-                <Clock className="h-4 w-4" />
-                5 min read
-              </span>
-            </div>
-            <h1
-              className="text-3xl md:text-5xl font-black uppercase mb-6"
-              style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
-            >
-              How to Make an <span className="text-red-500">Insanity Wolf</span> Meme
-            </h1>
-            <p className="text-xl text-white/70">
-              Master the art of creating the most extreme advice animal meme on the internet.
-            </p>
-          </header>
+        {/* Quick Start CTA */}
+        <div className="bg-gradient-to-r from-red-900/30 to-red-800/30 border border-red-900/50 p-6 mb-12">
+          <p className="text-lg mb-4">
+            <strong>Want to skip the tutorial?</strong> Jump straight to creating:
+          </p>
+          <Link
+            href="/insanity-wolf-meme-generator"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-6 py-3 font-bold"
+          >
+            <Sparkles className="h-5 w-5" />
+            OPEN MEME GENERATOR
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+        </div>
 
-          {/* Featured Image */}
-          <figure className="mb-12 border border-red-900/30">
-            <Image
-              src="/insanity-wolf-template.webp"
-              alt="Insanity Wolf meme template"
-              width={600}
-              height={600}
-              className="w-full max-w-md mx-auto"
-              priority
-            />
-          </figure>
+        {/* Main Content */}
+        <div className="prose prose-invert prose-red max-w-none">
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">What You'll Need</h2>
+          <p className="text-gray-300 mb-6">
+            Creating an Insanity Wolf meme is simple and completely free. All you need is:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-gray-300 mb-8">
+            <li>A web browser (works on desktop and mobile)</li>
+            <li>An idea for your meme (we'll help with this below)</li>
+            <li>About 2 minutes of your time</li>
+          </ul>
 
-          {/* Content */}
-          <div className="prose prose-invert prose-red max-w-none space-y-8">
-            <section>
-              <h2 className="text-2xl font-black uppercase text-white mb-4" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                Understanding the Format
-              </h2>
-              <p className="text-white/80 leading-relaxed">
-                Before you create your first Insanity Wolf meme, you need to understand what makes this meme tick. Unlike other advice animals that give actual advice, <strong className="text-white">Insanity Wolf is about absurd escalation</strong>.
-              </p>
-              <p className="text-white/80 leading-relaxed">
-                The formula is simple: take something normal and respond with maximum insanity. The bigger the gap between problem and solution, the funnier the meme.
-              </p>
-            </section>
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">Step 1: Open the Generator</h2>
+          <p className="text-gray-300 mb-6">
+            Head to our <Link href="/insanity-wolf-meme-generator" className="text-red-500 hover:text-red-400">Insanity Wolf Meme Generator</Link>.
+            The classic Insanity Wolf image is already loaded and ready to go—no need to upload anything.
+          </p>
 
-            <section>
-              <h2 className="text-2xl font-black uppercase text-white mb-4" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                Step 1: The Setup (Top Text)
-              </h2>
-              <p className="text-white/80 leading-relaxed">
-                Your top text should describe a <strong className="text-white">relatable, mundane situation</strong>. Something everyone has experienced:
-              </p>
-              <ul className="space-y-2 text-white/80 mt-4">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  Minor inconveniences (traffic, slow WiFi, cold coffee)
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  Social situations (someone being rude, canceling plans)
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  Daily annoyances (alarm clocks, Mondays, running out of things)
-                </li>
-              </ul>
-              <div className="border border-red-900/30 bg-red-950/20 p-4 mt-4">
-                <p className="text-white/80 text-sm"><strong className="text-red-400">Pro tip:</strong> Keep it short. 3-7 words is ideal. "Someone takes your parking spot" is perfect.</p>
-              </div>
-            </section>
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">Step 2: Write Your Top Text (The Setup)</h2>
+          <p className="text-gray-300 mb-6">
+            The top text is your setup line. This should present a relatable situation that most people would handle normally.
+            Think everyday scenarios like:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-gray-300 mb-8">
+            <li>"ALARM GOES OFF AT 6 AM"</li>
+            <li>"SOMEONE CUTS YOU OFF IN TRAFFIC"</li>
+            <li>"BOSS ASKS YOU TO STAY LATE"</li>
+            <li>"PIZZA ARRIVES COLD"</li>
+          </ul>
+          <p className="text-gray-300 mb-6">
+            The key is choosing something universal that sets up expectations.
+          </p>
 
-            <section>
-              <h2 className="text-2xl font-black uppercase text-white mb-4" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                Step 2: The Punchline (Bottom Text)
-              </h2>
-              <p className="text-white/80 leading-relaxed">
-                This is where the magic happens. Your bottom text should be the <strong className="text-white">most extreme, over-the-top response imaginable</strong>. Think:
-              </p>
-              <ul className="space-y-2 text-white/80 mt-4">
-                <li>• Absurdly violent (fictional violence only)</li>
-                <li>• Completely disproportionate to the problem</li>
-                <li>• Something no sane person would ever actually do</li>
-              </ul>
-              <div className="grid gap-4 mt-6">
-                <div className="border border-green-500/30 bg-green-950/20 p-4">
-                  <p className="text-green-400 font-bold text-sm mb-1">GOOD EXAMPLE:</p>
-                  <p className="text-white">Top: "Neighbor's dog won't stop barking"</p>
-                  <p className="text-red-400">Bottom: "Become the alpha of their pack"</p>
-                </div>
-                <div className="border border-yellow-500/30 bg-yellow-950/20 p-4">
-                  <p className="text-yellow-400 font-bold text-sm mb-1">MEH EXAMPLE:</p>
-                  <p className="text-white">Top: "Someone cuts in line"</p>
-                  <p className="text-white/60">Bottom: "Tell them to stop" (too mild!)</p>
-                </div>
-              </div>
-            </section>
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">Step 3: Write Your Bottom Text (The Punchline)</h2>
+          <p className="text-gray-300 mb-6">
+            This is where Insanity Wolf shines. The bottom text should be an absurdly extreme, aggressive, or
+            unhinged response to the setup. The more over-the-top, the better:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-gray-300 mb-8">
+            <li>"THROW ALARM THROUGH WINDOW, GO BACK TO SLEEP ON BROKEN GLASS"</li>
+            <li>"FOLLOW THEM HOME, BECOME THEIR NEW ROOMMATE"</li>
+            <li>"FIRE EVERYONE, BECOME THE COMPANY"</li>
+            <li>"EAT IT FROZEN TO ASSERT DOMINANCE"</li>
+          </ul>
 
-            <section>
-              <h2 className="text-2xl font-black uppercase text-white mb-4" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                Step 3: Use Our Generator
-              </h2>
-              <p className="text-white/80 leading-relaxed">
-                Once you've crafted your setup and punchline, head to our <Link href="/insanity-wolf-meme-generator" className="text-red-400 hover:text-white">Insanity Wolf Meme Generator</Link>. It's completely free and requires no signup.
-              </p>
-              <ol className="list-decimal list-inside space-y-3 text-white/80 mt-4">
-                <li>Enter your top text in the first field</li>
-                <li>Enter your bottom text in the second field</li>
-                <li>Preview your meme in real-time</li>
-                <li>Click "Download" to save your masterpiece</li>
-              </ol>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-black uppercase text-white mb-4" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                Pro Tips for Viral Memes
-              </h2>
-              <div className="space-y-4">
-                <div className="border-l-4 border-red-500 pl-4">
-                  <h3 className="font-bold text-white">1. Keep it punchy</h3>
-                  <p className="text-white/70 text-sm">Shorter text = better impact. Aim for 3-8 words per line.</p>
-                </div>
-                <div className="border-l-4 border-red-500 pl-4">
-                  <h3 className="font-bold text-white">2. Use all caps</h3>
-                  <p className="text-white/70 text-sm">It's tradition. Insanity Wolf YELLS. Our generator handles this automatically.</p>
-                </div>
-                <div className="border-l-4 border-red-500 pl-4">
-                  <h3 className="font-bold text-white">3. Stay absurd, not mean</h3>
-                  <p className="text-white/70 text-sm">The best Insanity Wolf memes are clearly satirical. Avoid targeting real people.</p>
-                </div>
-                <div className="border-l-4 border-red-500 pl-4">
-                  <h3 className="font-bold text-white">4. Test with friends first</h3>
-                  <p className="text-white/70 text-sm">If they don't laugh, the escalation might not be extreme enough.</p>
-                </div>
-              </div>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-black uppercase text-white mb-4" style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}>
-                Common Mistakes to Avoid
-              </h2>
-              <ul className="space-y-2 text-white/80">
-                <li><strong className="text-red-400">Too mild:</strong> If your response is reasonable, it's not Insanity Wolf. Go bigger.</li>
-                <li><strong className="text-red-400">Too wordy:</strong> If you need a paragraph to explain the joke, cut it down.</li>
-                <li><strong className="text-red-400">Actual advice:</strong> That's Courage Wolf's job. Insanity Wolf gives the worst advice possible.</li>
-                <li><strong className="text-red-400">Being mean:</strong> Edgy is fine. Targeting real people or groups is not.</li>
-              </ul>
-            </section>
+          <div className="bg-yellow-900/20 border border-yellow-700/50 p-6 my-8">
+            <h3 className="text-yellow-500 font-bold mb-2">Pro Tips for Great Punchlines:</h3>
+            <ul className="list-disc pl-6 space-y-2 text-gray-300">
+              <li><strong>Go extreme:</strong> The response should be wildly disproportionate to the situation</li>
+              <li><strong>Be specific:</strong> Specific details are funnier than vague statements</li>
+              <li><strong>Subvert expectations:</strong> Take the situation somewhere nobody would expect</li>
+              <li><strong>Use ALL CAPS:</strong> It's part of the aesthetic and adds to the intensity</li>
+            </ul>
           </div>
 
-          {/* CTA */}
-          <div className="mt-12 border-2 border-red-500 bg-gradient-to-r from-red-950/50 to-black p-8 text-center">
-            <h2
-              className="text-2xl font-black uppercase mb-4"
-              style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
-            >
-              Ready to Create Your <span className="text-red-500">Insanity Wolf</span>?
-            </h2>
-            <p className="text-white/70 mb-6">
-              Put these tips into action. It takes 30 seconds.
-            </p>
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">Step 4: Preview Your Meme</h2>
+          <p className="text-gray-300 mb-6">
+            As you type, you'll see a live preview of your meme. Check that:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-gray-300 mb-8">
+            <li>The text is readable and not too long</li>
+            <li>The setup and punchline work together</li>
+            <li>The overall effect is as unhinged as intended</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">Step 5: Download or Share</h2>
+          <p className="text-gray-300 mb-6">
+            Once you're happy with your creation, you have several options:
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4 my-8">
+            <div className="bg-gray-900/50 border border-gray-800 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Download className="h-5 w-5 text-red-500" />
+                <strong className="text-white">Download</strong>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Save as a high-quality PNG image to your device
+              </p>
+            </div>
+            <div className="bg-gray-900/50 border border-gray-800 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Share2 className="h-5 w-5 text-red-500" />
+                <strong className="text-white">Share</strong>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Share directly to social media or copy the link
+              </p>
+            </div>
+          </div>
+
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">Advanced Features</h2>
+          <p className="text-gray-300 mb-6">
+            Our generator includes additional features for power users:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-gray-300 mb-8">
+            <li><strong>AI Generation:</strong> Stuck for ideas? Use our AI to generate meme text for you</li>
+            <li><strong>Custom Images:</strong> Upload your own Insanity Wolf variant or other images</li>
+            <li><strong>Merch Creation:</strong> Turn your best memes into t-shirts and products</li>
+            <li><strong>Gallery Submission:</strong> Submit your memes to be featured in the Hall of Insanity</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">Common Mistakes to Avoid</h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-300 mb-8">
+            <li><strong>Being too mild:</strong> Insanity Wolf is about extremes—don't hold back</li>
+            <li><strong>Too much text:</strong> Keep it punchy and readable</li>
+            <li><strong>Explaining the joke:</strong> Trust your audience to get it</li>
+            <li><strong>Actual harmful content:</strong> Keep it absurd, not genuinely threatening</li>
+          </ul>
+
+          <h2 className="text-2xl font-bold text-white mt-12 mb-4">Ready to Create?</h2>
+          <p className="text-gray-300 mb-6">
+            Now you know everything you need to make great Insanity Wolf memes. The most important thing?
+            Just have fun with it. The best memes come from genuine creativity and a willingness to go
+            completely over the top.
+          </p>
+        </div>
+
+        {/* Final CTA */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/insanity-wolf-meme-generator"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-8 py-4 font-black text-xl"
+          >
+            START MAKING MEMES
+            <ArrowRight className="h-6 w-6" />
+          </Link>
+          <p className="mt-4 text-gray-500">
+            Free • No signup required • Works on all devices
+          </p>
+        </div>
+
+        {/* Related Content */}
+        <div className="mt-16 pt-8 border-t border-gray-800">
+          <h3 className="text-xl font-bold mb-6">Related Articles</h3>
+          <div className="grid md:grid-cols-2 gap-4">
             <Link
-              href="/insanity-wolf-meme-generator"
-              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-black uppercase px-8 py-4 transition-colors"
-              style={{ fontFamily: 'Impact, "Arial Black", sans-serif' }}
+              href="/blog/what-is-insanity-wolf"
+              className="block bg-gray-900/50 border border-gray-800 p-4 hover:border-red-900/50 transition-colors"
             >
-              MAKE YOUR MEME NOW
-              <ArrowRight className="h-5 w-5" />
+              <h4 className="font-bold text-white mb-2">What is Insanity Wolf?</h4>
+              <p className="text-sm text-gray-400">Learn about the history and meaning behind this classic meme</p>
+            </Link>
+            <Link
+              href="/gallery"
+              className="block bg-gray-900/50 border border-gray-800 p-4 hover:border-red-900/50 transition-colors"
+            >
+              <h4 className="font-bold text-white mb-2">Hall of Insanity</h4>
+              <p className="text-sm text-gray-400">Browse the best user-created Insanity Wolf memes</p>
             </Link>
           </div>
-
-          {/* Related Links */}
-          <nav className="mt-12 border-t border-red-900/30 pt-8">
-            <h3 className="text-sm font-bold text-white/50 uppercase mb-4">Read More</h3>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/blog/what-is-insanity-wolf" className="text-red-400 hover:text-white transition-colors">
-                What is Insanity Wolf? →
-              </Link>
-              <Link href="/blog/history" className="text-red-400 hover:text-white transition-colors">
-                Complete History →
-              </Link>
-              <Link href="/top-insanity-wolf-memes" className="text-red-400 hover:text-white transition-colors">
-                Top Memes for Inspiration →
-              </Link>
-            </div>
-          </nav>
-        </article>
-
-        <footer className="border-t border-red-900/30 bg-black px-4 py-6">
-          <div className="max-w-4xl mx-auto text-center font-mono text-xs text-red-400/40">
-            <p>&copy; 2009-2025 INSANITYWOLF.COM. This is satire.</p>
-          </div>
-        </footer>
-      </div>
-    </>
+        </div>
+      </article>
+    </main>
   )
 }

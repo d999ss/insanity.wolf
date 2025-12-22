@@ -32,7 +32,7 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://insanitywolf.com/sitemap.xml
-Sitemap: https://insanitywolf.com/news-sitemap
+Sitemap: https://insanitywolf.com/news-sitemap.xml
 Sitemap: https://insanitywolf.com/image-sitemap
 
 # LLM Documentation

@@ -22,7 +22,6 @@ import { XPSystem } from "@/components/xp-system"
 import { ViralCelebration } from "@/components/viral-celebration"
 import { WolfHowl } from "@/components/wolf-howl"
 import { ComebackBonus } from "@/components/comeback-bonus"
-import { LiveActivityFeed } from "@/components/live-activity-feed"
 import { BreakingNews } from "@/components/breaking-news"
 import { FOMOPopup } from "@/components/fomo-popup"
 import { WolfEyesCursor } from "@/components/wolf-eyes-cursor"
@@ -250,6 +249,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="alternate" type="application/rss+xml" title="Insanity Wolf RSS Feed" href="/feed.xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -280,7 +280,6 @@ export default function RootLayout({
         <ViralCelebration />
         <WolfHowl />
         <ComebackBonus />
-        <LiveActivityFeed />
         <BreakingNews />
         <FOMOPopup />
         <WolfEyesCursor />
