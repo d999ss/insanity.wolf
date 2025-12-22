@@ -24,16 +24,17 @@ export function MemePreview({ topText, bottomText, size = "md", className = "" }
 
   return (
     <div className={`relative ${sizeClasses[size]} aspect-square mx-auto ${className}`}>
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-10 pointer-events-none" />
-
       {/* Wolf image */}
       <Image
         src="/insanity-wolf-template.webp"
         alt="Insanity Wolf"
         fill
-        className="object-contain"
+        priority
+        className="object-contain z-[1]"
       />
+
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 z-[2] pointer-events-none" />
 
       {/* Top text */}
       <div className="absolute top-1 left-0 right-0 z-20 px-1">
