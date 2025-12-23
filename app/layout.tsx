@@ -249,6 +249,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="B36qW6PteLbHBgbm6qjMmf5dB-xN938wBAeE3uQcuKY" />
         <link rel="alternate" type="application/rss+xml" title="Insanity Wolf RSS Feed" href="/feed.xml" />
         <script
           type="application/ld+json"
