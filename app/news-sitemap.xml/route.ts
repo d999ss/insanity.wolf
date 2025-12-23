@@ -1,7 +1,7 @@
-import { getApprovedMemes } from "@/lib/memes"
+import { loadMemes } from "@/lib/memes"
 
 export async function GET() {
-  const memes = await getApprovedMemes()
+  const memes = loadMemes()
   const siteUrl = "https://insanitywolf.com"
 
   // Only include memes from the last 48 hours for Google News

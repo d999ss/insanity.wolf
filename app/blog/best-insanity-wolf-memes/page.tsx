@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Sparkles, Trophy } from "lucide-react"
-import { getApprovedMemes } from "@/lib/memes"
+import { loadMemes } from "@/lib/memes"
 
 export const metadata: Metadata = {
   title: "Best Insanity Wolf Memes of All Time (Top 50 Ranked)",
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function BestInsanityWolfMemesPage() {
-  const memes = await getApprovedMemes()
+export default function BestInsanityWolfMemesPage() {
+  const memes = loadMemes()
   const featuredMemes = memes.slice(0, 12)
 
   const jsonLd = {

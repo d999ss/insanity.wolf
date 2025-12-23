@@ -1,7 +1,7 @@
-import { getApprovedMemes } from "@/lib/memes"
+import { loadMemes } from "@/lib/memes"
 
 export async function GET() {
-  const memes = await getApprovedMemes()
+  const memes = loadMemes()
   const siteUrl = "https://insanitywolf.com"
 
   const blogPosts = [
